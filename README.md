@@ -11,7 +11,7 @@ Skills are instruction packages that give AI agents domain knowledge and structu
 | Skill | App | MCP Endpoint | Description |
 |-------|-----|--------------|-------------|
 | [lots-team](./lots-team/) | [lots.team](https://lots.team) | `https://api.lots.team/mcp` | Project management, tasks, feedback, CRM, changelog, knowledge base |
-| [lots-social](./lots-social/) | [lots.social](https://lots.social) | `https://api.lots.social/mcp` | Social media management, content scheduling, team approval workflows |
+| [lots-social](./lots-social/) | [lots.social](https://lots.social) | `https://api.lots.social/mcp` | Connect accounts, schedule/publish posts, manage media and check analytics |
 | [lots-blog](./lots-blog/) | [lots.blog](https://lots.blog) | `https://api.lots.blog/mcp` | Blog platform, multi-type posts, topics, team collaboration |
 | [lots-link](./lots-link/) | [lots.link](https://lots.link) | `https://api.lots.link/mcp` | Link shortening, analytics, UTM tracking, custom domains |
 
@@ -37,7 +37,7 @@ npx skills add lotstech/lots-link
 
 ## How It Works
 
-1. **Get your API key** — Sign in to any Lotstech app → Settings → API Keys
+1. **Authorize the connection** — Use the app’s hosted sign-in/OAuth flow where supported, or its MCP dashboard API-key flow
 2. **Connect the MCP server** — Add the app's MCP endpoint to your agent config
 3. **Add the skill** — Load the skill so your agent knows how to work on the platform
 4. **Start collaborating** — Your agent works as a real team member alongside you
