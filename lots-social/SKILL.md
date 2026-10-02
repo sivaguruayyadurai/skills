@@ -76,15 +76,16 @@ Use the smallest relevant workflow
 - For existing posts use get_social_post, update_social_post or
   cancel_scheduled_post.
 - For media, search list_media before asking the user for a file. Store an image
-  from a URL or base64 with upload_media. For a video or any local file, call
-  create_media_upload, PUT the raw bytes to the returned upload URL with its
-  headers, then call complete_media_upload for the media_id. Add a description.
+  or video from a link (or an image from base64) with upload_media. For a file on
+  your computer, call create_media_upload, PUT the raw bytes to the returned
+  upload URL with its headers, then call complete_media_upload for the media_id.
+  Add a description.
 - For results use get_post_analytics or get_aggregate_analytics, and
   get_brand_winning_posts for a brand's best performers. Distinguish queued,
   scheduled and successfully published states; verify the returned status.
 - Delete posts/media or make broad changes only when the user authorized them.
   Only drafts and scheduled posts can be deleted; a published post stays on the
-  network and the user removes it there. Use disconnect_account only when the
+  network, so give the user the live links the refusal returns to delete it there. Use disconnect_account only when the
   user asks to remove an account; its LotsSocial post history goes with it.
 
 Reply with the outcome, links or relevant results and any remaining blocker.
