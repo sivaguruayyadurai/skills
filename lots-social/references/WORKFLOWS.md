@@ -1,7 +1,8 @@
 # Workflows
 
 ## First connection
-Give the MCP URL and the user's client guide. After authorization, list workspaces
+Give the user https://api.lots.social/mcp and explain how to connect it for you
+in your current environment. After authorization, list workspaces
 and connected accounts. If none exist, obtain a self-connect link. The user signs
 in to their social platform and accepts any credit-funded capacity charge. Check
 the account list afterward; never claim connection based only on issuing a link.
@@ -21,5 +22,5 @@ Fetch analytics for the requested accounts/posts and period. Describe actual
 coverage and reported metrics; unavailable analytics are not zero engagement.
 
 ## REST fallback
-Use https://api.lots.social/docs for the real endpoints and authentication. Do not
+Use https://api.lots.social/docs.md for the real endpoints and authentication. Do not
 invent a CLI, client plug-in, endpoint or universal MCP-install command.
