@@ -77,7 +77,7 @@ Use the smallest relevant workflow
   cancel_scheduled_post.
 - For media, search list_media before asking the user for a file. Store an image
   from a URL or base64 with upload_media. For a video or any local file, call
-  create_media_upload, PUT the raw bytes to the returned upload_url with its
+  create_media_upload, PUT the raw bytes to the returned upload URL with its
   headers, then call complete_media_upload for the media_id. Add a description.
 - For results use get_post_analytics or get_aggregate_analytics, and
   get_brand_winning_posts for a brand's best performers. Distinguish queued,
