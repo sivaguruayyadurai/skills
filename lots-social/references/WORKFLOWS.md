@@ -12,6 +12,12 @@ Resolve the intended account, write from the user's facts, consult platform rule
 when necessary, then create or update the post with the requested schedule. Report
 the returned state and time zone. Do not claim publication until it succeeded.
 
+## Attach media
+Search list_media first. For an image you can reach by URL, use upload_media.
+For a video or a file on disk, call create_media_upload with its exact size and
+type, PUT the bytes to upload_url, then complete_media_upload. Pass the returned
+media_id in media_ids when creating or updating the post.
+
 ## Draft or edit
 Save a draft if that is what the user requested, or no posting instruction was
 given. Load an existing post before editing it; preserve fields the user did not
