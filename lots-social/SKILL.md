@@ -62,6 +62,10 @@ Use the smallest relevant workflow
   IDs from this conversation. Ask a concise question when the destination is
   ambiguous; never guess a brand or mix unrelated accounts.
 - Respect any immutable trusted workspace/brand/account scope provided by the host.
+- Brands group a workspace's accounts (one company or client each). When the user
+  asks to group accounts, use create_brand or update_brand; pass brand_id when
+  posting for a brand. If a post is refused for mixing brands, post to each brand
+  separately unless the user wants the accounts regrouped.
 - Discover the actual schema before calling a tool. Connected-account UUIDs are
   distinct from platform names. Follow validation errors and platform constraints.
 - Write content yourself from user-provided facts and context. Do not invent
