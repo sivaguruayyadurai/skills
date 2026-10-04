@@ -34,7 +34,6 @@ Launch scope for tools via `https://api.lots.blog/mcp`. Tools are called by thei
 | Tool Slug | Description | Key Parameters |
 |-----------|-------------|----------------|
 | `get_blog_strategy` | Load blog identity, source brief, pillars, keyword clusters, content ideas, briefs, and recent posts | `blog_id` |
-| `save_blog_settings` | Save blog foundation: purpose, reader, voice, territory, cadence, CTA, notes | `blog_id`, fields to update |
 | `save_blog_strategy` | Save full strategy/source brief context | `blog_id`, strategy fields |
 | `find_keyword_ideas` | Research and save keyword ideas from seed phrases | `blog_id`, `seeds`, `limit?` |
 | `list_keywords` | List stored keyword metrics and usage | `blog_id`, filters? |
