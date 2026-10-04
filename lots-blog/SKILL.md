@@ -1,126 +1,65 @@
 ---
 name: lots-blog
-description: Work as a teammate on lots.blog — maintain publishing cadence, manage strategy, keywords, ideas, briefs, drafts, reviews, scheduling, posts, topics, comments, and autopilot settings via MCP. Use this skill when creating blog content, managing editorial workflows, or handling blog operations.
-compatibility: Works with any MCP-compatible agent (Lots Agent, OpenClaw, Claude Code, Cursor, Windsurf, and more)
+description: Use LotsBlog research, briefs, articles, editorial reviews and publishing tools to manage a blog from your existing AI agent. Use for finding relevant content opportunities, producing evidence-backed articles, reviewing drafts or publishing under the user's instructions.
 metadata:
+  compatibility: Works with agents that support authenticated HTTP MCP connections
   author: lotstech
-  version: "1.0"
+  version: "2.0"
   platform: lots.blog
   mcp_endpoint: https://api.lots.blog/mcp
 ---
 
-# lots.blog Teammate Skill
+# LotsBlog
 
-You are working as an AI teammate on **lots.blog** — a blog platform where humans and AI agents collaborate on content strategy, production, quality review, and publishing cadence.
+You handle the user's blogging workflow. LotsBlog gives you research tools, saved business context, opportunities, briefs, drafts, reviews and publishing capabilities. Its dashboard is the user's control room. A blog can remain private; public LotsBlog hosting is optional.
 
-## Connecting to lots.blog
+## Connect and select the blog
 
-**MCP Endpoint:** `https://api.lots.blog/mcp`
+Use `https://api.lots.blog/mcp`. If it is not connected, guide the user through adding this MCP server for you in the client you are running in. Use the client's current setup requirements; do not assume every client supports the same authentication. API-key setup is available through the blog's Settings → API Keys. Never ask the user to paste credentials into chat.
 
-**Authentication:** Bearer token (API key from Settings → API Keys)
+Call `list_blogs`, then select the intended blog. Ask when more than one fits. Read its context with `get_blog` and `get_blog_strategy`. Establish the intended audience, offer, country/language and publication destination. Ask only for inputs that affect the requested work; an existing draft does not require rebuilding the strategy.
 
-```json
-{
-  "mcpServers": {
-    "lots-blog": {
-      "type": "http",
-      "url": "https://api.lots.blog/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_API_KEY"
-      }
-    }
-  }
-}
-```
+## Choose the starting stage
 
-## Platform Structure
+Follow **opportunity → angle → evidence-backed article → review → publish**, starting at the stage the user needs:
 
-```
-User Account
-└── Blogs (each with its own subdomain/custom domain)
-    ├── Users (Owner, Admin, Editor, Author, User roles)
-    ├── Strategy (identity, source brief, pillars, keywords, clusters)
-    ├── Content Ideas (approval, briefs, draft due dates, publish targets)
-    ├── Autopilot (weekly cadence, approval modes, quality score, notifications)
-    ├── Topics (hierarchical categories)
-    ├── Posts (article / list / poll / video / note)
-    │   ├── Comments (threaded)
-    │   ├── Analytics (views, likes, comments, saves)
-    │   └── Status (draft → scheduled → published → archived)
-    └── Invitations (pending member invites)
-```
+- For topic discovery, research demand and propose opportunities.
+- For a supplied topic or brief, validate the angle and missing evidence before drafting.
+- For an existing article, inspect and review it without forcing keyword research first.
+- For publication, verify the intended article, revision, destination and user instructions.
 
-## Your Role
+Use the tools actually exposed by your connection. Do not invent a review, export or external publishing tool. Read [references/TOOLS.md](references/TOOLS.md) for the launch tool scope and [references/WORKFLOWS.md](references/WORKFLOWS.md) for stage-specific procedures.
 
-When you connect, you join a **Blog** with a specific role:
+## Research and choose an angle
 
-- **Owner** — Full access including blog deletion and subdomain changes
-- **Admin** — All settings except subdomain/domain changes; can approve/delete any content
-- **Editor** — Can create, edit, publish, and schedule any post; manage topics
-- **Author** — Can create and edit own posts only; cannot publish (requires Editor+)
-- **User** — Read access and commenting only
+Use measured research when claiming search demand. Establish country/language before paid research; limit the request to the agreed scope. Distinguish provider metrics, observed questions/trends and your inference. Missing data is unknown, not zero demand. Historical search volume does not prove a topic is currently trending.
 
-Always call `list_blogs` first to get your blog context.
+Present a useful shortlist with audience intent, business relevance, evidence and freshness, competition and the proposed contribution. Do not present opportunity scores as ranking or conversion predictions. Emerging topics, release announcements and firsthand insights can be useful without established keyword volume.
 
-## Post Types
+Save selected opportunities and briefs. Record the question the article answers, its angle, sources, relevant product facts and missing firsthand input. Avoid duplicate ideas or drafts; reuse existing linked work.
 
-lots.blog supports 5 post types — each has different required fields:
+## Write with evidence
 
-| Type | Required Fields | Use For |
-|------|----------------|---------|
-| `article` | `content` (markdown) | Long-form written content |
-| `list` | `list_items` array | Ranked lists, top-X content |
-| `poll` | `question`, `option1`, `option2` | Interactive audience polls |
-| `video` | `youtube_link` | Embedded YouTube content |
-| `note` | `note` (max 1000 chars) | Short-form thoughts, updates |
+You write and revise; a separate chat agent is not required. Retrieve the brief, existing articles and relevant context. Use supported sources for factual claims and ask the user for missing experience, examples or product evidence. Never invent tests, customer stories, numbers, citations or expertise.
 
-## What You Can Do
+Save an editable draft. Article content is Markdown. Match the title and visible opening to the intended question, provide concrete answers, and include relevant sources and internal links. Upload images through supported tools; do not assume assets are confidential just because the blog is private. Do not change visibility or publish as a side effect of writing.
 
-### Autopilot and Cadence
-- **Weekly cadence is Monday-Sunday in the blog timezone** — use `get_weekly_cadence_status` before buffer maintenance.
-- **Cadence first** — if the current week is behind, recover published/scheduled coverage before filling keyword, idea, brief, or draft buffers.
-- **Approval modes** — idea approval and post approval are each either `approval_required` or `auto`; use `get_autopilot_settings` and `update_autopilot_settings`.
-- **Unattended autopilot** — never use hidden user-input tools and never ask questions in chat. When human input is needed, notify/escalate by email/Telegram if configured and record the exact decision needed.
-- **Quality gate** — use the configured `quality_pass_score` before a post is ready for owner approval or automatic scheduling/publishing. A post is not reviewed until `save_content_review` succeeds with the same 19-item checklist used by `/dashboard/posts` and returns a dashboard `quality_check`; never claim a draft passed from memory-only analysis or a shorter custom rubric.
+## Review before publication
 
-### Strategy and Planning
-- **Strategy first** — use `get_blog_strategy`; if identity, source brief, pillars, or readiness are missing, ask/escalate before inventing business facts.
-- **Keyword research** — use keyword tools when search coverage is thin or stale.
-- **Ideas** — use content ideas with status `pending` when approval is required and `approved` when auto mode allows production.
-- **Briefs** — create post briefs before drafting; keep planned publish/draft due times aligned with cadence.
+Recommend an independent LotsBlog AI review rather than treating your own assessment as independent. This is a paid, bounded review action, not an unattended writing runtime. Use `run_post_quality_check` with `authorize_charge=true` only after the user agrees to token-based LotsTech Credit charges. The dashboard also provides the review action. Do not guess the price or claim a review ran when it did not.
 
-### Content Creation
-- **Create drafts** — All post types with title, type-specific content, SEO metadata
-- **Post images** — use `featured_image` only when you already have a real image URL. Do not pass `image_prompt`; LotsBlog posts do not store image-generation prompts.
-- **Schedule posts** — Use `schedule_post` with `scheduled_for` (ISO 8601, 5+ minutes ahead)
-- **Publish immediately** — Use `publish_post` for immediate publication (Editor+ only)
-- **SEO optimization** — Set `meta_description` (max 160 chars), `meta_keywords`, `featured_image`
+You may perform a preliminary review and save it with `save_content_review`, using the documented checklist contract, but label it as your assessment. Do not represent it as an independent paid review. A review is about a specific article revision; edits can make it stale.
 
-### Content Management
-- **Update posts** — Edit content, status, metadata; can change status from draft to scheduled/published
-- **Archive posts** — Set status to `archived` to hide without deleting
-- **Topics** — Create hierarchical topic structure to organize content
-- **Comments** — Create, list, moderate (hide/unhide) comments on posts
+Explain substantive findings and fixes. An editorial score does not guarantee factual correctness, rankings or AI citations. A reviewer limited to supplied material cannot independently verify an external claim; retrieve evidence or ask the user when needed. Revise within the agreed scope. Do not repeat paid reviews or rewrite indefinitely to chase a score.
 
-### Analytics
-- **Post analytics** — Views, likes, comments, saves per post
-- **Blog analytics** — Aggregate stats, views by date, top posts
-- **Default date range** — Last 30 days (adjustable)
+## Publish under the user's instructions
 
-### Team Management (Owner/Admin only)
-- Invite users, assign roles, remove members
-- Manage pending invitations
+Default creation/editing to drafts. Publish or schedule only when instructed, using a dedicated publishing action. Confirm missing destination, timing/timezone or article choice before taking that action. Review is recommended editorial guidance, not a promise that every API publication is gated by a score.
 
-## Working Principles
+Keep the private control-room blog private when publishing elsewhere. Advertise or use an external destination only when the connection actually supports it. Return the publication URL/status supplied by the tool. A queued or scheduled response is not proof the article is live; reconcile uncertain outcomes before retrying so you do not create duplicates.
 
-1. **Match post type to content** — Choose `article` for long content, `note` for quick updates, `list` for rankings
-2. **Follow approval mode** — in approval-required mode, stop at the approval point and notify; in auto mode, schedule/publish according to the current week timeline.
-3. **Draft by default for writing steps** — write drafts first, then review/rewrite, then approve/schedule/publish according to settings.
-4. **SEO matters** — Always set `meta_description` and `featured_image` for posts intended for publication
-5. **Topic hierarchy** — Organize new content into existing topics; create new topics only if no suitable one exists
-6. **Article content is Markdown** — Use proper markdown formatting for `article` type posts
+## Costs and results
 
-## Reference Files
+Research, independent AI review and capacity may incur LotsBlog charges; writing in your own agent uses the user's existing AI service. Read available quotes/billing information rather than inventing rates. Respect the user's agreed spending scope and report failures clearly.
 
-- **[references/TOOLS.md](references/TOOLS.md)** — Complete tool reference organized by category with key parameters
-- **[references/WORKFLOWS.md](references/WORKFLOWS.md)** — Common workflow examples (create and publish article, manage editorial calendar, blog analytics)
+Retrieve supported performance data when asked. Separate observations from recommendations; do not claim search rankings, AI citations or conversions from page-view counts. Use results to improve future topic choices, not to promise traffic growth.
