@@ -19,6 +19,8 @@ Use `https://api.lots.blog/mcp`. If it is not connected, guide the user through 
 
 Call `list_blogs`, then select the intended blog. Ask when more than one fits. Read its context with `get_blog` and `get_blog_strategy`. Establish the intended audience, offer, country/language and publication destination. Ask only for inputs that affect the requested work; an existing draft does not require rebuilding the strategy.
 
+Check strategy `warnings`. Bound LotsNotes public facts take precedence over local editorial settings or an old source brief. If the binding is empty, help the user select current core notes; do not invent or recover obsolete claims. If the snapshot changed, review the audience, CTA, pillars and keyword seeds against it before saving strategy. Prefer compact keyword reads; use `include_raw=true` only to investigate provider data. Unknown keyword difficulty is not zero, and missing volume on an emerging agent topic is not proof of no demand.
+
 ## Choose the starting stage
 
 Follow **opportunity → angle → evidence-backed article → review → publish**, starting at the stage the user needs:

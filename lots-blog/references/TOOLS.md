@@ -33,10 +33,10 @@ Launch scope for tools via `https://api.lots.blog/mcp`. Tools are called by thei
 
 | Tool Slug | Description | Key Parameters |
 |-----------|-------------|----------------|
-| `get_blog_strategy` | Load blog identity, source brief, pillars, keyword clusters, content ideas, briefs, and recent posts | `blog_id` |
+| `get_blog_strategy` | Load editorial identity, authoritative source brief, pillars, clusters, active idea summaries and recent posts; check warnings before relying on saved strategy | `blog_id`, `idea_limit?` (default 10, max 30) |
 | `save_blog_strategy` | Save full strategy/source brief context | `blog_id`, strategy fields |
-| `find_keyword_ideas` | Research and save keyword ideas from seed phrases | `blog_id`, `seeds`, `limit?` |
-| `list_keywords` | List stored keyword metrics and usage | `blog_id`, filters? |
+| `find_keyword_ideas` | Research and save keyword ideas; reports provider fallback and missing difficulty | `blog_id`, `seeds?`, `auto_seeds?`, `provider?`, `include_difficulty?`, `limit?` |
+| `list_keywords` | Compact keyword metrics and usage; raw provider/SERP data is opt-in | `blog_id`, filters?, `include_raw?` |
 | `create_content_idea` | Save an idea with status, pillar, keyword, production timing, and reasoning | `blog_id`, `title`, `status?`, `production_status?` |
 | `update_content_idea` | Update an idea, approval status, timing, or production state | `blog_id`, `content_idea_id`, fields |
 | `list_content_ideas` | List ideas by status or production state | `blog_id`, filters? |
