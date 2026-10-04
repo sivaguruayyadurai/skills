@@ -3,7 +3,7 @@
 Use the live connection schema as the authority for fields and current availability.
 
 - Blogs: `list_blogs`, `get_blog`, `create_blog`, `update_blog`. The private Markdown `blog_guide` is returned by get and editable through update; omit unchanged fields.
-- Articles: `list_blog_posts`, `get_blog_post`, `create_blog_post`, `update_blog_post`, `delete_blog_post`. Create drafts by default; read back saved content.
+- Articles: `list_blog_posts`, `get_blog_post`, `create_blog_post`, `update_blog_post`, `delete_blog_post`. Create drafts by default; read back saved content. Set topic_ids from list_topics; omission preserves membership and [] clears it. Article writes return preview_url; drafts require authenticated access.
 - Publication: `publish_post`, `schedule_post`. Use only on the user's instruction.
 - Topics: `list_topics`, `get_topic`, `create_topic`, `update_topic`.
 - Images: `upload_blog_image` returns a public media URL.
