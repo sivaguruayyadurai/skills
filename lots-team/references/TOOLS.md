@@ -56,7 +56,7 @@ Pass `project_id` for project work. Get it from `list_projects`. Get `organizati
 | Tool | Purpose | Arguments |
 |------|---------|-----------|
 | `list_contact_messages` | Support inbox | `project_id`, optional `status` |
-| `get_contact_thread` | The message and every reply | `message_id` |
+| `get_contact_thread` | The message and every reply | `contact_message_id` |
 | `reply_to_contact_message` | Reply and email the sender | `contact_message_id`, `reply_message` |
 
 ## Team
