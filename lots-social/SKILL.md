@@ -57,6 +57,11 @@ Use get_billing_status for live credit/capacity information and get_credits_link
 when the user needs to add credits. Account/storage funding requires the payer's
 explicit consent in the hosted flow; an agent must not bypass that consent.
 
+## Hosting and capacity funding
+
+Use `get_funding_status` for current subscription coverage, credit funding and rates when it is available. Subscription coverage is used first. If coverage is insufficient, offer a subscription or owner-enabled credit funding and give the returned `settings_url`. Only the owner can enable credits in that hosted page. Enabling covers this product’s current and future resources, including after a subscription ends; it never enables another Lots product. Do not treat wallet balance or a tool parameter as permission to enable billing. Public pages remain readable when funding ends, but new publishing and paid operations need coverage. Paid AI actions use credits when requested; they do not need another resource funding switch.
+
+
 Use the smallest relevant workflow
 - Resolve the workspace, brand and account IDs only when needed. Reuse verified
   IDs from this conversation. Ask a concise question when the destination is
