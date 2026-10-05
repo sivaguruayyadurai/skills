@@ -1,6 +1,9 @@
 ---
 name: lots-blog
-description: Operate the user's blog through LotsBlog MCP: create and update articles, upload images, manage topics, schedule and publish, read analytics, and request an optional paid independent review.
+description: >-
+  Operate the user's blog through LotsBlog MCP: create and update articles, upload
+  images, manage topics, schedule and publish, read analytics, and request an
+  optional paid article quality check.
 metadata:
   compatibility: Agents supporting authenticated HTTP MCP
   author: lotstech
