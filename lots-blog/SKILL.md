@@ -4,7 +4,7 @@ description: Operate the user's blog through LotsBlog MCP: create and update art
 metadata:
   compatibility: Agents supporting authenticated HTTP MCP
   author: lotstech
-  version: "3.0"
+  version: "3.1"
   platform: lots.blog
   mcp_endpoint: https://api.lots.blog/mcp
 ---
@@ -27,7 +27,11 @@ Use your research tools and the user's evidence to choose an angle and substanti
 
 List existing posts and topics before creating duplicates. Create articles as drafts using Markdown. Save a useful title, slug, description, metadata, topics and supported structured data matching visible content. Upload images with `upload_blog_image`. Public CDN image links are not confidential even when the blog is private. Read back saved drafts and check the content. Update only requested fields; preserve everything else.
 
-## Optional independent review
+## Prepare articles for search and AI discovery
+
+Write direct answers, useful headings and supported claims with visible sources. LotsBlog generates Article/NewsArticle and breadcrumb schema. Use structured_data for supplemental schema such as FAQPage only when it matches visible questions and answers; an object or array is accepted. Never claim automatic rankings or AI citations. The optional quality check includes search intent, AEO answer quality, evidence and structure.
+
+## Optional article quality check
 
 Offer `run_post_quality_check` as a second editorial opinion when useful. It uses a separate direct model task and model/token-based LotsTech Credits charged to the blog owner. Set `authorize_charge=true` only after the user agrees to that charge. Do not guess a fixed price. The dashboard also offers review.
 
@@ -35,7 +39,7 @@ Review findings apply to the saved revision; subsequent edits can make them stal
 
 ## Schedule, publish and report
 
-Publish or schedule only under the user's instructions. Resolve missing article, destination, time and timezone first. Writing and saving do not imply publication consent. Use dedicated publishing actions and return the supplied status and URL. A scheduled response is not proof of publication; read back uncertain results before retrying to avoid duplicates.
+Publish or schedule only under the user's instructions. Resolve missing article, destination, time and timezone first. Writing and saving do not imply publication consent. Use dedicated publishing actions and return the supplied status and URL. Scheduled articles are checked for publication every 15 minutes; explain this cadence when timing matters. Returning a post to draft cancels its schedule. A scheduled response is not proof of publication; read back uncertain results before retrying to avoid duplicates.
 
 Use LotsBlog hosting on a subdomain or verified custom domain. Domain setup and team management are currently in the dashboard. Do not advertise WordPress/Ghost connections before their tools are released. Keep private blogs private unless the user asks otherwise.
 
