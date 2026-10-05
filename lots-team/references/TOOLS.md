@@ -18,6 +18,7 @@ Pass `project_id` for project work. Get it from `list_projects`. Get `organizati
 |------|---------|-----------|
 | `list_posts` | Posts from the widget and portal | `project_id` or `organization_id`, optional `status` |
 | `get_post` | One post | `post_id` |
+| `create_post` | Log a request heard elsewhere (a sales call, an email) | `project_id`, `title` (5+ chars), `description` (10+ chars), `category` (`feature`, `bug`, `improvement`, `question`, `other`), optional `email`, `user_name`, `priority` |
 | `update_post` | Change title, description, or status | `post_id`, fields to change |
 | `list_post_comments` | Comments on a post | `post_id` |
 | `create_post_comment` | Add a comment | `post_id`, `content` |

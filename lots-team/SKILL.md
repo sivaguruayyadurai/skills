@@ -4,7 +4,7 @@ description: Work in a LotsTeam workspace — posts, tasks, support messages, an
 compatibility: Works with any MCP-compatible client, including ChatGPT and Claude
 metadata:
   author: lotstech
-  version: "3.0"
+  version: "3.1"
   platform: lots.team
   mcp_endpoint: https://api.lots.team/mcp
 ---
@@ -13,27 +13,28 @@ metadata:
 
 LotsTeam is the workspace where a founder and a lean team keep what users ask for, what the team is building, and what just shipped.
 
-You are connected as the person whose API key you are using. You can only do what that person's role allows. A viewer can read. A member can change only their projects.
+You are connected as the person who signed in. You can only do what that person's role allows. A viewer can read. A member can change only their projects.
 
 ## Connect
 
 **MCP endpoint:** `https://api.lots.team/mcp`
+
+Add it as a custom connector (Claude: Customize → Connectors → Add custom connector; ChatGPT: Plugins → Add → Create MCP App, OAuth). The person signs in with the email they use for LotsTeam. No key is pasted into the chat.
+
+Clients that take a config file can use the same URL:
 
 ```json
 {
   "mcpServers": {
     "lots-team": {
       "type": "http",
-      "url": "https://api.lots.team/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_API_KEY"
-      }
+      "url": "https://api.lots.team/mcp"
     }
   }
 }
 ```
 
-The API key comes from the person's LotsTeam account.
+In Claude Code: `claude mcp add --transport http lots-team https://api.lots.team/mcp`
 
 ## What is in the workspace
 
@@ -54,7 +55,7 @@ The public portal can also show a board of tasks the team chose to share. That b
 ## What you can do
 
 - Read the organization and its projects.
-- List, read, and update posts. Comment on a post.
+- List, read, create, and update posts. Comment on a post. Create a post to log a request the person heard outside the widget, such as on a sales call.
 - List, create, and update tasks. Comment on a task. Link a post to a task.
 - List support threads and reply on one.
 - Draft, update, and publish changelog entries.
@@ -68,11 +69,12 @@ Creating projects, inviting people, changing roles, branding, domains, the widge
 2. Read the record before you change it.
 3. When a person asks you to turn a post into work, create or update the task and call `link_post_to_task`.
 4. Before replying to support, call `get_contact_thread`.
-5. Publish a changelog only when the person asks you to publish it.
-6. Assign work only to a user id from `list_organization_members`.
-7. If a tool returns a permission error, stop and say which action the account cannot take.
+5. Show the person a support reply before sending it. `reply_to_contact_message` emails the customer.
+6. Publish a changelog only when the person asks you to publish it.
+7. Assign work only to a user id from `list_organization_members`.
+8. If a tool returns a permission error, stop and say which action the account cannot take.
 
 ## Reference
 
-- [references/TOOLS.md](references/TOOLS.md) — the 25 tools and their arguments
+- [references/TOOLS.md](references/TOOLS.md) — the 26 tools and their arguments
 - [references/WORKFLOWS.md](references/WORKFLOWS.md) — posts, tasks, support, and changelog
