@@ -70,7 +70,7 @@ Creating projects, inviting people, changing roles, branding, domains, the widge
 3. When a person asks you to turn a post into work, create or update the task and call `link_post_to_task`.
 4. Before replying to support, call `get_contact_thread`.
 5. Show the person a support reply before sending it. `reply_to_contact_message` emails the customer.
-6. Publish a changelog only when the person asks you to publish it.
+6. Publish a changelog only when the person asks you to publish it. If the entry is linked to a task with posts behind it, ask whether to email the people who asked (`notify_requesters`), then say how many were emailed.
 7. Assign work only to a user id from `list_organization_members`.
 8. If a tool returns a permission error, stop and say which action the account cannot take.
 

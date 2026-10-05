@@ -49,7 +49,7 @@ Pass `project_id` for project work. Get it from `list_projects`. Get `organizati
 | `get_changelog` | One entry | `changelog_id` |
 | `create_changelog` | Draft an entry | `project_id`, `title`, `content` |
 | `update_changelog` | Edit a draft | `changelog_id`, fields to change |
-| `publish_changelog` | Show it on the public portal | `changelog_id` |
+| `publish_changelog` | Show it on the public portal; optionally email the people who asked | `changelog_id`, optional `notify_requesters` (emails each author of a post linked to the entry's task, once; ask first). The result's `requesters_notified` says how many were emailed |
 
 ## Support
 
