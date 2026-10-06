@@ -17,7 +17,7 @@ You are connected as the person who signed in. You can only do what that person'
 
 ## Hosting and capacity funding
 
-Use `get_funding_status` for current subscription coverage, credit funding and rates. Subscription coverage is used first; projects beyond it are paid from the owner's credits automatically, charged daily, with no consent switch: free credits first, then plan credits, then purchased credits. When credits run out, uncovered projects pause until the owner tops up; nothing is deleted. Give the returned `settings_url` when the owner needs to top up or choose a plan. Public pages remain readable when funding ends, but new publishing and paid operations need coverage. Paid AI actions use credits when requested.
+Use `get_funding_status` for current subscription coverage, credit funding and rates. Subscription coverage is used first; projects beyond it are paid from the owner's credits automatically at the plan's own per-project rate ($8, $6.90 or $5.30 a month; $9 without a plan), charged daily, with no consent switch: free credits first, then plan credits, then purchased credits. When credits run out, uncovered projects pause until the owner tops up; nothing is deleted. Give the returned `settings_url` when the owner needs to top up or choose a plan. Public pages remain readable when funding ends, but new publishing and paid operations need coverage. Paid AI actions use credits when requested.
 
 ## Connect
 
