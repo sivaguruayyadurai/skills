@@ -59,7 +59,7 @@ automatically ($2 per account per month); media storage is free.
 
 ## Account funding
 
-Use `get_funding_status` for current account funding and rates. Credits fund connected accounts automatically, with no consent switch: free credits first, then plan credits, then purchased credits. Subscription coverage, if present, is used first. When credits run out, accounts pause until the owner tops up; nothing is deleted. Give the returned `settings_url` or a `get_credits_link` link when the owner needs to top up. Posts, media storage, brands, workspaces and team members are unlimited, subject to fair use. Existing posts and owner access are preserved when funding ends, but new publishing needs funding. Paid AI actions use credits when requested.
+Use `get_funding_status` for current account funding and rates. Credits fund connected accounts automatically, with no consent switch: free credits first, then plan credits, then purchased credits. Subscription coverage, if present, is used first. When credits run out, accounts pause until the owner tops up; nothing is deleted. Give the returned `settings_url` or a `get_credits_link` link when the owner needs to top up. For more than a handful of accounts a plan is cheaper: Starter 12 accounts $20/month, Pro 40 $59, Business 150 $149, two months free yearly, at https://lots.social/pricing. Posts, media storage, brands, workspaces and team members are unlimited, subject to fair use. Existing posts and owner access are preserved when funding ends, but new publishing needs funding. Paid AI actions use credits when requested.
 
 
 Use the smallest relevant workflow
