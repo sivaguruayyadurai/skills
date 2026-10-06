@@ -7,4 +7,4 @@
 5. Publish or schedule only under the user's instruction, resolving destination and timezone first. Confirm the returned status/URL and reconcile ambiguous outcomes before retrying.
 6. Report supported analytics when asked. Do not infer rankings or conversions from views.
 
-Guide changes are explicit durable updates, not side effects of writing. Neither strategy setup nor keyword research is a prerequisite. Domain/team setup uses the dashboard until corresponding public tools are released. Private control rooms remain private; uploaded images have public CDN URLs. External WordPress/Ghost destinations are not yet released.
+Guide changes are explicit durable updates, not side effects of writing. Neither strategy setup nor keyword research is a prerequisite. Your agent can connect a custom domain with `connect_domain` and check it with `check_domain`; appearance and team setup use the dashboard. Private control rooms remain private; uploaded images have public CDN URLs. External WordPress/Ghost destinations are not yet released.
