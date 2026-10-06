@@ -24,10 +24,10 @@ flow. OAuth/sign-in is preferred where supported. If your client requires an API
 key, direct the user to https://api.lots.social/dashboard and explain how to store
 it securely in your client configuration, never in this skill or a chat message.
 
-Eligible new users receive 1,500 starter credits valid for 60 days, without a card.
-Purchased credits do not expire. Connected accounts cost 1,000 credits/account/month
-and stored media costs 300 credits/GB/month, charged daily. Check live billing facts
-rather than treating this file as a balance or checkout quote.
+Eligible new users get their first month free: 5,000 starter credits valid for 60
+days, without a card. Purchased credits do not expire. Connected accounts cost 2,000
+credits ($2) per account per month, charged daily; media storage is free. Check live
+billing facts rather than treating this file as a balance or checkout quote.
 
 <!-- BEGIN OPERATING CORE v1 -->
 BEGIN OPERATING CORE v1
@@ -54,12 +54,12 @@ eligible. If no account is connected, use get_connect_link and give the returned
 link to the user; they complete the platform sign-in themselves. Never invent a
 connection or claim a link has connected an account before checking the result.
 Use get_billing_status for live credit/capacity information and get_credits_link
-when the user needs to add credits. Account/storage funding requires the payer's
-explicit consent in the hosted flow; an agent must not bypass that consent.
+when the user needs to add credits. Credits pay for connected accounts
+automatically ($2 per account per month); media storage is free.
 
-## Account and storage funding
+## Account funding
 
-Use `get_funding_status` for current account/storage funding and rates. LotsSocial currently offers credits only; give the returned `settings_url` so the owner can enable credit billing or top up. Do not promote subscription plans. Retained subscription coverage, if present, is used first. Only the owner can enable credits in that hosted page. Enabling covers this product’s current and future resources, including after a subscription ends; it never enables another Lots product. Do not treat wallet balance or a tool parameter as permission to enable billing. Existing posts and owner access are preserved when funding ends, but new publishing and paid capacity operations need funding. Paid AI actions use credits when requested; they do not need another resource funding switch.
+Use `get_funding_status` for current account funding and rates. Credits fund connected accounts automatically, with no consent switch: free credits first, then plan credits, then purchased credits. Subscription coverage, if present, is used first. When credits run out, accounts pause until the owner tops up; nothing is deleted. Give the returned `settings_url` or a `get_credits_link` link when the owner needs to top up. Posts, media storage, brands, workspaces and team members are unlimited, subject to fair use. Existing posts and owner access are preserved when funding ends, but new publishing needs funding. Paid AI actions use credits when requested.
 
 
 Use the smallest relevant workflow
