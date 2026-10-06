@@ -17,7 +17,7 @@ You are connected as the person who signed in. You can only do what that person'
 
 ## Hosting and capacity funding
 
-Use `get_funding_status` for current subscription coverage, credit funding and rates when it is available. Subscription coverage is used first. If coverage is insufficient, offer a subscription or owner-enabled credit funding and give the returned `settings_url`. Only the owner can enable credits in that hosted page. Enabling covers this product’s current and future resources, including after a subscription ends; it never enables another Lots product. Do not treat wallet balance or a tool parameter as permission to enable billing. Public pages remain readable when funding ends, but new publishing and paid operations need coverage. Paid AI actions use credits when requested; they do not need another resource funding switch.
+Use `get_funding_status` for current subscription coverage, credit funding and rates. Subscription coverage is used first; projects beyond it are paid from the owner's credits automatically, charged daily, with no consent switch: free credits first, then plan credits, then purchased credits. When credits run out, uncovered projects pause until the owner tops up; nothing is deleted. Give the returned `settings_url` when the owner needs to top up or choose a plan. Public pages remain readable when funding ends, but new publishing and paid operations need coverage. Paid AI actions use credits when requested.
 
 ## Connect
 

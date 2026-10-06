@@ -24,8 +24,8 @@ flow. OAuth/sign-in is preferred where supported. If your client requires an API
 key, direct the user to https://api.lots.social/dashboard and explain how to store
 it securely in your client configuration, never in this skill or a chat message.
 
-Eligible new users get their first month free: 5,000 starter credits valid for 90
-days, without a card. Purchased credits do not expire. Connected accounts cost 2,000
+Eligible new users get 5,000 free starter credits (2 accounts for up to a month),
+valid for 90 days, without a card. Purchased credits do not expire. Connected accounts cost 2,000
 credits ($2) per account per month, charged daily; media storage is free. Check live
 billing facts rather than treating this file as a balance or checkout quote.
 
