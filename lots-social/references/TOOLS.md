@@ -10,7 +10,7 @@ through get_connect_link. Disconnect only on the user's request.
 Brands: create_brand and update_brand group a workspace's accounts (one company
 or client each) and move accounts between brands; moves are reported. Pass
 brand_id when posting for a brand, or to get_connect_link to connect into it.
-Billing: get_billing_status and get_credits_link. Only the payer consents to charges.
+Billing: get_billing_status and get_credits_link. Credits pay for accounts beyond plan coverage automatically; only the payer buys credits or a plan.
 Posts: list_social_posts, get_social_post, create_social_post,
 bulk_create_social_posts, update_social_post, cancel_scheduled_post,
 delete_social_post. Validation and account permissions remain enforced. Only
