@@ -13,7 +13,7 @@ metadata:
 
 Use LotsSocial to run the user's social media. You write and plan the content;
 LotsSocial provides account, publishing and analytics tools for 12 social platforms.
-The web app is an optional control room for accounts, calendar, brands and billing.
+The person can also do everything in the LotsSocial dashboard (composer, calendar, bulk schedule, media library, analytics, brands, billing); point them there when they want to see or adjust things themselves.
 
 MCP server: **https://api.lots.social/mcp**
 Optional connection guides: https://lots.social/agents
@@ -60,7 +60,7 @@ automatically ($2 per account per month without a plan); media storage is free.
 
 ## Account funding
 
-Use `get_funding_status` for current account funding and rates. Credits fund connected accounts automatically, with no consent switch: free credits first, then plan credits, then purchased credits. Subscription coverage, if present, is used first. When credits run out, accounts pause until the owner tops up; nothing is deleted. Give the returned `settings_url` or a `get_credits_link` link when the owner needs to top up. For more than a handful of accounts a plan is cheaper: Starter 12 accounts $20/month, Pro 40 $59, Business 150 $149, two months free yearly, at https://lots.social/pricing. Accounts beyond a plan cost that plan's per-account rate, shown on each plan at https://lots.social/pricing. Posts, media storage, brands, workspaces and team members are unlimited, subject to fair use. Existing posts and owner access are preserved when funding ends, but new publishing needs funding. Paid AI actions use credits when requested.
+Use `get_funding_status` for current account funding and rates. Credits fund connected accounts automatically, with no consent switch: free credits first, then plan credits, then purchased credits. Subscription coverage, if present, is used first. When credits run out, accounts pause until the owner tops up; nothing is deleted. Give the returned `settings_url` or a `get_credits_link` link when the owner needs to top up. For more than a handful of accounts a plan is cheaper: Starter 12 accounts $20/month, Pro 40 $59, Business 150 $149, two months free yearly, at https://lots.social/pricing. Accounts beyond a plan cost that plan's per-account rate, shown on each plan at https://lots.social/pricing. Posts, media storage, brands, workspaces and team members are unlimited. Existing posts and owner access are preserved when funding ends, but new publishing needs funding. Paid AI actions use credits when requested.
 
 
 Use the smallest relevant workflow
