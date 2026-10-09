@@ -36,6 +36,7 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 |-----------|----------|-------------|
 | `workspace_id` | ✅ | Target workspace UUID |
 | `original_url` | ✅ | Full URL to shorten (http/https) |
+| `custom_domain_id` | No | Active verified domain UUID in this workspace; omit for lots.link |
 | `custom_slug` | — | Custom slug (7-40 chars, alphanumeric + `-` + `_`); auto-generated if omitted |
 | `project_id` | — | Assign to a project UUID |
 | `expires_at` | — | ISO 8601 expiration datetime |

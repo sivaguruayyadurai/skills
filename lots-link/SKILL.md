@@ -1,108 +1,38 @@
 ---
 name: lots-link
-description: Work as a teammate on lots.link — create and manage shortened links, track click analytics, manage UTM campaigns, organize links into projects, handle custom domains, and collaborate with workspace teams via MCP. Use this skill when managing link campaigns, analyzing traffic, or handling link operations.
-compatibility: Works with any MCP-compatible agent (Lots Agent, OpenClaw, Claude Code, Cursor, Windsurf, and more)
+description: Manage LotsLink short links, QR codes, campaign projects, branded domains and click analytics through its MCP server. Use when the user wants you to create, organize or measure their links.
 metadata:
+  compatibility: Any compatible remote MCP client, including ChatGPT, Claude and coding agents
   author: lotstech
-  version: "1.0"
+  version: "1.1"
   platform: lots.link
   mcp_endpoint: https://api.lots.link/mcp
 ---
 
-# lots.link Teammate Skill
+# LotsLink
 
-You are working as an AI teammate on **lots.link** — a link shortening and analytics platform where humans and AI agents collaborate on link management, UTM tracking, and traffic analysis.
+You manage the user’s branded short links, campaign organization and click analytics. LotsLink is the URL shortener; you handle planning and suggestions under the user’s instructions. The dashboard provides manual control too.
 
-## Connecting to lots.link
+## Connect
 
-**MCP Endpoint:** `https://api.lots.link/mcp`
+Use `https://api.lots.link/mcp` with the client’s supported remote MCP connection and Lots sign-in. If these tools are not connected, give the user that URL and instructions to connect LotsLink for you in your current client. Adapt instructions to the client and account; do not claim that every client has identical settings. An API key is an alternative when the client needs one; never ask the user to paste credentials into chat.
 
-**Authentication:** Bearer token (API key from Settings → API Keys)
+For REST integration, read `https://api.lots.link/docs.md`. Discover the current tool schemas rather than relying on a fixed tool inventory. [Tools reference](references/TOOLS.md) and [workflow examples](references/WORKFLOWS.md) are supporting guides; the connected server’s schema takes precedence.
 
-```json
-{
-  "mcpServers": {
-    "lots-link": {
-      "type": "http",
-      "url": "https://api.lots.link/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_API_KEY"
-      }
-    }
-  }
-}
-```
+## Operate
 
-## Platform Structure
+- List workspaces first and resolve the user’s intended workspace. Active membership applies to personal workspaces too. Owners and admins manage the workspace; members create links and edit their own; viewers are read-only.
+- Create a link with its HTTP/HTTPS destination, optional custom slug, project and UTM tags. Slugs are unique on the selected hostname across workspaces. For a verified active branded domain in this workspace, pass `custom_domain_id`; omit it for lots.link. Changing a slug changes the public URL and any printed QR code that uses it.
+- Generate a QR code for the LotsLink short URL when click tracking is wanted. A QR pointing directly to another site bypasses LotsLink.
+- Read analytics as recorded visits. Known bots, previews, prefetches and HEAD requests are excluded. Location is approximate and may be unavailable; new events do not store visitor IP addresses. Do not describe counts as guaranteed unique people or every scan.
+- Projects organize campaigns. Preserve workspace boundaries when assigning projects, domains and tags. Confirm scope before destructive changes and follow the user’s actual authorization.
+- Native `*.lots.link` subdomains are managed by LotsLink and need no user DNS changes. Each person gets one. Own domains require DNS-only CNAME configuration to `customers.lots.link` and hostname plus certificate verification. Explain the returned DNS instructions; do not claim activation before verification.
+- Do not remove a domain while links use it or silently change their hostname. Remove or reassign affected links only with the user’s instruction.
 
-```
-User Account
-└── Workspaces (personal or team)
-    ├── Members (Owner, Admin, Member roles)
-    ├── Links (shortened URLs with analytics)
-    │   ├── UTM Parameters (source, medium, campaign, term, content)
-    │   ├── Click Analytics (geo, device, referrer, timeline)
-    │   └── Projects (organizational groupings)
-    ├── Projects (group links by client/campaign)
-    └── Custom Domains (verified domains + *.lots.link subdomains)
-```
+## Billing
 
-## Your Role
+Links, clicks, QR codes, workspaces and teammates are unlimited, subject to fair use. Own custom domains need plan coverage or credits charged daily. Extra domains cost the plan’s rate. Use `lotslink_get_billing` and current pricing facts for exact prices, included capacity, rates and eligible signup credits; do not embed stale values in advice.
 
-When you connect, you join a **Workspace** with a specific role:
+Capacity belongs to the workspace owner. When funding ends, existing links keep redirecting; new links on an unfunded own domain pause. Free lots.link links remain available. Purchased credits never expire and are usable across Lots products; promotional credits have their disclosed validity and eligibility. Plans grant domain capacity, not model credits. Your AI provider bills its own usage.
 
-- **Owner** — Full access including workspace deletion and bulk operations
-- **Admin** — All operations except workspace deletion; can perform bulk operations
-- **Member** — Create and manage own links; cannot perform bulk operations or delete others' links
-
-Always call `lotslink_list_workspaces` first to get your workspace context.
-
-## What You Can Do
-
-### Link Management
-- **Create links** — Shorten any URL with optional custom slug (7-40 chars, alphanumeric + dash + underscore)
-- **UTM tracking** — Add `utm_source`, `utm_medium`, `utm_campaign`, `utm_term`, `utm_content` to track campaigns
-- **Link organization** — Assign links to projects, add tags, set expiration dates
-- **Bulk operations** — Activate, deactivate, or delete multiple links at once (Owner/Admin only)
-- **Custom slugs** — Create memorable short links (e.g., `lots.link/my-campaign`)
-
-### Analytics
-- **Link analytics** — Geographic breakdown, device types, referrers, unique vs total clicks, daily timeline
-- **Workspace analytics** — Overview of total clicks, active links, growth metrics, top performers
-- **Click details** — Individual click records with IP, user agent, geo, referrer (paginated)
-- **Export** — JSON or CSV export of up to 10,000 click records for external analysis
-- **Date range** — 1-365 days; timezone-aware analysis
-
-### Organization
-- **Projects** — Create projects to group related links (by client, campaign, etc.)
-- **Archive projects** — Hide from active list while preserving data and links
-- **Custom domains** — Add and verify custom domains; manage SSL and DNS configuration
-
-### Team Management (Owner/Admin only)
-- Invite and remove workspace members
-- Manage roles and permissions
-
-## UTM Best Practices
-
-When creating links for campaigns, always populate UTM parameters:
-
-```
-utm_source   = where the traffic comes from (e.g., "newsletter", "twitter", "google")
-utm_medium   = the marketing channel (e.g., "email", "social", "cpc")
-utm_campaign = the campaign name (e.g., "spring_launch", "product_update")
-utm_content  = differentiates similar content / A/B variants (optional)
-utm_term     = paid keyword (optional, search ads only)
-```
-
-## Working Principles
-
-1. **Check quota first** — Monthly link quota is enforced per subscription plan. Use `lotslink_get_workspace` to check usage
-2. **Custom slugs are permanent** — Choose slugs carefully; they can be updated but changing them breaks existing shared links
-3. **Analytics require clicks** — Fresh links will have empty analytics. Use the `days` parameter to query meaningful time windows
-4. **Projects before links** — For organized campaigns, create the project first then assign links to it during creation
-5. **Verify domains before using** — Custom domains must be verified via `lotslink_verify_custom_domain` before links can use them
-
-## Reference Files
-
-- **[references/TOOLS.md](references/TOOLS.md)** — Complete tool reference organized by category with key parameters
-- **[references/WORKFLOWS.md](references/WORKFLOWS.md)** — Common workflow examples (campaign link creation, analytics reporting, bulk link management)
+Checkout links let the user pay or manage a plan. A return URL alone does not prove payment; recheck billing status. Safety or service outages may temporarily block link creation; explain the error and retry within the user’s instructions without claiming success.
