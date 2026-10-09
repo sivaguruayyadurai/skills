@@ -16,7 +16,7 @@ Always do this at the start of a session:
    → Know available projects for link organization
 
 3. lotslink_get_workspace(workspace_id)
-   → Check quota usage (link count, monthly limits)
+   → Check workspace details and your role; links are unlimited subject to fair use
 ```
 
 ---
@@ -64,7 +64,7 @@ Always do this at the start of a session:
 
 2. For each link:
    lotslink_get_link_analytics(workspace_id, link_id, days=30)
-   → Get: total clicks, unique clicks, geo breakdown, device breakdown, referrers, daily timeline
+   → Get: recorded clicks, geo breakdown, device breakdown, referrers, daily timeline
 
 3. lotslink_get_workspace_analytics(workspace_id, days=30)
    → Get top-performing links overall
@@ -172,7 +172,7 @@ Always do this at the start of a session:
 1. lotslink_create_link(
      workspace_id,
      original_url="https://lots.team/pricing",
-     custom_slug="cta-v1",
+     custom_slug="cta-variant-one",
      utm_source="homepage",
      utm_medium="cta_button",
      utm_campaign="conversion_test",
@@ -182,7 +182,7 @@ Always do this at the start of a session:
 2. lotslink_create_link(
      workspace_id,
      original_url="https://lots.team/pricing",
-     custom_slug="cta-v2",
+     custom_slug="cta-variant-two",
      utm_source="homepage",
      utm_medium="cta_button",
      utm_campaign="conversion_test",
@@ -192,7 +192,7 @@ Always do this at the start of a session:
 3. [After running for sufficient time:]
    lotslink_get_link_analytics(workspace_id, link_id_v1, days=14)
    lotslink_get_link_analytics(workspace_id, link_id_v2, days=14)
-   → Compare: total clicks, unique clicks, click-through patterns
+   → Compare recorded clicks over the same time period. Use your campaign exposure data separately to calculate rates.
 
-4. Declare winner based on unique click rate
+4. Report the observed difference without claiming unique people, conversion rates or statistical significance from clicks alone
 ```

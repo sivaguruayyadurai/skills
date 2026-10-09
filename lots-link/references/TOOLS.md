@@ -11,7 +11,7 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 |-----------|-------------|----------------|
 | `lotslink_list_workspaces` | List all workspaces where user is an active member | — |
 | `lotslink_get_workspace` | Get workspace details, settings, user role, member/link counts | `workspace_id` |
-| `lotslink_create_workspace` | Create a new workspace | `name` (required), `description?`, `settings?` |
+| `lotslink_create_workspace` | Create a new workspace | `name` (required), `type?`, `description?` |
 | `lotslink_update_workspace` | Update workspace name, description, or settings (Owner/Admin) | `workspace_id`, `name?`, `description?` |
 | `lotslink_delete_workspace` | Permanently delete a workspace and all its data (Owner only) | `workspace_id` |
 
@@ -69,9 +69,9 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 | `lotslink_list_custom_domains` | List all custom domains for a workspace | `workspace_id`, `status?` |
 | `lotslink_get_custom_domain` | Get domain details, DNS records, SSL status, verification status | `workspace_id`, `domain_id` |
 | `lotslink_add_custom_domain` | Add a custom domain or *.lots.link subdomain | `workspace_id`, `domain` |
-| `lotslink_verify_custom_domain` | Trigger DNS verification (checks for correct DNS records) | `workspace_id`, `domain_id` |
+| `lotslink_verify_custom_domain` | Check hostname and TLS certificate readiness | `workspace_id`, `domain_id` |
 | `lotslink_update_custom_domain` | Activate or deactivate a custom domain | `workspace_id`, `domain_id`, `is_active` |
-| `lotslink_delete_custom_domain` | Delete a custom domain (no active links allowed) | `workspace_id`, `domain_id` |
+| `lotslink_delete_custom_domain` | Deactivate a custom domain after removing all attached links | `workspace_id`, `domain_id` |
 
 > **Domain flow:** Add domain → Configure DNS records (from `get_custom_domain`) → Verify → SSL auto-provisions
 
@@ -81,9 +81,9 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 
 | Tool Slug | Description | Key Parameters |
 |-----------|-------------|----------------|
-| `lotslink_get_link_analytics` | Detailed link analytics: geo, devices, referrers, unique/total clicks, daily timeline | `workspace_id` (required), `link_id` (required), `days?` (1-365, default 30), `timezone?` |
+| `lotslink_get_link_analytics` | Detailed link analytics: geo, devices, referrers, recorded clicks and daily timeline | `workspace_id` (required), `link_id` (required), `days?` (1-365, default 30), `timezone?` |
 | `lotslink_get_workspace_analytics` | Workspace-level overview: total clicks, active links, growth, top performers | `workspace_id`, `days?` |
-| `lotslink_get_click_details` | Paginated individual click records with IP, geo, device, referrer | `workspace_id`, `link_id`, `filters?`, `limit?`, `offset?` |
+| `lotslink_get_click_details` | Paginated individual click records with approximate geo, device and referrer | `workspace_id`, `link_id`, `filters?`, `limit?`, `offset?` |
 | `lotslink_export_analytics` | Export click data as JSON or CSV (max 10,000 records) | `workspace_id`, `link_id?` (omit for all links), `format?` (json/csv) |
 
 ---
@@ -92,5 +92,9 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 
 | Tool Slug | Description | Key Parameters |
 |-----------|-------------|----------------|
-| `lotslink_invite_workspace_member` | Invite a user to workspace by email (Owner/Admin; quota enforced) | `workspace_id`, `email`, `role` |
+| `lotslink_invite_workspace_member` | Invite a user to workspace by email (Owner/Admin) | `workspace_id`, `email`, `role` |
 | `lotslink_remove_workspace_member` | Remove a member from workspace (Owner/Admin; cannot remove owner) | `workspace_id`, `user_id` |
+
+## Billing
+
+Use `lotslink_get_billing` for current plan capacity, extra-domain rates, credits and PAYG pricing. Use `lotslink_create_checkout` for a plan or credits checkout link; the user completes payment. Discover the connected schemas for exact arguments.
