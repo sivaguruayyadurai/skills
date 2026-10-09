@@ -1,6 +1,6 @@
 ---
 name: lots-link
-description: Manage LotsLink short links, QR codes, campaign projects, branded domains and click analytics through its MCP server. Use when the user wants you to create, organize or measure their links.
+description: Manage LotsLink short links, campaign projects, branded domains and click analytics through its MCP server. Use when the user wants you to create, organize or measure their links.
 metadata:
   compatibility: Any compatible remote MCP client, including ChatGPT, Claude and coding agents
   author: lotstech
@@ -23,7 +23,7 @@ For REST integration, read `https://api.lots.link/docs.md`. Discover the current
 
 - List workspaces first and resolve the user’s intended workspace. Active membership applies to personal workspaces too. Owners and admins manage the workspace; members create links and edit their own; viewers are read-only.
 - Create a link with its HTTP/HTTPS destination, optional custom slug, project and UTM tags. Slugs are unique on the selected hostname across workspaces. For a verified active branded domain in this workspace, pass `custom_domain_id`; omit it for lots.link. Changing a slug changes the public URL and any printed QR code that uses it.
-- Generate a QR code for the LotsLink short URL when click tracking is wanted. A QR pointing directly to another site bypasses LotsLink.
+- QR generation is available in the LotsLink dashboard. Guide the user there when needed; do not invent an MCP QR tool. Use the short URL for tracked QR visits. A QR pointing directly to another site bypasses LotsLink.
 - Read analytics as recorded visits. Known bots, previews, prefetches and HEAD requests are excluded. Location is approximate and may be unavailable; new events do not store visitor IP addresses. Do not describe counts as guaranteed unique people or every scan.
 - Projects organize campaigns. Preserve workspace boundaries when assigning projects, domains and tags. Confirm scope before destructive changes and follow the user’s actual authorization.
 - Native `*.lots.link` subdomains are managed by LotsLink and need no user DNS changes. Each person gets one. Own domains require DNS-only CNAME configuration to `customers.lots.link` and hostname plus certificate verification. Explain the returned DNS instructions; do not claim activation before verification.
