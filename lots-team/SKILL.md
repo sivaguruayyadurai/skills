@@ -58,14 +58,14 @@ The public portal can also show a board of tasks the team chose to share. That b
 
 ## What you can do
 
-- Read the organization and its projects.
+- Read the organization and its projects. Create a project (it is billed: plan first, then credits; confirm with the person first), update its name, description, logo and portal settings, and connect a custom portal domain (`add_project_domain`, then `verify_project_domain` after the person adds the DNS record).
 - List, read, create, and update posts. Comment on a post. Create a post to log a request the person heard outside the widget, such as on a sales call.
-- List, create, and update tasks. Comment on a task. Link a post to a task.
+- List, create, and update tasks. Comment on a task. Link posts to a task (a task can carry many) and unlink one. `list_tasks` with `sort: "priority"` lists urgent first.
 - List support threads and reply on one.
 - Draft, update, and publish changelog entries.
 - List the people in the organization so you can assign a task to a real member.
 
-Creating projects, inviting people, changing roles, branding, domains, the widget, and billing stay in the dashboard. Do not invent tools for those.
+Deleting a project, inviting people, changing roles, the widget, and billing stay in the dashboard. Do not invent tools for those.
 
 ## How to work
 
@@ -80,5 +80,5 @@ Creating projects, inviting people, changing roles, branding, domains, the widge
 
 ## Reference
 
-- [references/TOOLS.md](references/TOOLS.md) — the 26 tools and their arguments
+- [references/TOOLS.md](references/TOOLS.md) — every tool and its arguments, generated from the live server
 - [references/WORKFLOWS.md](references/WORKFLOWS.md) — posts, tasks, support, and changelog
