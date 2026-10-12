@@ -4,7 +4,8 @@ Use the live connection schema as the authority for fields and current availabil
 
 - Blogs: `list_blogs`, `get_blog`, `create_blog`, `update_blog`. The private Markdown `blog_guide` is returned by get and editable through update; omit unchanged fields.
 - Articles: `list_blog_posts`, `get_blog_post`, `create_blog_post`, `update_blog_post`, `delete_blog_post`. Create drafts by default; read back saved content. Set topic_ids from list_topics; omission preserves membership and [] clears it. Article writes return preview_url; drafts require authenticated access.
-- Publication: `publish_post`, `schedule_post`, `unpublish_post`. Use only on the user's instruction. Scheduling requires a valid timestamp at least five minutes ahead and publishes on the next 15-minute check; returning to draft cancels the schedule.
+- Publication: `publish_post`, `schedule_post`, `unpublish_post`. Use only on the user's instruction. Scheduling requires a valid timestamp at least five minutes ahead and publishes on the next 15-minute check; returning to draft cancels the schedule. Public blogs ping IndexNow automatically when a post is published, edited or unpublished; there is nothing to call.
+- Cross-posts: set `canonical_url` on `create_blog_post`/`update_blog_post` to the original article's https URL. The post then names it as canonical and stays out of the sitemap and IndexNow. Another LotsBlog blog is refused; empty clears it.
 - Topics: `list_topics`, `get_topic`, `create_topic`, `update_topic`, `delete_topic`.
 - Images: `upload_blog_image` accepts a URL or small base64 image. For local files use `create_image_upload` → PUT bytes → `complete_image_upload`. `list_media` lists images and `delete_media` removes unused images on request.
 - Domains: `connect_domain` returns required CNAME/optional TXT records. The user sets them; `check_domain` reports verification and HTTPS status. Both require blog-owner access.
