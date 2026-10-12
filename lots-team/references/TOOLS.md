@@ -1,6 +1,6 @@
 # LotsTeam tools
 
-The 33 tools the LotsTeam MCP server (`https://api.lots.team/mcp`) offers, generated from its live tool list on 2026-10-11. The REST equivalents are in `https://api.lots.team/docs.md`.
+The 40 tools the LotsTeam MCP server (`https://api.lots.team/mcp`) offers, generated from its live tool list on 2026-10-12. The REST equivalents are in `https://api.lots.team/docs.md`.
 
 The workspace stores posts in the feedback tables, so a handler result uses `id` on the post itself and `post_id` when a task points at a post. Pass `project_id` for project work (from `list_projects`) and `organization_id` from `list_organizations`.
 
@@ -19,8 +19,8 @@ The workspace stores posts in the feedback tables, so a handler result uses `id`
 | `list_organization_members` | List people in an organization, including their role. Use a member user id when assigning a task. | `organization_id`; optional `limit`, `offset`, `project_id` |
 | `list_projects` | List projects in an organization. Pass organization_id from list_organizations. | `organization_id`; optional `limit`, `offset`, `project_id` |
 | `get_project` | Read one project by project_id. | `project_id` |
-| `create_project` | Create a project: one product with its own feedback, tasks, support inbox, changelog and public portal. A project is what LotsTeam bills: covered by the owner's plan, otherwise paid from credits per project per month. Confirm with the person before creating one, and check get_funding_status if they may need funding. Send organization_id and name; the portal address is derived from the name unless you pass slug. | `name`, `organization_id`; optional `slug`, `logo_url`, `description` |
-| `update_project` | Update a project's name, description, logo_url or settings (portal branding and options; keys you send are merged into the existing settings). Send project_id and only the fields that should change. Custom domains use add_project_domain. | `project_id`; optional `name`, `logo_url`, `settings`, `description` |
+| `create_project` | Create a project: one product with its own feedback, tasks, support inbox, changelog and public portal. A project is what LotsTeam bills: covered by the owner's plan, otherwise paid from credits per project per month. Confirm with the person before creating one, and check get_funding_status if they may need funding. Send organization_id and name; the portal address is derived from the name unless you pass slug. Pass is_internal true for a project only the team should see (no public portal or widget). | `name`, `organization_id`; optional `slug`, `logo_url`, `description`, `is_internal` |
+| `update_project` | Update a project's name, description, logo_url or settings (portal branding and options; keys you send are merged into the existing settings). is_internal true hides the project's public portal and widget; only members see it. Send project_id and only the fields that should change. Custom domains use add_project_domain. | `project_id`; optional `name`, `logo_url`, `settings`, `description`, `is_internal` |
 | `add_project_domain` | Connect a custom domain such as support.example.com to a project's public portal. Returns the DNS records the person must add (a DNS-only CNAME); give them the records, then call verify_project_domain once they have added them. Replaces any domain the project already has. | `domain`, `project_id` |
 | `verify_project_domain` | Check whether a project's custom domain is live: DNS and certificate status, and the records still needed if not. | `project_id` |
 
@@ -28,12 +28,15 @@ The workspace stores posts in the feedback tables, so a handler result uses `id`
 
 | Tool | What it does | Arguments |
 |------|--------------|-----------|
-| `list_posts` | List posts for a project or organization. A post is a user request, bug, or idea from the widget, the public portal, or the team. Pass project_id or organization_id. | optional `sort` (`recent`, `popular`), `limit`, `offset`, `status` (`open`, `in-progress`, `resolved`, `closed`, `published`), `category` (`feature`, `bug`, `improvement`, `announcement`, `discussion`, `question`, `other`), `priority` (`low`, `normal`, `high`, `urgent`), `is_pinned`, `project_id`, `is_announcement`, `organization_id` |
+| `list_posts` | List posts for a project or organization. A post is a user request, bug, or idea from the widget, the public portal, or the team. Pass project_id or organization_id. | optional `sort` (`recent`, `popular`), `limit`, `offset`, `status` (`open`, `in-progress`, `resolved`, `closed`, `published`), `category` (`feature`, `bug`, `improvement`, `announcement`, `discussion`, `question`, `other`), `priority` (`low`, `medium`, `high`, `urgent`), `is_pinned`, `project_id`, `is_announcement`, `organization_id` |
 | `get_post` | Read one post by post_id. | `post_id` |
-| `create_post` | Log a post on a project, such as a request heard on a sales call or in an email. Send project_id, title, description, and category (feature, bug, improvement, question, or other). Add email and user_name when you know who asked. | `title`, `category` (`feature`, `bug`, `improvement`, `announcement`, `discussion`, `question`, `other`), `project_id`, `description`; optional `tags`, `email`, `priority` (`low`, `normal`, `high`, `urgent`), `is_pinned`, `user_name`, `is_announcement` |
-| `update_post` | Update a post. Send post_id and only the fields that should change, such as title, description, or status. | `post_id`; optional `tags`, `title`, `status` (`open`, `in-progress`, `resolved`, `closed`, `published`), `category` (`feature`, `bug`, `improvement`, `announcement`, `discussion`, `question`, `other`), `priority` (`low`, `normal`, `high`, `urgent`), `is_pinned`, `description`, `is_announcement` |
+| `create_post` | Log a post on a project, such as a request heard on a sales call or in an email. Send project_id, title, description, and category (feature, bug, improvement, question, or other). Add email and user_name when you know who asked. | `title`, `category` (`feature`, `bug`, `improvement`, `announcement`, `discussion`, `question`, `other`), `project_id`, `description`; optional `tags`, `email`, `priority` (`low`, `medium`, `high`, `urgent`), `is_pinned`, `user_name`, `is_announcement` |
+| `update_post` | Update a post. Send post_id and only the fields that should change, such as title, description, or status. | `post_id`; optional `tags`, `title`, `status` (`open`, `in-progress`, `resolved`, `closed`, `published`), `category` (`feature`, `bug`, `improvement`, `announcement`, `discussion`, `question`, `other`), `priority` (`low`, `medium`, `high`, `urgent`), `is_pinned`, `description`, `is_announcement` |
+| `merge_posts` | Merge duplicate posts into one. post_id is the post to keep; duplicate_post_ids (up to 20, same project) are closed and point at it. Their votes move to the kept post (a person who voted on both counts once), and every task linked to any of them is linked to all, so everyone who asked is told when it ships. Nothing is deleted. Confirm the duplicates with the person first. | `post_id`, `duplicate_post_ids` |
 | `list_post_comments` | List comments on a post. | `post_id`; optional `limit`, `offset` |
 | `create_post_comment` | Add a comment to a post. | `content`, `post_id`; optional `is_admin`, `user_name`, `user_email` |
+| `update_post_comment` | Edit one of your own comments on a post. Send comment_id and the new content. | `content`, `comment_id` |
+| `delete_post_comment` | Delete one of your own comments on a post. Ask the person first; it cannot be undone. | `comment_id` |
 
 ## Tasks
 
@@ -42,9 +45,11 @@ The workspace stores posts in the feedback tables, so a handler result uses `id`
 | `list_tasks` | List tasks for a project. Optional filters include status, assignee_id, and priority. | optional `sort` (`recent`, `priority`), `limit`, `offset`, `search`, `status` (`todo`, `in-progress`, `done`), `priority` (`low`, `medium`, `high`, `urgent`), `mine_only`, `project_id`, `assignee_id`, `organization_id` |
 | `get_task` | Read one task by task_id. | `task_id` |
 | `create_task` | Create a task on a project. Status is todo, in-progress, or done. | `title`, `project_id`; optional `status` (`todo`, `in-progress`, `done`), `eta_date`, `priority` (`low`, `medium`, `high`, `urgent`), `is_roadmap`, `assignee_id`, `description`, `feedback_id`, `public_summary` |
-| `update_task` | Update a task. Send task_id and only the fields that should change. | `task_id`; optional `title`, `status` (`todo`, `in-progress`, `done`), `eta_date`, `priority` (`low`, `medium`, `high`, `urgent`), `is_roadmap`, `assignee_id`, `description`, `public_summary` |
+| `update_task` | Update a task. Send task_id and only the fields that should change. Send project_id to move the task to another project in the same organization; it keeps its id, comments, status and dates. | `task_id`; optional `title`, `status` (`todo`, `in-progress`, `done`), `eta_date`, `priority` (`low`, `medium`, `high`, `urgent`), `is_roadmap`, `project_id`, `assignee_id`, `description`, `public_summary` |
 | `list_task_comments` | List comments on a task. | `task_id`; optional `limit`, `offset` |
 | `create_task_comment` | Add a comment to a task. | `content`, `task_id`; optional `is_admin`, `user_name`, `user_email` |
+| `update_task_comment` | Edit one of your own comments on a task. Send comment_id and the new content. | `content`, `comment_id` |
+| `delete_task_comment` | Delete one of your own comments on a task. Ask the person first; it cannot be undone. | `comment_id` |
 
 ## Links between posts and tasks
 
@@ -63,6 +68,7 @@ The workspace stores posts in the feedback tables, so a handler result uses `id`
 | `create_changelog` | Create a changelog draft in a project. | `tag` (`new`, `improved`, `fixed`), `title`, `project_id`, `description`; optional `task_id`, `is_published`, `notify_requesters` |
 | `update_changelog` | Update a changelog draft. Send changelog_id and only the fields that should change. | `changelog_id`; optional `tag` (`new`, `improved`, `fixed`), `title`, `task_id`, `description`, `is_published`, `notify_requesters` |
 | `publish_changelog` | Publish a changelog entry so it shows on the public portal. Set notify_requesters to true to also email the people whose posts are linked to its task, once; ask the person first. The result says how many were emailed in requesters_notified. | `changelog_id`; optional `notify_requesters` |
+| `delete_changelog` | Delete an unpublished changelog draft by changelog_id. Owners and admins only. A published entry is refused: unpublish it first with update_changelog (is_published false), then delete it. Confirm with the person before deleting; it cannot be undone. | `changelog_id` |
 
 ## Support inbox
 
@@ -70,6 +76,7 @@ The workspace stores posts in the feedback tables, so a handler result uses `id`
 |------|--------------|-----------|
 | `list_contact_messages` | List support messages for a project. | optional `limit`, `offset`, `status` (`new`, `read`, `archived`), `project_id`, `organization_id` |
 | `get_contact_thread` | Read a support message and its replies before you draft a response. | `contact_message_id` |
+| `update_contact_message` | Mark support messages read, archived, or back to new. Send status and contact_message_id, or contact_message_ids (up to 50) to clear a batch such as vendor spam. Archived messages stay in the inbox history. | `status` (`new`, `read`, `archived`); optional `contact_message_id`, `contact_message_ids` |
 | `reply_to_contact_message` | Reply on a support thread. The reply is stored on the conversation and emailed to the person who wrote in. Show the person the draft and send only after they approve it. | `reply_message`, `contact_message_id` |
 
 Deleting a project, inviting people, changing roles, and billing stay in the dashboard.

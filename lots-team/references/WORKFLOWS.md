@@ -32,6 +32,8 @@ Status values are `todo`, `in-progress`, and `done`.
 3. Read it back with `get_changelog`.
 4. `publish_changelog` only after the person asks you to publish.
 
+To discard a draft the person no longer wants, `delete_changelog` with its `changelog_id`. It deletes unpublished drafts only and cannot be undone. A published entry is refused: unpublish it with `update_changelog` (`is_published: false`) only if the person asks, then delete it.
+
 ## What stays in the dashboard
 
 Projects, invites, roles, domains, branding, the widget, and billing are changed by a person in LotsTeam. If they ask for one of those, say it is done from the dashboard and continue with the posts, tasks, support, or changelog work they also asked for.

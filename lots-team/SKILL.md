@@ -62,7 +62,7 @@ The public portal can also show a board of tasks the team chose to share. That b
 - List, read, create, and update posts. Comment on a post. Create a post to log a request the person heard outside the widget, such as on a sales call.
 - List, create, and update tasks. Comment on a task. Link posts to a task (a task can carry many) and unlink one. `list_tasks` with `sort: "priority"` lists urgent first.
 - List support threads and reply on one.
-- Draft, update, and publish changelog entries.
+- Draft, update, and publish changelog entries. Delete an unpublished draft (`delete_changelog`, owners and admins); a published entry must be unpublished first.
 - List the people in the organization so you can assign a task to a real member.
 
 Deleting a project, inviting people, changing roles, the widget, and billing stay in the dashboard. Do not invent tools for those.
@@ -75,6 +75,7 @@ Deleting a project, inviting people, changing roles, the widget, and billing sta
 4. Before replying to support, call `get_contact_thread`.
 5. Show the person a support reply before sending it. `reply_to_contact_message` emails the customer.
 6. Publish a changelog only when the person asks you to publish it. If the entry is linked to a task with posts behind it, ask whether to email the people who asked (`notify_requesters`), then say how many were emailed.
+   Delete a changelog draft only when the person asks. If `delete_changelog` refuses because the entry is published, tell them; unpublish it only if they ask for that too.
 7. Assign work only to a user id from `list_organization_members`.
 8. If a tool returns a permission error, stop and say which action the account cannot take.
 
