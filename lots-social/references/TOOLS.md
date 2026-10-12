@@ -16,12 +16,23 @@ bulk_create_social_posts, update_social_post, cancel_scheduled_post,
 delete_social_post. Validation and account permissions remain enforced. Only
 drafts and scheduled posts can be deleted; for a published post the refusal
 returns each network's live link so the user can delete it there.
+Reddit and Pinterest need network fields to schedule: pass platform_fields
+{"reddit": {"subreddit": "name", "title": "..."}} (optional flair_id, flair_text,
+nsfw, spoiler) or {"pinterest": {"board_id": "...", "title": "...", "link": "..."}}
+to create_social_post, update_social_post, bulk_create_social_posts and
+validate_social_post. Key by connected account ID instead of the network to give
+one account its own. get_account_details lists a Pinterest account's boards
+(posting_fields.boards); with none synced, the person creates a board on
+Pinterest and reconnects through get_connect_link with that account_id.
 Media: list_media, get_media_details, upload_media, create_media_upload,
 complete_media_upload, update_media_metadata, delete_media. upload_media takes an
 image or video link (url), or an image as base64. Files on your computer:
 create_media_upload, PUT the bytes to upload_url with the returned headers, then
 complete_media_upload.
 Results: get_post_analytics, get_aggregate_analytics and get_brand_winning_posts.
+The aggregate engagement rate counts only posts that reported impressions, views
+or reach (summary.engagement_rate_basis says which); quote it with that basis,
+and when it is null use total engagement instead.
 Follower counts: get_account_details (account.audience) and get_aggregate_analytics
 (audience.accounts) return the latest daily count with captured_on and the change
 over 7 and 30 days; each change states the days it actually covers. Say "as of"
