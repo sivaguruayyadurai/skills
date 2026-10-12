@@ -22,6 +22,11 @@ image or video link (url), or an image as base64. Files on your computer:
 create_media_upload, PUT the bytes to upload_url with the returned headers, then
 complete_media_upload.
 Results: get_post_analytics, get_aggregate_analytics and get_brand_winning_posts.
+Follower counts: get_account_details (account.audience) and get_aggregate_analytics
+(audience.accounts) return the latest daily count with captured_on and the change
+over 7 and 30 days; each change states the days it actually covers. Say "as of"
+the captured_on date. Where a network gives no count the field is null with
+unavailable_reason: report that reason, never 0 followers.
 Guidance: get_platform_playbook when a platform's rules matter to the request.
 
 Some older web-app workflows remain available internally for compatibility. Do not
