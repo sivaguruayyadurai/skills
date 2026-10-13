@@ -1,4 +1,4 @@
-# lots.link — MCP Tools Reference
+# LotsLink MCP Tools Reference
 
 All tools available via `https://api.lots.link/mcp`. Tools are called by their **Tool Slug**.
 Note: All lots.link tool slugs are prefixed with `lotslink_`.
@@ -9,7 +9,7 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 
 | Tool Slug | Description | Key Parameters |
 |-----------|-------------|----------------|
-| `lotslink_list_workspaces` | List all workspaces where user is an active member | — |
+| `lotslink_list_workspaces` | List all workspaces where user is an active member | none |
 | `lotslink_get_workspace` | Get workspace details, settings, user role, member/link counts | `workspace_id` |
 | `lotslink_create_workspace` | Create a new workspace | `name` (required), `type?`, `description?` |
 | `lotslink_update_workspace` | Update workspace name, description, or settings (Owner/Admin) | `workspace_id`, `name?`, `description?` |
@@ -22,8 +22,9 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 | Tool Slug | Description | Key Parameters |
 |-----------|-------------|----------------|
 | `lotslink_list_links` | List links with filtering, search, and pagination | `workspace_id` (required), `project_id?`, `status?` (all/active/inactive/expired), `search?`, `sort_by?`, `limit?`, `page?` |
-| `lotslink_get_link` | Get link details including metadata, UTM params, and click stats | `workspace_id`, `link_id` |
-| `lotslink_create_link` | Create a shortened link | See below |
+| `lotslink_get_link` | Get link details including metadata, UTM params, click count and `qr_code_url` | `workspace_id`, `link_id` |
+| `lotslink_create_link` | Create a shortened link (up to 1,000 new links per person in any 24 hours) | See below |
+| `lotslink_create_qr_code` | Make a PNG QR code for the link's short URL; returns `qr_code_url` and saves it on the link (Owner/Admin any link, members their own) | `workspace_id`, `link_id`, `size?` (150-1024, default 512), `foreground_color?`, `background_color?` (hex) |
 | `lotslink_update_link` | Update link properties | `workspace_id` (required), `link_id` (required), `custom_slug?`, `is_active?`, `expires_at?`, `project_id?` |
 | `lotslink_delete_link` | Permanently delete a link (own links; Owner/Admin for any) | `workspace_id`, `link_id` |
 | `lotslink_bulk_activate_links` | Activate multiple links at once (Owner/Admin only) | `workspace_id`, `link_ids` (array) |
@@ -37,15 +38,15 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 | `workspace_id` | ✅ | Target workspace UUID |
 | `original_url` | ✅ | Full URL to shorten (http/https) |
 | `custom_domain_id` | No | Active verified domain UUID in this workspace; omit for lots.link |
-| `custom_slug` | — | Custom slug (7-40 chars, alphanumeric + `-` + `_`); auto-generated if omitted |
-| `project_id` | — | Assign to a project UUID |
-| `expires_at` | — | ISO 8601 expiration datetime |
-| `utm_source` | — | UTM source (e.g., `newsletter`, `twitter`) |
-| `utm_medium` | — | UTM medium (e.g., `email`, `social`, `cpc`) |
-| `utm_campaign` | — | UTM campaign name |
-| `utm_term` | — | UTM term (paid search keywords) |
-| `utm_content` | — | UTM content (A/B variant identifier) |
-| `tag_ids` | — | Array of tag UUIDs for categorization |
+| `custom_slug` | No | Custom slug (7-40 chars, alphanumeric + `-` + `_`); auto-generated if omitted |
+| `project_id` | No | Assign to a project UUID |
+| `expires_at` | No | ISO 8601 expiration datetime |
+| `utm_source` | No | UTM source (e.g., `newsletter`, `twitter`) |
+| `utm_medium` | No | UTM medium (e.g., `email`, `social`, `cpc`) |
+| `utm_campaign` | No | UTM campaign name |
+| `utm_term` | No | UTM term (paid search keywords) |
+| `utm_content` | No | UTM content (A/B variant identifier) |
+| `tag_ids` | No | Array of tag UUIDs for categorization |
 
 ---
 
@@ -81,7 +82,7 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 
 | Tool Slug | Description | Key Parameters |
 |-----------|-------------|----------------|
-| `lotslink_get_link_analytics` | Detailed link analytics: geo, devices, referrers, recorded clicks and daily timeline | `workspace_id` (required), `link_id` (required), `days?` (1-365, default 30), `timezone?` |
+| `lotslink_get_link_analytics` | Detailed link analytics: geo, devices, referrers, recorded clicks and daily timeline (no unique-visitor count) | `workspace_id` (required), `link_id` (required), `days?` (1-365, default 30), `timezone?` |
 | `lotslink_get_workspace_analytics` | Workspace-level overview: total clicks, active links, growth, top performers | `workspace_id`, `days?` |
 | `lotslink_get_click_details` | Paginated individual click records with approximate geo, device and referrer | `workspace_id`, `link_id`, `filters?`, `limit?`, `offset?` |
 | `lotslink_export_analytics` | Export click data as JSON or CSV (max 10,000 records) | `workspace_id`, `link_id?` (omit for all links), `format?` (json/csv) |

@@ -1,10 +1,10 @@
-# lots.link — Common Workflows
+# LotsLink Common Workflows
 
 Practical workflow examples for AI agents working on lots.link.
 
 ---
 
-## 1. Session Start — Orienting Yourself
+## 1. Session Start: Orienting Yourself
 
 Always do this at the start of a session:
 
@@ -16,7 +16,7 @@ Always do this at the start of a session:
    → Know available projects for link organization
 
 3. lotslink_get_workspace(workspace_id)
-   → Check workspace details and your role; links are unlimited subject to fair use
+   → Check workspace details and your role; links are free and unlimited (up to 1,000 new links per person in any 24 hours)
 ```
 
 ---
@@ -50,6 +50,23 @@ Always do this at the start of a session:
 
 5. lotslink_list_links(workspace_id, project_id)
    → Confirm all campaign links are created
+```
+
+---
+
+## 2a. QR Code for an Event or Print Campaign
+
+**Scenario:** The user wants a QR code for a flyer, poster or event page.
+
+```
+1. lotslink_create_link(workspace_id, original_url="https://example.com/event", utm_medium="qr", utm_source="poster")
+   → Get link_id and short_url
+
+2. lotslink_create_qr_code(workspace_id, link_id, size=1024)
+   → Get qr_code_url (PNG). Optional foreground_color / background_color in hex; keep strong contrast.
+
+3. Give the user qr_code_url and the short URL. Scans open the short URL, so they appear in
+   lotslink_get_link_analytics for that link. Changing the link's slug later breaks printed codes.
 ```
 
 ---
@@ -119,7 +136,7 @@ Always do this at the start of a session:
    → Get required DNS records (CNAME or A record to configure at registrar)
 
 3. [Configure DNS records at your domain registrar]
-   [Wait for DNS propagation — typically 5-30 minutes]
+   [Wait for DNS propagation, typically 5-30 minutes]
 
 4. lotslink_verify_custom_domain(workspace_id, domain_id)
    → Trigger verification check
