@@ -1,10 +1,10 @@
 ---
 name: lots-team
-description: Work in a LotsTeam workspace — posts, tasks, support messages, and changelog — from ChatGPT, Claude, or another MCP client. Use this skill when a founder or teammate asks you to handle product-ops work in lots.team.
+description: Work in a LotsTeam workspace (posts, tasks, support messages and changelog) from ChatGPT, Claude, or another MCP client. Use this skill when a founder or teammate asks you to handle product-ops work in lots.team.
 compatibility: Works with any MCP-compatible client, including ChatGPT and Claude
 metadata:
   author: lotstech
-  version: "3.1"
+  version: "3.2"
   platform: lots.team
   mcp_endpoint: https://api.lots.team/mcp
 ---
@@ -23,7 +23,7 @@ Use `get_funding_status` for current subscription coverage, credit funding and r
 
 **MCP endpoint:** `https://api.lots.team/mcp`
 
-Add it as a custom connector (Claude: Customize → Connectors → + Add → Add custom connector; ChatGPT: Plugins → + → Add custom MCP server, OAuth, then Create as a plugin). The person signs in with the email they use for LotsTeam. No key is pasted into the chat.
+Add it as a custom connector. Claude: Customize → Connectors → + Add → Add custom connector. ChatGPT: turn on developer mode (Settings > Security and login; on Business, Enterprise or Edu: Settings > Apps > Advanced settings; on Business only admins and owners can turn it on), go to Plugins, select +, then Add custom MCP server, name it LotsTeam, enter the URL, choose OAuth, confirm the warning, then Create; install it, and in a new chat select it from + > More. Workspace admins can also add it under Workspace settings > Apps > Create. Full read and write MCP is on ChatGPT plans that support custom MCP servers (developer mode); OpenAI offers it on Business, Enterprise and Edu, and other plans may be limited to read-only tools. The person signs in with the email they use for LotsTeam. No key is pasted into the chat.
 
 Clients that take a config file can use the same URL:
 
@@ -83,5 +83,5 @@ Deleting a project, inviting people, changing roles, the widget, and billing sta
 
 ## Reference
 
-- [references/TOOLS.md](references/TOOLS.md) — every tool and its arguments, generated from the live server
-- [references/WORKFLOWS.md](references/WORKFLOWS.md) — posts, tasks, support, and changelog
+- [references/TOOLS.md](references/TOOLS.md): every tool and its arguments, generated from the live server
+- [references/WORKFLOWS.md](references/WORKFLOWS.md): posts, tasks, support, and changelog

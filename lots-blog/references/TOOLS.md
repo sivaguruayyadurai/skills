@@ -1,4 +1,4 @@
-# LotsBlog launch tools
+# LotsBlog tools
 
 Use the live connection schema as the authority for fields and current availability.
 
@@ -14,4 +14,4 @@ Use the live connection schema as the authority for fields and current availabil
 - Article quality check: `run_post_quality_check`, a separate token-billed model task with explicit charge authorization.
 - Results: `get_blog_analytics`, `get_post_analytics` report supported measurements, not rankings or conversions.
 
-Appearance and team configuration remain available in the dashboard. Refresh/reconnect if your client has cached an older tool manifest without topic_ids or blog_guide. Do not invent missing tools. Keyword research, strategy, ideas, briefs and autonomous runtime are retained but outside launch discovery. Plans and purchased credits use the central billing catalogue; consult current pricing, never old example rates.
+Appearance and team configuration remain available in the dashboard. Refresh/reconnect if your client has cached an older tool manifest without topic_ids or blog_guide. Do not invent missing tools. Plans and purchased credits use the central billing catalogue; consult current pricing, never old example rates.
