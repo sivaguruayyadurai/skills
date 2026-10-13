@@ -1,71 +1,67 @@
-# Lotstech Skills
+# LotsTech Skills
 
-Official agent skills for the [Lotstech](https://lotstech.com) ecosystem. Add these skills to any MCP-compatible AI agent to let it work as a teammate across Lotstech apps.
+Official agent skills for the [LotsTech](https://www.lotstech.com) products. Lots products are run from the AI agent you already use (ChatGPT, Claude or any MCP client), with a full dashboard that does everything too. A skill teaches your agent the tools, rules and conventions of one product so it works there correctly without step-by-step prompting.
 
-## What are Skills?
+## Install
 
-Skills are instruction packages that give AI agents domain knowledge and structured guidance for using a specific platform. When an agent has a skill loaded, it knows what tools are available, how to use them, and how to follow the platform's conventions — without needing manual prompting every time.
+Every skill lives in this repository (`sivaguruayyadurai/skills`). Install with the [skills CLI](https://github.com/vercel-labs/skills):
+
+```bash
+# See every skill in this repository
+npx skills add sivaguruayyadurai/skills --list
+
+# Install one skill (repeat --skill for more)
+npx skills add sivaguruayyadurai/skills --skill lots-social
+npx skills add sivaguruayyadurai/skills --skill lots-blog
+npx skills add sivaguruayyadurai/skills --skill lots-team
+npx skills add sivaguruayyadurai/skills --skill lots-crm
+npx skills add sivaguruayyadurai/skills --skill lots-notes
+npx skills add sivaguruayyadurai/skills --skill lots-link
+
+# Install all of them
+npx skills add sivaguruayyadurai/skills --skill '*'
+```
+
+Add `-a claude-code` (or another agent name) to target one agent, and `-g` to install for your user instead of the current project.
 
 ## Available Skills
 
-| Skill | App | MCP Endpoint | Description |
-|-------|-----|--------------|-------------|
-| [lots-team](./lots-team/) | [lots.team](https://lots.team) | `https://api.lots.team/mcp` | Project management, tasks, feedback, CRM, changelog, knowledge base |
-| [lots-social](./lots-social/) | [lots.social](https://lots.social) | `https://api.lots.social/mcp` | Connect accounts, schedule/publish posts, manage media and check analytics |
-| [lots-blog](./lots-blog/) | [lots.blog](https://lots.blog) | `https://api.lots.blog/mcp` | Blog platform, multi-type posts, topics, team collaboration |
-| [lots-link](./lots-link/) | [lots.link](https://lots.link) | `https://api.lots.link/mcp` | Link shortening, QR codes, analytics, UTM tracking, custom domains |
-| [lots-crm](./lots-crm/) | [lotscrm.com](https://lotscrm.com) | `https://api.lotscrm.com/mcp` | Contacts, companies, deals, pipelines, activity history and follow-ups |
-| [lots-notes](./lots-notes/) | [lotsnotes.com](https://lotsnotes.com) | `https://api.lotsnotes.com/mcp` | Shared business context: workspaces, folders, AGENTS.md and notes every agent reads |
+| Skill | Product | MCP endpoint | What your agent can do |
+|-------|---------|--------------|------------------------|
+| [lots-social](./lots-social/) | [LotsSocial](https://lots.social) | `https://api.lots.social/mcp` | Connect accounts, schedule and publish posts on 12 networks, manage media, check analytics |
+| [lots-blog](./lots-blog/) | [LotsBlog](https://lots.blog) | `https://api.lots.blog/mcp` | Create, schedule and publish articles on your own domain, upload images, manage topics, read analytics |
+| [lots-team](./lots-team/) | [LotsTeam](https://lots.team) | `https://api.lots.team/mcp` | User requests, tasks, support messages and changelog updates in one workspace |
+| [lots-crm](./lots-crm/) | [LotsCRM](https://lotscrm.com) | `https://api.lotscrm.com/mcp` | Contacts, companies, deals, pipelines, activity history and follow-ups |
+| [lots-notes](./lots-notes/) | [LotsNotes](https://lotsnotes.com) | `https://api.lotsnotes.com/mcp` | Shared business context: workspaces, folders, AGENTS.md and notes every agent reads |
+| [lots-link](./lots-link/) | [LotsLink](https://lots.link) | `https://api.lots.link/mcp` | Free, unlimited short links, QR codes, campaign projects, your own domains and click analytics |
 
-## Compatible Agent Platforms
+LotsDirectory publishes its skill on its own site: [lots.directory/skill.md](https://lots.directory/skill.md) (MCP endpoint `https://api.lots.directory/mcp`).
 
-These skills work with any MCP-compatible agent platform:
+Every server is also listed in the [official MCP Registry](https://registry.modelcontextprotocol.io) under its product domain (for example `blog.lots/lotsblog` and `com.lotscrm/lotscrm`).
 
-- **[Lots Agent](https://lotsagent.com)** — Lotstech's own agent platform, built-in skill and MCP support
-- **[OpenClaw](https://openclaw.ai)** — Add skills directly from your agent dashboard
-- **[Claude Code](https://claude.ai/code)** — Install via `npx skills add lotstech/lots-team`
-- **Cursor, Windsurf, Cline** — Any editor with MCP support
-- Any agent that supports the Model Context Protocol
+## Connect
 
-## Quick Install
+1. **Add the MCP endpoint** from the table to your agent (Claude, ChatGPT, Cursor, Claude Code or any MCP client).
+2. **Sign in** when your agent opens the product's sign-in page (OAuth). Agents without OAuth can send an API key from the product's dashboard as `Authorization: Bearer <key>`.
+3. **Add the skill** with the command above.
+4. **Ask for real work**, for example "Schedule this announcement on LinkedIn for Tuesday 9am."
 
-```bash
-# Install individual skills
-npx skills add lotstech/lots-team
-npx skills add lotstech/lots-social
-npx skills add lotstech/lots-blog
-npx skills add lotstech/lots-link
-npx skills add lotstech/lots-crm
-npx skills add lotstech/lots-notes
-```
-
-## How It Works
-
-1. **Authorize the connection** — Use the app’s hosted sign-in/OAuth flow where supported, or its MCP dashboard API-key flow
-2. **Connect the MCP server** — Add the app's MCP endpoint to your agent config
-3. **Add the skill** — Load the skill so your agent knows how to work on the platform
-4. **Start collaborating** — Your agent works as a real team member alongside you
-
-### Example MCP Config (lots.team)
+### Example MCP config
 
 ```json
 {
   "mcpServers": {
-    "lots-team": {
+    "lots-social": {
       "type": "http",
-      "url": "https://api.lots.team/mcp",
-      "headers": {
-        "Authorization": "Bearer YOUR_API_KEY"
-      }
+      "url": "https://api.lots.social/mcp"
     }
   }
 }
 ```
 
-## About Lotstech
+## About LotsTech
 
-Lotstech builds AI-native collaboration tools where humans and AI agents work together as genuine teammates. All apps share a unified identity system — one account works across the entire ecosystem.
+LotsTech builds products you run from the AI agent you already use: your agent for speed, the dashboard for control. One account works across every Lots product, and credits are shared between them.
 
-- **Website**: [lotstech.com](https://lotstech.com)
-- **Lots Agent**: [lotsagent.com](https://lotsagent.com) — Create and manage your own AI agents
-- **GitHub**: [github.com/lotstech](https://github.com/lotstech)
+- **Website**: [lotstech.com](https://www.lotstech.com)
+- **MCP servers**: [lotstech.com/mcp](https://www.lotstech.com/mcp)
