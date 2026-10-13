@@ -23,7 +23,7 @@ Use `get_funding_status` for current subscription coverage, credit funding and r
 
 **MCP endpoint:** `https://api.lots.team/mcp`
 
-Add it as a custom connector (Claude: Customize → Connectors → Add custom connector; ChatGPT: Plugins → Add → Create MCP App, OAuth). The person signs in with the email they use for LotsTeam. No key is pasted into the chat.
+Add it as a custom connector (Claude: Customize → Connectors → + Add → Add custom connector; ChatGPT: Plugins → + → Add custom MCP server, OAuth, then Create as a plugin). The person signs in with the email they use for LotsTeam. No key is pasted into the chat.
 
 Clients that take a config file can use the same URL:
 
@@ -38,7 +38,9 @@ Clients that take a config file can use the same URL:
 }
 ```
 
-In Claude Code: `claude mcp add --transport http lots-team https://api.lots.team/mcp`
+In Claude Code: `claude mcp add --transport http lots-team https://api.lots.team/mcp`, then run `/mcp` and choose Authenticate.
+
+In Codex: `codex mcp add lots-team --url https://api.lots.team/mcp`, then `codex mcp login lots-team`.
 
 ## What is in the workspace
 
