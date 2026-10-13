@@ -14,6 +14,7 @@ Skills are instruction packages that give AI agents domain knowledge and structu
 | [lots-social](./lots-social/) | [lots.social](https://lots.social) | `https://api.lots.social/mcp` | Connect accounts, schedule/publish posts, manage media and check analytics |
 | [lots-blog](./lots-blog/) | [lots.blog](https://lots.blog) | `https://api.lots.blog/mcp` | Blog platform, multi-type posts, topics, team collaboration |
 | [lots-link](./lots-link/) | [lots.link](https://lots.link) | `https://api.lots.link/mcp` | Link shortening, analytics, UTM tracking, custom domains |
+| [lots-notes](./lots-notes/) | [lotsnotes.com](https://lotsnotes.com) | `https://api.lotsnotes.com/mcp` | Shared business context: workspaces, folders, AGENTS.md and notes every agent reads |
 
 ## Compatible Agent Platforms
 
@@ -33,6 +34,7 @@ npx skills add lotstech/lots-team
 npx skills add lotstech/lots-social
 npx skills add lotstech/lots-blog
 npx skills add lotstech/lots-link
+npx skills add lotstech/lots-notes
 ```
 
 ## How It Works
