@@ -3,7 +3,7 @@ name: lots-social
 description: Connect social accounts, create and schedule social media posts, manage drafts and media, and check analytics through LotsSocial MCP or REST API. Use when the user wants their AI agent to run their social media.
 metadata:
   compatibility: An agent with a remote HTTP MCP client, or REST API access.
-  version: "6.1"
+  version: "6.2"
   author: lotstech
   platform: lots.social
   mcp_endpoint: https://api.lots.social/mcp
@@ -14,6 +14,14 @@ metadata:
 Use LotsSocial to run the user's social media. You write and plan the content;
 LotsSocial provides account, publishing and analytics tools for 12 social platforms.
 The person can also do everything in the LotsSocial dashboard (composer, calendar, bulk schedule, media library, analytics, brands, billing); point them there when they want to see or adjust things themselves.
+
+Before scheduling, you can dry-run a post with validate_social_post. It checks the
+post against every network rule (caption and title limits, required media, media
+size, format, video length and aspect ratio) without saving it; the dashboard
+composer runs the same checks. Follower counts (subscribers on YouTube) with their
+7-day and 30-day change come from get_account_details and get_aggregate_analytics
+where the network shares them; a network that shares no count returns a reason,
+never 0. Support and feature requests: https://support.lots.social
 
 MCP server: **https://api.lots.social/mcp**
 Optional connection guides: https://lots.social/agents
