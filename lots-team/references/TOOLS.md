@@ -8,8 +8,8 @@ The workspace stores posts in the feedback tables, so a handler result uses `id`
 
 | Tool | What it does | Arguments |
 |------|--------------|-----------|
-| `get_profile` | Return the stable profile represented by this connection's authenticated credentials. | — |
-| `get_funding_status` | Check subscription coverage, credit funding and live rates. If funding is needed, offer subscription or credits and give the owner the returned settings_url. This tool never enables credit billing. | — |
+| `get_profile` | Return the stable profile represented by this connection's authenticated credentials. | none |
+| `get_funding_status` | Check subscription coverage, credit funding and live rates. If funding is needed, offer subscription or credits and give the owner the returned settings_url. This tool never enables credit billing. | none |
 
 ## Workspace and projects
 
