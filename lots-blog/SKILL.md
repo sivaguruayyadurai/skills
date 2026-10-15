@@ -7,7 +7,7 @@ description: >-
 metadata:
   compatibility: Agents supporting authenticated HTTP MCP
   author: lotstech
-  version: "3.3"
+  version: "3.4"
   platform: lots.blog
   mcp_endpoint: https://api.lots.blog/mcp
 ---
@@ -32,7 +32,7 @@ Only use tools actually exposed by your connection. Use the dashboard for operat
 
 Use your research tools and the user's evidence to choose an angle and substantiate factual claims. Do not fabricate search volumes, tests, customer stories, quotes or sources. Emerging topics can be useful without measured volume.
 
-List existing posts and topics before creating duplicates. Create articles as drafts using Markdown. Save a useful title, slug, description, metadata, topics and supported structured data matching visible content. For a public or signed source URL, use `upload_blog_image`. For a local screenshot or image, call `create_image_upload` with its exact byte size and MIME type, PUT the local bytes to the returned URL with its headers, then call `complete_image_upload`. Do not paste large base64 strings into MCP calls. Use `list_media` to reuse images; delete only unused images on request. Public CDN image links are not confidential even when the blog is private. Read back saved drafts and check the content. Update only requested fields; preserve everything else.
+List existing posts and topics before creating duplicates. Create articles as drafts using Markdown. Save a useful title, slug, description, metadata, topics and supported structured data matching visible content. When the headline runs past about 60 characters, also set a shorter search title (`meta_title`). For a public or signed source URL, use `upload_blog_image`. For a local screenshot or image, call `create_image_upload` with its exact byte size and MIME type, PUT the local bytes to the returned URL with its headers, then call `complete_image_upload`. Do not paste large base64 strings into MCP calls. Use `list_media` to reuse images; delete only unused images on request. Public CDN image links are not confidential even when the blog is private. Read back saved drafts and check the content. Update only requested fields; preserve everything else.
 
 ## Prepare articles for search and AI discovery
 
