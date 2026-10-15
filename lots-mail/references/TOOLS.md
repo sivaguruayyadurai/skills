@@ -17,5 +17,9 @@
 | `get_send_status` | Send state and each recipient's delivery | read |
 | `update_messages` | Read/unread, star, move to inbox/archive/trash/spam | read (flags), draft (move) |
 | `start_domain_setup` | Steps and link for the owner to connect a domain | read |
+| `get_billing` | How the user's domains are paid for: plan or credits, balance, plans to choose from | read |
+| `create_checkout` | A checkout link for a plan (`plan`, `cycle`) or credits (`amount_usd`) for the person to open | owner |
 
 Recipients are email addresses as strings (`"jane@example.com"` or `"Jane <jane@example.com>"`), up to 50 per message across To, Cc and Bcc.
+
+Billing: give the checkout link to the person to pay in their browser; never ask for card details. An unpaid domain cannot send (`domain_not_funded`); reading, search and drafts keep working, and stored mail is never deleted.

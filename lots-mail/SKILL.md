@@ -42,4 +42,4 @@ Use `https://api.lotsmail.to/mcp` as a remote MCP server and sign in with a Lots
 
 ## What you cannot do
 
-Domains, DNS, mailboxes, team access, billing and agent permissions are the owner's, in the dashboard. `start_domain_setup` gives the owner the steps and link. Do not ask for DNS logins, card details or passwords.
+Domains, DNS, mailboxes, team access, billing and agent permissions are the owner's, in the dashboard. `start_domain_setup` gives the owner the steps and link; `get_billing` and `create_checkout` show billing and hand the person a checkout link. Do not ask for DNS logins, card details or passwords.
