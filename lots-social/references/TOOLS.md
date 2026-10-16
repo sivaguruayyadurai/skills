@@ -7,6 +7,16 @@ Accounts and access: list_workspaces, list_brands, list_connected_accounts,
 get_account_details, get_connect_link, disconnect_account. Use returned IDs and
 hosted connection links. get_account_details reports connection health; reconnect
 through get_connect_link. Disconnect only on the user's request.
+Client connect links: get_connect_link with purpose "client" (label, brand_id,
+optional platform, expiry_days 1 to 7, default 7) makes a link for someone outside
+the workspace, such as an agency client, who connects their own accounts without
+a LotsSocial login; everything they connect is filed under that brand and paid
+like any other account. Only owners, admins and managers can create one. The URL
+is returned once (keep link_id). List and revoke over REST: GET /connect-links
+(list_connect_links: status active, expired or revoked, accounts_connected) and
+DELETE /connect-links/{link_id} (revoke_connect_link; connected accounts stay).
+These two are not MCP tools; on MCP, the person revokes a link on the LotsSocial
+Accounts page.
 Brands: create_brand and update_brand group a workspace's accounts (one company
 or client each) and move accounts between brands; moves are reported. Pass
 brand_id when posting for a brand, or to get_connect_link to connect into it.

@@ -62,6 +62,10 @@ starter credits (when eligible) are created when they sign in through this
 server. If no account is connected, use get_connect_link and give the returned
 link to the user; they complete the platform sign-in themselves. Never invent a
 connection or claim a link has connected an account before checking the result.
+When someone outside the workspace (an agency's client) should connect their own
+accounts, call get_connect_link with purpose "client", a label (the client's
+name) and usually brand_id: the client needs no LotsSocial login, the link lasts
+up to 7 days, and its URL is shown only once, so pass it on straight away.
 Use get_billing_status for live credit/capacity information and get_credits_link
 when the user needs to add credits. Credits pay for connected accounts
 automatically ($2 per account per month without a plan); media storage is free.
