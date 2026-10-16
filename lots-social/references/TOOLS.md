@@ -12,18 +12,26 @@ optional platform, expiry_days 1 to 7, default 7) makes a link for someone outsi
 the workspace, such as an agency client, who connects their own accounts without
 a LotsSocial login; everything they connect is filed under that brand and paid
 like any other account. Only owners, admins and managers can create one. The URL
-is returned once (keep link_id). List and revoke over REST: GET /connect-links
-(list_connect_links: status active, expired or revoked, accounts_connected) and
-DELETE /connect-links/{link_id} (revoke_connect_link; connected accounts stay).
-These two are not MCP tools; on MCP, the person revokes a link on the LotsSocial
-Accounts page.
+is returned once (keep link_id). list_connect_links (REST GET /connect-links)
+shows each link's status (active, expired or revoked) and accounts_connected;
+revoke_connect_link (REST DELETE /connect-links/{link_id}) stops a link, and the
+accounts already connected through it stay. Whoever opens a client link sees
+only the accounts connected through that link, never the rest of the brand.
 Brands: create_brand and update_brand group a workspace's accounts (one company
 or client each) and move accounts between brands; moves are reported. Pass
 brand_id when posting for a brand, or to get_connect_link to connect into it.
 Billing: get_billing_status and get_credits_link. Credits pay for accounts beyond plan coverage automatically; only the payer buys credits or a plan.
 Posts: list_social_posts, get_social_post, create_social_post,
 bulk_create_social_posts, update_social_post, cancel_scheduled_post,
-delete_social_post. Validation and account permissions remain enforced. Only
+delete_social_post. Validation and account permissions remain enforced.
+Publish now: publish_now: true on create_social_post (instead of scheduled_time)
+or on update_social_post (an existing draft or scheduled post) publishes to every
+selected account right away, with the same network rules and permission as
+scheduling (owners, admins and managers). Confirm the text, media and accounts
+with the person first; never publish a draft they did not ask to publish now. The
+result has accounts[] (status pending, processing, success or failed, with
+platform_post_url once live); get_social_post shows the final result, and a
+failed attempt is retried automatically. Only
 drafts and scheduled posts can be deleted; for a published post the refusal
 returns each network's live link so the user can delete it there.
 Reddit and Pinterest need network fields to schedule: pass platform_fields

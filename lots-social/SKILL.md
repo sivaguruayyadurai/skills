@@ -66,6 +66,8 @@ When someone outside the workspace (an agency's client) should connect their own
 accounts, call get_connect_link with purpose "client", a label (the client's
 name) and usually brand_id: the client needs no LotsSocial login, the link lasts
 up to 7 days, and its URL is shown only once, so pass it on straight away.
+list_connect_links shows each link's status and accounts connected;
+revoke_connect_link stops a link (accounts already connected stay).
 Use get_billing_status for live credit/capacity information and get_credits_link
 when the user needs to add credits. Credits pay for connected accounts
 automatically ($2 per account per month without a plan); media storage is free.
@@ -91,8 +93,14 @@ Use the smallest relevant workflow
   it, using your available capabilities; do not run paid LotsSocial AI workflows.
 - To create posts, use create_social_post or bulk_create_social_posts. Save drafts
   when requested or when no publishing/scheduling instruction was given. An explicit
-  request to publish or schedule is authorization: act on it without adding another
-  approval step, while respecting server-enforced permissions and validation.
+  request to schedule is authorization: act on it without adding another approval
+  step, while respecting server-enforced permissions and validation.
+- To publish right away, pass publish_now: true to create_social_post, or to
+  update_social_post for an existing draft or scheduled post. Before you do,
+  confirm with the user the exact text, media and accounts it goes to: a published
+  post cannot be pulled back from LotsSocial. Never publish a draft the user did not
+  ask to publish now. The result lists each account's status; check
+  get_social_post for accounts still publishing before you report them live.
 - Use get_platform_playbook when platform-specific guidance is needed, especially
   Reddit/community rules; do not fetch every playbook for an unrelated request.
 - For existing posts use get_social_post, update_social_post or

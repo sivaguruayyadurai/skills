@@ -12,6 +12,13 @@ Resolve the intended account, write from the user's facts, consult platform rule
 when necessary, then create or update the post with the requested schedule. Report
 the returned state and time zone. Do not claim publication until it succeeded.
 
+## Publish now
+When the user asks to post right away, show them the exact text, media and
+accounts and get their yes, then call create_social_post (or update_social_post
+for an existing draft or scheduled post) with publish_now: true. Report each
+account from the returned accounts[]: success with its platform_post_url, failed
+with its error, or still publishing (check get_social_post again shortly).
+
 ## Attach media
 Search list_media first. For an image or video you can link to, pass its url to
 upload_media. For a file on disk, call create_media_upload with its exact size
