@@ -57,9 +57,9 @@ itself install an MCP server. If you cannot use MCP but can make HTTP requests,
 read https://api.lots.social/docs.md and use the REST API. Never ask the user to
 paste passwords or API keys into chat.
 
-After connecting, call list_workspaces and list_connected_accounts as needed.
-The first LotsSocial call creates the user's workspace and starter credits when
-eligible. If no account is connected, use get_connect_link and give the returned
+After connecting, call list_connected_accounts first. The user's workspace and
+starter credits (when eligible) are created when they sign in through this
+server. If no account is connected, use get_connect_link and give the returned
 link to the user; they complete the platform sign-in themselves. Never invent a
 connection or claim a link has connected an account before checking the result.
 Use get_billing_status for live credit/capacity information and get_credits_link
