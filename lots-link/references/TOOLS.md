@@ -46,7 +46,6 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 | `utm_campaign` | No | UTM campaign name |
 | `utm_term` | No | UTM term (paid search keywords) |
 | `utm_content` | No | UTM content (A/B variant identifier) |
-| `tag_ids` | No | Array of tag UUIDs for categorization |
 
 ---
 
