@@ -52,7 +52,16 @@ All tools are on `https://api.lotscrm.com/mcp`. The live list, with current desc
 | `list_workspaces`, `get_workspace` | Workspaces you can access, and your role |
 | `create_workspace` | Without `organization_id` it also creates the organization and a default six-stage pipeline; needs `idempotency_key` |
 | `update_workspace` | Owner or admin |
-| `list_members`, `add_member`, `update_member` | Add people who have a Lots account, by email; owner or admin; the owner cannot be changed |
+| `list_members` | People in the workspace (active and suspended), with email, name and role |
+| `invite_member` | Invite anyone by email, with or without a Lots account; they accept from the email link with that email. Owner or admin. Teammates are unlimited |
+| `list_invitations`, `resend_invitation`, `cancel_invitation` | Pending invitations; resend sends a fresh 7-day link (wait a minute between sends); cancel stops the link. Owner or admin |
+| `accept_invitation` | Accept with the token from the email link, as the invited email |
+| `add_member` | Add someone who already has a Lots account at once (no accept step); they get an email saying so. Owner or admin |
+| `update_member` | Change a role, or suspend and reactivate. Owner or admin |
+| `remove_member` | Take someone out of the workspace; their records stay. Owner or admin |
+| `leave_workspace` | Leave a workspace you were invited to |
+
+Nobody can be given the owner role by an invitation or a role change, and the owner cannot be removed or leave their own workspace.
 
 ## Account and billing
 

@@ -37,7 +37,7 @@ For REST, read `https://api.lotscrm.com/docs.md`. Use the connected server's too
 
 ## Drafting and outreach
 
-LotsCRM never sends emails or messages. When the user wants a message about a deal, call `prepare_follow_up` with the deal (or `get_deal_brief` before a call); for a contact without a deal, read `get_contact` and `get_timeline` and check its consent and marketing status first. Draft only from the CRM history and the public business facts. If it returns `can_contact: false` (opted out or do not contact), do not draft outreach; tell the user why. Send with the tools the user already uses, only when they ask, then log it with `record_activity`. Never quote private guidance to a customer or in public copy, and never invent facts, prices or customer results.
+LotsCRM never sends emails or messages to contacts (its only emails are team invitations and "you were added" notices to teammates). When the user wants a message about a deal, call `prepare_follow_up` with the deal (or `get_deal_brief` before a call); for a contact without a deal, read `get_contact` and `get_timeline` and check its consent and marketing status first. Draft only from the CRM history and the public business facts. If it returns `can_contact: false` (opted out or do not contact), do not draft outreach; tell the user why. Send with the tools the user already uses, only when they ask, then log it with `record_activity`. Never quote private guidance to a customer or in public copy, and never invent facts, prices or customer results.
 
 ## Reports
 
