@@ -92,8 +92,16 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 
 | Tool Slug | Description | Key Parameters |
 |-----------|-------------|----------------|
-| `lotslink_invite_workspace_member` | Invite a user to workspace by email (Owner/Admin) | `workspace_id`, `email`, `role` |
-| `lotslink_remove_workspace_member` | Remove a member from workspace (Owner/Admin; cannot remove owner) | `workspace_id`, `user_id` |
+| `lotslink_list_workspace_members` | Active members with role, name and email, plus your `my_role`; owners/admins also get pending invitations with links | `workspace_id` |
+| `lotslink_invite_workspace_member` | Invite by email (Owner/Admin). Emails a 7-day invite link and returns `invite_url`; inviting a pending address again sends a new link | `workspace_id`, `email`, `role?` (admin/member/viewer, default member) |
+| `lotslink_update_workspace_member_role` | Change a member's role (Owner/Admin; never the owner, admins cannot change other admins) | `workspace_id`, `member_id`, `role` |
+| `lotslink_remove_workspace_member` | Remove a member (Owner/Admin; never the owner, admins cannot remove other admins) | `workspace_id`, `member_id` |
+| `lotslink_cancel_workspace_invitation` | Cancel a pending invitation (Owner/Admin) | `workspace_id`, `invitation_id` |
+| `lotslink_leave_workspace` | Leave a workspace (anyone except the owner) | `workspace_id` |
+| `lotslink_list_my_invitations` | Pending invitations sent to your account's email | none |
+| `lotslink_accept_workspace_invitation` | Join from an invitation sent to your account's email (case-insensitive); a removed member rejoins | `invitation_id` or `token` |
+
+Teammates are free and unlimited on every plan. The owner role is never given by an invitation or a role change; ask the user before removing someone or leaving a workspace.
 
 ## Billing
 
