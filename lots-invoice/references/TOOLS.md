@@ -117,6 +117,7 @@ Every tool is also a REST endpoint under `https://api.lotsinvoice.com/api/v1/lot
 | `get_template_guide` | `GET /template-guide` | How to write a custom template: the safe template language, every data path, an example view and the built-in layout source to start from. |
 | `check_template` | `POST /businesses/:business_id/templates/check` | Check a template (html body + css) without saving: forbidden content, unknown placeholders, missing required data, and warnings. |
 | `preview_template` | `POST /businesses/:business_id/templates/preview` | Render a template (template key, or unsaved html/css) with sample data at 1 to 200 lines; returns HTML. |
+| `get_template` | `GET /businesses/:business_id/templates/:template_id` | One custom template with its html and css, to edit it. |
 | `create_template` | `POST /businesses/:business_id/templates` | Save a custom template after it passes check_template. |
 | `update_template` | `PATCH /businesses/:business_id/templates/:template_id` | Update (re-checked) or archive a custom template. |
 
