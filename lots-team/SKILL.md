@@ -66,8 +66,9 @@ The public portal can also show a board of tasks the team chose to share. That b
 - List support threads and reply on one.
 - Draft, update, and publish changelog entries. Delete an unpublished draft (`delete_changelog`, owners and admins); a published entry must be unpublished first.
 - List the people in the organization so you can assign a task to a real member.
+- Manage the team: invite someone by email (`invite_member`), list and cancel invitations, change a member's role (`update_member_role`), remove a member, and leave an organization. Team members are unlimited on every plan. Roles are admin, member and viewer; no one can be made owner this way, and the owner cannot be changed, removed or leave. The invited person joins only when they accept while signed in with the invited email address. Confirm every team change with the person first.
 
-Deleting a project, inviting people, changing roles, the widget, and billing stay in the dashboard. Do not invent tools for those.
+Deleting a project, the widget, and billing stay in the dashboard, and no tool transfers ownership. Do not invent tools for those.
 
 ## How to work
 

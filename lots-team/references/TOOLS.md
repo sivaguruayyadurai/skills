@@ -1,6 +1,6 @@
 # LotsTeam tools
 
-The 40 tools the LotsTeam MCP server (`https://api.lots.team/mcp`) offers, generated from its live tool list on 2026-10-12. The REST equivalents are in `https://api.lots.team/docs.md`.
+The 46 tools the LotsTeam MCP server (`https://api.lots.team/mcp`) offers, generated from its live tool list on 2026-10-12 (team tools added 2026-10-17). The REST equivalents are in `https://api.lots.team/docs.md`.
 
 The workspace stores posts in the feedback tables, so a handler result uses `id` on the post itself and `post_id` when a task points at a post. Pass `project_id` for project work (from `list_projects`) and `organization_id` from `list_organizations`.
 
@@ -23,6 +23,19 @@ The workspace stores posts in the feedback tables, so a handler result uses `id`
 | `update_project` | Update a project's name, description, logo_url or settings (portal branding and options; keys you send are merged into the existing settings). is_internal true hides the project's public portal and widget; only members see it. Send project_id and only the fields that should change. Custom domains use add_project_domain. | `project_id`; optional `name`, `logo_url`, `settings`, `description`, `is_internal` |
 | `add_project_domain` | Connect a custom domain such as support.example.com to a project's public portal. Returns the DNS records the person must add (a DNS-only CNAME); give them the records, then call verify_project_domain once they have added them. Replaces any domain the project already has. | `domain`, `project_id` |
 | `verify_project_domain` | Check whether a project's custom domain is live: DNS and certificate status, and the records still needed if not. | `project_id` |
+
+## Team
+
+Team members are unlimited on every plan. Roles are admin, member and viewer; nobody can be made owner by an invite or a role change, and the owner cannot be changed, removed or leave. These tools need the same permissions as the dashboard's Team page (leaving needs none).
+
+| Tool | What it does | Arguments |
+|------|--------------|-----------|
+| `list_invitations` | List invitations for an organization with their status (pending, claimed, accepted, expired, cancelled). | `organization_id` |
+| `invite_member` | Invite someone by email. They join when they accept while signed in with that same address. A member also needs `role_name`, `custom_permissions` and `project_access`. Confirm the email and role first. | `organization_id`, `email`, `role` (admin, member, viewer); optional `role_name`, `custom_permissions`, `project_access`, `personal_message` |
+| `cancel_invitation` | Cancel a pending invitation so its link stops working. | `organization_id`, `invitation_id` |
+| `update_member_role` | Change a member's role, role name, permissions or projects. Changing to member needs `custom_permissions`. | `organization_id`, `member_id`; optional `role`, `role_name`, `custom_permissions`, `project_ids`, `username` |
+| `remove_member` | Remove someone from an organization. To remove yourself, use `leave_organization`. | `organization_id`, `member_id` |
+| `leave_organization` | Leave an organization you belong to. Anyone except the owner can leave. | `organization_id` |
 
 ## Posts
 
