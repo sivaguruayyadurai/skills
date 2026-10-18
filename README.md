@@ -17,6 +17,7 @@ npx skills add sivaguruayyadurai/skills --skill lots-team
 npx skills add sivaguruayyadurai/skills --skill lots-crm
 npx skills add sivaguruayyadurai/skills --skill lots-notes
 npx skills add sivaguruayyadurai/skills --skill lots-link
+npx skills add sivaguruayyadurai/skills --skill lots-business
 
 # Install all of them
 npx skills add sivaguruayyadurai/skills --skill '*'
@@ -34,6 +35,7 @@ Add `-a claude-code` (or another agent name) to target one agent, and `-g` to in
 | [lots-crm](./lots-crm/) | [LotsCRM](https://lotscrm.com) | `https://api.lotscrm.com/mcp` | Contacts, companies, deals, pipelines, activity history and follow-ups |
 | [lots-notes](./lots-notes/) | [LotsNotes](https://lotsnotes.com) | `https://api.lotsnotes.com/mcp` | Shared business context: workspaces, folders, AGENTS.md and notes every agent reads |
 | [lots-link](./lots-link/) | [LotsLink](https://lots.link) | `https://api.lots.link/mcp` | Free, unlimited short links, QR codes, campaign projects, your own domains and click analytics |
+| [lots-business](./lots-business/) | [LotsBusiness](https://lots.business) | `https://api.lots.business/mcp` | A business's website, Google Business Profile, local directory listings, business email and website messages, for owners and agencies |
 
 LotsDirectory publishes its skill on its own site: [lots.directory/skill.md](https://lots.directory/skill.md) (MCP endpoint `https://api.lots.directory/mcp`).
 
