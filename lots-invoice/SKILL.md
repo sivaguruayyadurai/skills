@@ -39,7 +39,7 @@ Invoices are fully configurable, so match what the user's clients or accountant 
 - Lines carry a **code** (SKU, HSN/SAC, GL or account code), unit, quantity up to 4 decimals, line discount, any number of tax components (CGST + SGST, State + County, compound, inclusive) or a treatment (exempt, zero-rated, out of scope, with a reason). Use `heading` and `text` lines for sections and notes.
 - `update_settings` controls columns (rename, reorder, hide, custom columns), custom fields, which blocks show (tax summary, amount in words, signature), labels, numbering and titles ("Tax Invoice", "Quote").
 - Declarations (`create_declaration`) print fixed statements such as an export or reverse-charge note. `second_currency` shows the total in another currency at a stated rate.
-- Eight designs (`set_theme`: classic, modern, studio, executive, minimal, bold, compact, formal), a signature and company seal (`upload_image` with `kind` `signature` or `stamp`), or write a template: `get_template_guide`, then `check_template`, `preview_template`, show the user, then `create_template`.
+- Nine designs (`set_theme`: classic, modern, studio, executive, ledger, minimal, bold, compact, formal; ledger is the full-page grid Indian tax invoice), a signature and company seal (`upload_image` with `kind` `signature` or `stamp`), or write a template: `get_template_guide`, then `check_template`, `preview_template`, show the user, then `create_template`.
 
 ## Get paid
 
