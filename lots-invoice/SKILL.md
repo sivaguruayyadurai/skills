@@ -28,7 +28,7 @@ Use `https://api.lotsinvoice.com/mcp` as a remote MCP server and sign in with a 
 - **Show totals and ask before sending.** Drafts are free to change. `send_document` emails the customer and locks the document with its number. Read the totals from the API response (`display.total`) to the user first.
 - **Money in, money out.** Give amounts as decimal strings in the document currency (`"1250.00"`). Responses carry integer minor units (cents) and formatted strings in `display`; quote the formatted ones.
 - **Sent documents are locked.** Change one with `revise_document` and a reason (it keeps the number and adds a version), void it with a reason, or issue a credit note. Paid invoices are corrected with a credit note.
-- **LotsInvoice never moves money.** Customers pay with the business's own options (a pay link such as a Stripe Payment Link or PayPal, bank details, Zelle, check), shown on the invoice and the portal. When money arrives, `record_payment`. A customer pressing "I've sent payment" only notifies the owner.
+- **LotsInvoice never moves money.** Customers pay with the business's own options (a pay link such as a Stripe Payment Link or PayPal, bank details, Zelle, UPI with a QR code on INR invoices, check), shown on the invoice and the portal. When money arrives, `record_payment`. A customer pressing "I've sent payment" only notifies the owner.
 - Use an `idempotency_key` on create and payment calls you might retry.
 - Not tax or legal advice: presets are a starting point; tell the user to check layout and wording with their accountant.
 
