@@ -60,6 +60,8 @@ All tools are on `https://api.lotscrm.com/mcp`. The live list, with current desc
 | `update_member` | Change a role, or suspend and reactivate. Owner or admin |
 | `remove_member` | Take someone out of the workspace; their records stay. Owner or admin |
 | `leave_workspace` | Leave a workspace you were invited to |
+| `archive_workspace` | Owner only. Archive a workspace you no longer need; it stops counting toward your plan from the next daily charge. Nobody can open it until it is restored; nothing is deleted. `confirm_name` is the workspace name. Confirm with the user first |
+| `restore_workspace` | Owner only, within 30 days of archiving. Needs a plan or credits that cover it again. `list_workspaces` with `archived: true` lists archived workspaces and their `restore_until` |
 
 Nobody can be given the owner role by an invitation or a role change, and the owner cannot be removed or leave their own workspace.
 

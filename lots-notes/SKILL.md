@@ -60,6 +60,8 @@ You act as the signed-in user, with their role. Owners and admins manage the wor
 
 Confirm the email address and role before inviting, and confirm before removing someone or leaving.
 
+- `archive_workspace` (owner only) archives a workspace the user no longer needs; it stops counting toward their plan. Nobody can open it until it is restored, and nothing is deleted. Pass the workspace name as `confirm_name`, and confirm with the user first. `restore_workspace` brings it back within 30 days; `list_workspaces` with `archived: true` lists archived workspaces. An archived workspace answers `WORKSPACE_ARCHIVED`.
+
 ## Plans
 
 Use `get_plan` for the user's plan, limits and current use. Free covers 1 workspace with 3 folders for one person; notes and checklists are unlimited, and MCP and REST access are included. LotsNotes Pro is one payment (no subscription) for unlimited workspaces, folders and team members with roles. Pro is already included while the user has a Pro or Business plan of LotsSocial, LotsBlog, LotsTeam or LotsCRM. When a limit stops an action, explain it and offer `create_checkout`; the user pays in their browser. A checkout link is not proof of payment: call `get_plan` again afterwards. Current prices: https://lotsnotes.com/pricing. Nothing already created is locked if a plan ends.
