@@ -28,6 +28,7 @@ For REST, read `https://api.lots.business/docs.md`. Use the connected server's t
 ## The record comes first
 
 - **Never invent a fact.** No made-up prices, awards, years, reviews, team members, certifications or customer results. A value you cannot source stays empty. If the owner gives you a fact, put it in the record (`update_business`, `set_business_hours`, `set_business_services`, `set_business_links`, `add_business_media`) before you put it on a page.
+- **Hours replace the whole week.** `set_business_hours` takes all seven days (an empty list is closed); every special-hours entry says `closed: true` or gives times.
 - **Respect the business type.** `physical` (storefront or office) shows a street address. `service_area` (plumber, cleaner) shows a base city and service areas, never a street address. `online` shows no address and is not eligible for map listings. Never ask a service-area or online business for a street address.
 - **Reviews are never written by you.** Ratings come only from real signed-in customers. `reply_to_business_review` replies as the owner, after the owner approves the text.
 
@@ -44,7 +45,7 @@ A listing in the directory is free. Paying for a business (a plan covers 1, 5 or
 - Small text changes: `get_site_editables` then `edit_site_texts`. Colours, font and sections on kit sites: `update_site_theme`.
 - SEO and AI-search basics (schema, sitemap, robots, llms.txt, canonical, Open Graph) are added by LotsBusiness on every page; do not hand-write competing ones.
 - A custom domain: `connect_site_domain` returns the one DNS record the owner adds at their registrar; then poll `get_site_domain_status`. Never claim the domain is live before it says `active`.
-- `update_site_settings` turns on the WhatsApp button, call bar, search-engine verification codes, analytics (after the visitor consents) and an announcement bar.
+- `update_site_settings` turns on the WhatsApp button, call bar, search-engine verification codes, analytics (after the visitor consents) and an announcement bar. Only the groups and fields you send change; `redirects` replaces the whole list.
 
 ## Google Business Profile
 

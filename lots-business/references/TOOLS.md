@@ -21,18 +21,18 @@ All tools are on `https://api.lots.business/mcp`. The live list, with current de
 | `set_business_hours` | Weekly hours, special hours and timezone |
 | `set_business_services`, `list_business_services` | Services in order, with optional prices |
 | `set_business_links` | Social profiles, booking link and more |
-| `add_business_media`, `list_business_media`, `reorder_business_media`, `delete_business_media` | Logo, cover, photos, videos |
+| `add_business_media`, `list_business_media`, `reorder_business_media`, `delete_business_media` | Photos, gallery, cover, logo and videos from a public https URL |
 | `set_business_faqs`, `add_business_update` | FAQs and news on the listing |
-| `autofill_business_from_url` | Fill empty fields from the business's own website (only what it states) |
+| `autofill_business_from_url` | Read the business's own website and return what it states (saves nothing) |
 | `claim_business`, `verify_business_claim`, `list_my_business_claims` | Claim a listing that already exists |
-| `list_my_business_reviews`, `reply_to_business_review` | Reviews and owner replies |
+| `list_business_reviews` (by slug), `reply_to_business_review`, `answer_business_question` | Reviews and questions on your listing, and your replies (`list_my_business_reviews` lists reviews you wrote elsewhere) |
 | `get_business_analytics` | Listing views and contacts |
 
 ## Billing
 
 | Tool | Notes |
 |------|-------|
-| `get_billing` | Plan or credits, funding state, paid businesses, prices |
+| `get_billing` | Plan, credits and prices; `summary` says how many businesses the plan still covers and what the next paid business costs |
 | `create_checkout` | Link for a plan (starter, pro, business; annual or monthly) or a credits top-up |
 | `activate_business`, `deactivate_business` | Make a business paid, or stop paying; ask first |
 
@@ -69,6 +69,7 @@ All tools are on `https://api.lots.business/mcp`. The live list, with current de
 | `record_directory_submission`, `list_directory_submissions` | Track progress per directory |
 | `setup_business_email`, `get_business_email_status`, `verify_business_email` | LotsMail on the business's own domain |
 | `list_contact_messages`, `update_contact_message` | Website form messages |
+| `link_crm_workspace` | Also send website messages into a LotsCRM workspace as leads (`unlink: true` stops) |
 | `add_contact_recipient`, `remove_contact_recipient` | Who receives them (up to 3, confirmed by link) |
 
 ## Agency
