@@ -34,8 +34,9 @@ Read the live list and schemas from the connected server (also published without
 - `list_promotions`, `create_promotion` (code, `percentage` or `fixed`, value, optional usage limit), `update_promotion`, `delete_promotion`.
 
 ## Payments
-- `get_payment_settings`, `update_payment_settings`: checkout on or off, test or live, methods (online payments, UPI, WhatsApp) and automatic acceptance of verified payments.
-- `start_payment_oauth`, `start_razorpay_onboarding`, `connect_razorpay`: connect the merchant's own Razorpay account.
+- `get_payment_settings`, `update_payment_settings`: checkout on or off, test or live, methods (Stripe, Razorpay, UPI, WhatsApp) and automatic acceptance of verified payments.
+- `start_payment_oauth`, `start_razorpay_onboarding`, `connect_razorpay`: connect the merchant's own Razorpay account (India-registered businesses).
+- `connect_stripe`: returns the store's Payments page, where the owner pastes one Stripe restricted key, and the steps page. Never takes a key.
 
 ## Shipping and taxes
 - `get_shipping_settings`, `update_shipping_settings`: origin, zones, pickup and manual delivery rates.
