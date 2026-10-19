@@ -5,7 +5,8 @@ Read the live list and schemas from the connected server (also published without
 ## Stores and storefront
 - `list_stores`, `get_store`: the stores you can access, with address, status, country, currency and your role.
 - `create_store`: a new store (needs a plan slot or credits; country sets the currency).
-- `update_store`: name, description, settings; `status: archived` stops billing and takes the storefront offline, `draft` or `active` restores it.
+- `update_store`: name, description, settings.
+- `archive_store` (owner, `confirm_name` = the store name; storefront offline, billing stops, nothing deleted) and `restore_store` (within 30 days; needs room on a plan or credits).
 - `publish_store`: put the storefront live.
 - `update_storefront_settings`: theme template (minimal, editorial, catalog, boutique, marketplace), content, navigation, policies and SEO; `operation` is `save_draft`, `publish` or `reset_draft`.
 - `list_store_activity`: recent changes in the store.
@@ -46,7 +47,8 @@ Read the live list and schemas from the connected server (also published without
 - `list_custom_domains`, `add_custom_domain` (returns one CNAME to customers.lotscommerce.com), `verify_custom_domain`, `delete_custom_domain`.
 
 ## Team
-- `list_store_members`, `add_store_member`, `update_store_member`, `remove_store_member` (roles: admin, manager, staff, viewer).
+- `list_store_members`, `add_store_member` (sends an invitation; access starts when they accept, 14 days), `update_store_member`, `remove_store_member` (also cancels a pending invitation). Roles: admin, manager, staff, viewer.
+- `accept_store_invitation` (token from the invitation link, signed in with the invited email), `leave_store` (anyone but the owner).
 
 ## Analytics and billing
 - `get_store_analytics`: revenue, orders, average order value, funnel, daily history, compared with the previous period.

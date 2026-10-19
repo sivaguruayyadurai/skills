@@ -35,7 +35,7 @@ For REST, read `https://api.lotscommerce.com/docs.md`. Use the connected server'
 - **UPI payments are claims.** The customer reports a UPI transaction reference; use `verify_payment` only after the user confirms the money arrived in their own bank or UPI app, or `payment_not_found` if it did not.
 - **Fulfilment:** `operate_checkout_order` with `start_processing`, `fulfill`, `ship` (courier, tracking number and URL), `deliver`, `cancel`, or `manual_refund` (with a `reference`).
 - **Every order action takes an `idempotency_key`.** Reuse the same key when retrying the same action.
-- **Delete is for mistakes.** Deleting a product or category cannot be undone; archive a whole store with `update_store` status `archived` instead.
+- **Delete is for mistakes.** Deleting a product or category cannot be undone; archive a whole store with `archive_store` instead (restorable for 30 days). Confirm with the person first.
 
 ## Payments and money
 
