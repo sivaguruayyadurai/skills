@@ -92,4 +92,4 @@ Team members are unlimited on every plan. Roles are admin, member and viewer; no
 | `update_contact_message` | Mark support messages read, archived, or back to new. Send status and contact_message_id, or contact_message_ids (up to 50) to clear a batch such as vendor spam. Archived messages stay in the inbox history. | `status` (`new`, `read`, `archived`); optional `contact_message_id`, `contact_message_ids` |
 | `reply_to_contact_message` | Reply on a support thread. The reply is stored on the conversation and emailed to the person who wrote in. Show the person the draft and send only after they approve it. | `reply_message`, `contact_message_id` |
 
-Deleting a project, inviting people, changing roles, and billing stay in the dashboard.
+Deleting a project and billing stay in the dashboard.

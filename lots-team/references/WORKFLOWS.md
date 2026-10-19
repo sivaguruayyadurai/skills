@@ -36,4 +36,4 @@ To discard a draft the person no longer wants, `delete_changelog` with its `chan
 
 ## What stays in the dashboard
 
-Inviting people, roles and project access, the widget, billing, and deleting a project are changed by a person in LotsTeam. If they ask for one of those, say it is done from the dashboard and continue with the work they also asked for. Creating a project, updating its settings, and connecting a custom portal domain are agent tools (see SKILL.md).
+The widget, billing, and deleting a project are changed by a person in LotsTeam. If they ask for one of those, say it is done from the dashboard and continue with the work they also asked for. Creating a project, updating its settings, connecting a custom portal domain, and inviting people and changing their roles and project access are agent tools (see SKILL.md).

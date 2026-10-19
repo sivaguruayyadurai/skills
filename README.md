@@ -1,6 +1,6 @@
 # LotsTech Skills
 
-Official agent skills for the [LotsTech](https://www.lotstech.com) products. Lots products are run from the AI agent you already use (ChatGPT, Claude or any MCP client), with a full dashboard that does everything too. A skill teaches your agent the tools, rules and conventions of one product so it works there correctly without step-by-step prompting.
+Official agent skills for the [LotsTech](https://www.lotstech.com) products. Connect ChatGPT, Claude or any MCP client to a Lots product, and its skill teaches the assistant that product's tools, rules and conventions so it works correctly without step-by-step prompting. Every product also has a full dashboard.
 
 ## Install
 
@@ -18,6 +18,9 @@ npx skills add sivaguruayyadurai/skills --skill lots-crm
 npx skills add sivaguruayyadurai/skills --skill lots-notes
 npx skills add sivaguruayyadurai/skills --skill lots-link
 npx skills add sivaguruayyadurai/skills --skill lots-business
+npx skills add sivaguruayyadurai/skills --skill lots-mail
+npx skills add sivaguruayyadurai/skills --skill lots-invoice
+npx skills add sivaguruayyadurai/skills --skill lots-commerce
 
 # Install all of them
 npx skills add sivaguruayyadurai/skills --skill '*'
@@ -36,6 +39,9 @@ Add `-a claude-code` (or another agent name) to target one agent, and `-g` to in
 | [lots-notes](./lots-notes/) | [LotsNotes](https://lotsnotes.com) | `https://api.lotsnotes.com/mcp` | Shared business context: workspaces, folders, AGENTS.md and notes every agent reads |
 | [lots-link](./lots-link/) | [LotsLink](https://lots.link) | `https://api.lots.link/mcp` | Free, unlimited short links, QR codes, campaign projects, your own domains and click analytics |
 | [lots-business](./lots-business/) | [LotsBusiness](https://lots.business) | `https://api.lots.business/mcp` | A business's website, Google Business Profile, local directory listings, business email and website messages, for owners and agencies |
+| [lots-mail](./lots-mail/) | [LotsMail](https://lotsmail.to) | `https://api.lotsmail.to/mcp` | Business email on your own domain: mailboxes, team access, search, drafts and sending with your approval |
+| [lots-invoice](./lots-invoice/) | [LotsInvoice](https://lotsinvoice.com) | `https://api.lotsinvoice.com/mcp` | Invoices, estimates, credit notes, customers, recorded payments and reminders |
+| [lots-commerce](./lots-commerce/) | [LotsCommerce](https://lotscommerce.com) | `https://api.lotscommerce.com/mcp` | Online stores: products, stock, orders, refunds, discounts and payment connections |
 
 LotsDirectory publishes its skill on its own site: [lots.directory/skill.md](https://lots.directory/skill.md) (MCP endpoint `https://api.lots.directory/mcp`).
 
