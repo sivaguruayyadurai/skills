@@ -20,7 +20,7 @@ Use `https://api.lotsmail.to/mcp` as a remote MCP server and sign in with a Lots
 ## Start every session
 
 1. `list_mailboxes`. Work in one `mailbox_id` at a time; a shared mailbox (like support@) belongs to a team, so never mix its mail with a personal mailbox.
-2. `get_agent_access` for that mailbox. The user decides, per mailbox, whether you may read and search, write drafts, and send. **Sending is off until they turn it on** in LotsMail settings (https://lotsmail.to/app/settings). If a tool is refused, tell the user what to change; do not retry or work around it.
+2. `get_agent_access` for that mailbox. The user decides, per mailbox, whether you may read and search, write drafts, and send. **Sending is off until they turn it on** in LotsMail settings (https://lotsmail.to/console/agents). If a tool is refused, tell the user what to change; do not retry or work around it.
 
 ## Read safely
 
@@ -38,7 +38,7 @@ Use `https://api.lotsmail.to/mcp` as a remote MCP server and sign in with a Lots
 
 ## Organize
 
-`update_messages` marks read or unread, stars, and moves to inbox, archive, trash or spam. Nothing is deleted: Trash and Spam are kept 30 days.
+`update_messages` marks read or unread, stars, and moves to inbox, archive, trash or spam. Messages in Trash or Spam are kept for 30 days, then deleted.
 
 ## What you cannot do
 
