@@ -11,7 +11,7 @@ metadata:
 
 # LotsInvoice
 
-LotsInvoice gets the user paid from the agent they already use. You create and send invoices, estimates and credit notes, record payments, chase late invoices and report what is owed. LotsInvoice calculates every total exactly, numbers and locks documents when they are sent, renders the PDF, emails it, runs the client portal and the reminders. The user can do all of it in the dashboard at https://lotsinvoice.com/app too.
+LotsInvoice lets the user bill clients and follow up on payment from the agent they already use. You create and send invoices, estimates and credit notes, record payments, chase late invoices and report what is owed. LotsInvoice calculates every total exactly, numbers and locks documents when they are sent, renders the PDF, emails it, runs the client portal and the reminders. The user can do all of it in the dashboard at https://lotsinvoice.com/app too.
 
 ## Connect
 
