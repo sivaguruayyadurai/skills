@@ -22,10 +22,10 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 | Tool Slug | Description | Key Parameters |
 |-----------|-------------|----------------|
 | `lotslink_list_links` | List links with filtering, search, and pagination | `workspace_id` (required), `project_id?`, `status?` (all/active/inactive/expired), `search?`, `sort_by?`, `limit?`, `page?` |
-| `lotslink_get_link` | Get link details including metadata, UTM params, click count and `qr_code_url` | `workspace_id`, `link_id` |
+| `lotslink_get_link` | Get link details including metadata, UTM params, click count, `qr_code_url` and `destination_changes` | `workspace_id`, `link_id` |
 | `lotslink_create_link` | Create a shortened link (up to 1,000 new links per person in any 24 hours) | See below |
 | `lotslink_create_qr_code` | Make a PNG QR code for the link's short URL; returns `qr_code_url` and saves it on the link (Owner/Admin any link, members their own) | `workspace_id`, `link_id`, `size?` (150-1024, default 512), `foreground_color?`, `background_color?` (hex) |
-| `lotslink_update_link` | Update link properties | `workspace_id` (required), `link_id` (required), `custom_slug?`, `is_active?`, `expires_at?`, `project_id?` |
+| `lotslink_update_link` | Change the destination (slug, short URL and QR code stay the same), slug, expiry, project or active status (Owner/Admin any link, members their own) | `workspace_id` (required), `link_id` (required), `original_url?`, `custom_slug?`, `is_active?`, `expires_at?`, `project_id?` |
 | `lotslink_delete_link` | Permanently delete a link (own links; Owner/Admin for any) | `workspace_id`, `link_id` |
 | `lotslink_bulk_activate_links` | Activate multiple links at once (Owner/Admin only) | `workspace_id`, `link_ids` (array) |
 | `lotslink_bulk_deactivate_links` | Deactivate multiple links at once (Owner/Admin only) | `workspace_id`, `link_ids` (array) |
