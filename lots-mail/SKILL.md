@@ -21,6 +21,7 @@ Use `https://api.lotsmail.to/mcp` as a remote MCP server and sign in with a Lots
 
 1. `list_mailboxes`. Work in one `mailbox_id` at a time; a shared mailbox (like support@) belongs to a team, so never mix its mail with a personal mailbox.
 2. `get_agent_access` for that mailbox. The user decides, per mailbox, whether you may read and search, write drafts, and send. **Sending is off until they turn it on** in LotsMail settings (https://lotsmail.to/console/agents). If a tool is refused, tell the user what to change; do not retry or work around it.
+3. A mailbox may be **restricted**: `list_mailboxes` and `get_agent_access` show who it can receive from and send to. When `send_to` lists addresses, write only to those; any other recipient refuses the whole send (`recipient_not_allowed`). Only a workspace owner or admin changes restrictions, in the dashboard.
 
 ## Read safely
 
