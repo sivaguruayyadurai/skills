@@ -79,7 +79,7 @@ Always do this at the start of a session:
 
 2. Confirm the new page with the user, then:
    lotslink_update_link(workspace_id, link_id, original_url="https://example.com/event-2027")
-   → Same slug, short URL and QR code; the next scan opens the new page
+   → Same slug, short URL and QR code; within a minute every scan opens the new page
 
 3. lotslink_get_link(workspace_id, link_id)
    → destination_changes shows when it changed; clicks before and after stay on the link
