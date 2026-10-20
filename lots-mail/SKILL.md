@@ -32,6 +32,7 @@ Use `https://api.lotsmail.to/mcp` as a remote MCP server and sign in with a Lots
 
 - Prefer **drafts**: `create_draft` (with `reply_to_message_id` for a reply) leaves the message for the user to review and send. Tell them a draft is waiting in Drafts.
 - Send only when the user has asked you to and has allowed sending: `reply_to_thread` (LotsMail fills in recipients, subject and threading), `send_draft`, or `send_email`.
+- Write the body as `text`, `html` or both. Use `html` for tables, headings and formatted reports; LotsMail removes scripts, event handlers, forms and unsafe links, and writes the plain-text part from the HTML when `text` is empty.
 - **Every send needs an `idempotency_key`.** Use one key per intended message and reuse it if you retry; LotsMail then returns the original send instead of sending twice.
 - `get_send_status`: `accepted` means the mail provider took it, not that it arrived. Each recipient becomes `delivered`, `bounced` or `delayed`. A send in an unknown state is never resent automatically; tell the user rather than sending again.
 - Never send bulk, marketing or cold email. Every send counts against the domain's monthly sending allowance, one per recipient.
