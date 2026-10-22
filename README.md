@@ -41,7 +41,7 @@ Add `-a claude-code` (or another agent name) to target one agent, and `-g` to in
 | [lots-business](./lots-business/) | [LotsBusiness](https://lots.business) | `https://api.lots.business/mcp` | A business's website, Google Business Profile, local directory listings, business email and website messages, for owners and agencies |
 | [lots-mail](./lots-mail/) | [LotsMail](https://lotsmail.to) | `https://api.lotsmail.to/mcp` | Business email on your own domain: mailboxes, team access, search, drafts and sending with your approval |
 | [lots-invoice](./lots-invoice/) | [LotsInvoice](https://lotsinvoice.com) | `https://api.lotsinvoice.com/mcp` | Invoices, estimates, credit notes, customers, recorded payments and reminders |
-| [lots-commerce](./lots-commerce/) | [LotsCommerce](https://lotscommerce.com) | `https://api.lotscommerce.com/mcp` | Online stores: products, stock, orders, refunds, discounts and payment connections |
+| [lots-commerce](./lots-commerce/) | [LotsCommerce](https://lotsstore.app) | `https://api.lotsstore.app/mcp` | Online stores: products, stock, orders, refunds, discounts and payment connections |
 
 LotsDirectory publishes its skill on its own site: [lots.directory/skill.md](https://lots.directory/skill.md) (MCP endpoint `https://api.lots.directory/mcp`).
 

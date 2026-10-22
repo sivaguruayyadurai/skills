@@ -1,6 +1,6 @@
 # LotsCommerce tools
 
-Read the live list and schemas from the connected server (also published without sign-in at https://api.lotscommerce.com/tools.json). This page groups them by job.
+Read the live list and schemas from the connected server (also published without sign-in at https://api.lotsstore.app/tools.json). This page groups them by job.
 
 ## Stores and storefront
 - `list_stores`, `get_store`: the stores you can access, with address, status, country, currency and your role.
@@ -44,7 +44,7 @@ Read the live list and schemas from the connected server (also published without
 - `get_tax_settings`, `update_tax_settings`.
 
 ## Domains
-- `list_custom_domains`, `add_custom_domain` (returns one CNAME to customers.lotscommerce.com), `verify_custom_domain`, `delete_custom_domain`.
+- `list_custom_domains`, `add_custom_domain` (returns one CNAME to customers.mylots.store), `verify_custom_domain`, `delete_custom_domain`.
 
 ## Team
 - `list_store_members`, `add_store_member` (sends an invitation; access starts when they accept, 14 days), `update_store_member`, `remove_store_member` (also cancels a pending invitation). Roles: admin, manager, staff, viewer.
