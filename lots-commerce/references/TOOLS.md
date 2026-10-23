@@ -1,4 +1,4 @@
-# LotsCommerce tools
+# LotsStore tools
 
 Read the live list and schemas from the connected server (also published without sign-in at https://api.lotsstore.app/tools.json). This page groups them by job.
 

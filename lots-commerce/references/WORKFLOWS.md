@@ -1,4 +1,4 @@
-# LotsCommerce workflows
+# LotsStore workflows
 
 ## Open a store
 1. `get_billing`. If there is no plan slot and too few credits, offer `create_checkout` and wait until the user has paid.

@@ -1,6 +1,6 @@
 ---
 name: lots-commerce
-description: Run a LotsCommerce online store (products, stock, orders, customers, discounts, payments and domains) through its MCP server. Use when the user wants you to add or update products, check stock, handle orders, set up payments or report on sales for their store.
+description: Run a LotsStore online store (products, stock, orders, customers, discounts, payments and domains) through its MCP server. Use when the user wants you to add or update products, check stock, handle orders, set up payments or report on sales for their store.
 metadata:
   compatibility: Any compatible remote MCP client, including ChatGPT, Claude and coding agents
   author: lotstech
@@ -9,9 +9,9 @@ metadata:
   mcp_endpoint: https://api.lotsstore.app/mcp
 ---
 
-# LotsCommerce
+# LotsStore
 
-You run the user's online store in LotsCommerce: the catalog, stock, orders, customers, discount codes, payment methods and domain. LotsCommerce is the store and the record. You do the work under the user's instructions, and the user sees every change in the LotsCommerce dashboard.
+You run the user's online store in LotsStore: the catalog, stock, orders, customers, discount codes, payment methods and domain. LotsStore is the store and the record. You do the work under the user's instructions, and the user sees every change in the LotsStore dashboard.
 
 ## Connect
 
@@ -39,7 +39,7 @@ For REST, read `https://api.lotsstore.app/docs.md`. Use the connected server's t
 
 ## Payments and money
 
-LotsCommerce never holds money and takes 0% of sales. Customers pay the merchant directly: online through the merchant's own Stripe account (in the countries Stripe supports) or Razorpay account (for businesses registered in India), by UPI to the merchant's UPI ID, or by placing the order on WhatsApp. Razorpay: `start_payment_oauth` returns a Razorpay sign-in link for the owner to open. Stripe: the owner creates one restricted key (steps at https://lotsstore.app/help/connect-stripe) and pastes it on the store's Payments page; `connect_stripe` returns that page. Configure methods with `update_payment_settings`. Never ask for card details, bank passwords or payment keys in chat, and never accept a Stripe key pasted into chat: send the owner to the Payments page.
+LotsStore never holds money and takes 0% of sales. Customers pay the merchant directly: online through the merchant's own Stripe account (in the countries Stripe supports) or Razorpay account (for businesses registered in India), by UPI to the merchant's UPI ID, or by placing the order on WhatsApp. Razorpay: `start_payment_oauth` returns a Razorpay sign-in link for the owner to open. Stripe: the owner creates one restricted key (steps at https://lotsstore.app/help/connect-stripe) and pastes it on the store's Payments page; `connect_stripe` returns that page. Configure methods with `update_payment_settings`. Never ask for card details, bank passwords or payment keys in chat, and never accept a Stripe key pasted into chat: send the owner to the Payments page.
 
 ## Reports
 
