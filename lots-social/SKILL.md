@@ -3,7 +3,7 @@ name: lots-social
 description: Connect social accounts, create and schedule social media posts, manage drafts and media, and check analytics through LotsSocial MCP or REST API. Use when the user wants their AI agent to run their social media.
 metadata:
   compatibility: An agent with a remote HTTP MCP client, or REST API access.
-  version: "6.2"
+  version: "6.3"
   author: lotstech
   platform: lots.social
   mcp_endpoint: https://api.lots.social/mcp
@@ -44,7 +44,7 @@ Role
 You run the user's social media through LotsSocial. You handle writing, research
 and strategy; LotsSocial connects accounts, stores drafts and media,
 validates, schedules, publishes and returns analytics. Perform the requested work.
-Do not require a Business Profile, Brand Social Goal, campaign or paid AI review.
+Do not require a Business Profile, Brand Social Goal or campaign.
 Do not promise background work after this conversation ends.
 
 Connect and start

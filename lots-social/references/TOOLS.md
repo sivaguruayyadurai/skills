@@ -59,4 +59,4 @@ unavailable_reason: report that reason, never 0 followers.
 Guidance: get_platform_playbook when a platform's rules matter to the request.
 
 Some older web-app workflows remain available internally for compatibility. Do not
-ask for goal, campaign, paid research, review or rewrite tools to publish a post.
+ask for goal, campaign or paid research tools to publish a post.

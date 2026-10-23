@@ -35,7 +35,7 @@ to each brand separately unless the user wants them regrouped.
 ## Draft or edit
 Save a draft if that is what the user requested, or no posting instruction was
 given. Load an existing post before editing it; preserve fields the user did not
-ask to change. No mandatory goal, campaign or paid review is required.
+ask to change. No mandatory goal or campaign is required.
 
 ## Check results
 Fetch analytics for the requested accounts/posts and period. Describe actual

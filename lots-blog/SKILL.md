@@ -2,12 +2,11 @@
 name: lots-blog
 description: >-
   Operate the user's blog through LotsBlog MCP: create and update articles, upload
-  images, manage topics, schedule and publish, read analytics, and request an
-  optional paid article quality check.
+  images, manage topics, schedule and publish, and read analytics.
 metadata:
   compatibility: Agents supporting authenticated HTTP MCP
   author: lotstech
-  version: "3.4"
+  version: "3.5"
   platform: lots.blog
   mcp_endpoint: https://api.lots.blog/mcp
 ---
@@ -36,13 +35,7 @@ List existing posts and topics before creating duplicates. Create articles as dr
 
 ## Prepare articles for search and AI discovery
 
-Write direct answers, useful headings and supported claims with visible sources. LotsBlog generates Article/NewsArticle and breadcrumb schema. Use structured_data for supplemental schema such as FAQPage only when it matches visible questions and answers; an object or array is accepted. Never claim automatic rankings or AI citations. The optional quality check includes search intent, AEO answer quality, evidence and structure.
-
-## Optional article quality check
-
-Offer `run_post_quality_check` as a second editorial opinion when useful. It uses a separate direct model task and model/token-based LotsTech Credits charged to the blog owner. Set `authorize_charge=true` when the user requests this paid quality check. Do not add a separate resource funding approval step. Explain that the final cost varies with article length and model input/output usage; do not guess a fixed price. The dashboard also offers review.
-
-Review findings apply to the saved revision; subsequent edits can make them stale. Explain material findings and revise within the user's scope. Review is optional and never a publishing gate. A score does not establish factual accuracy, ranking potential or AI citations. Your own assessment is not the paid independent review. Do not repeatedly charge for reviews just to chase a score.
+Write direct answers, useful headings and supported claims with visible sources. LotsBlog generates Article/NewsArticle and breadcrumb schema. Use structured_data for supplemental schema such as FAQPage only when it matches visible questions and answers; an object or array is accepted. Never claim automatic rankings or AI citations.
 
 ## Schedule, publish and report
 
@@ -54,4 +47,4 @@ Read available blog/post analytics when requested. Page views do not establish s
 
 ## Billing
 
-Monthly/yearly plans remain available; consult current pricing for their exact service and allowances. Optional paid review uses credits. Writing in your existing AI client uses that client's service. Never invent hosting limits, prices, free grants or entitlements. Credits are usable across Lots products and belong to the user's own wallet.
+Monthly/yearly plans remain available; consult current pricing for their exact service and allowances. Writing in your existing AI client uses that client's service. Never invent hosting limits, prices, free grants or entitlements. Credits are usable across Lots products and belong to the user's own wallet.
