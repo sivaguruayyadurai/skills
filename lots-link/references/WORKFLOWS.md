@@ -128,7 +128,7 @@ Always do this at the start of a session:
 2. Extract link_ids from the response
 
 3. lotslink_bulk_deactivate_links(workspace_id, link_ids=["<id1>", "<id2>", ...])
-   → Deactivate all at once (Owner/Admin only)
+   → Deactivate all at once (Owner/Admin any link; members only their own, the rest come back in `failed`)
 
 4. lotslink_list_links(workspace_id, project_id, status="inactive")
    → Verify all links are now inactive

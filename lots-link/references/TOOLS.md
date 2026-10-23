@@ -27,9 +27,9 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 | `lotslink_create_qr_code` | Make a PNG QR code for the link's short URL; returns `qr_code_url` and saves it on the link (Owner/Admin any link, members their own) | `workspace_id`, `link_id`, `size?` (150-1024, default 512), `foreground_color?`, `background_color?` (hex) |
 | `lotslink_update_link` | Change the destination (slug, short URL and QR code stay the same), slug, expiry, project or active status (Owner/Admin any link, members their own) | `workspace_id` (required), `link_id` (required), `original_url?`, `custom_slug?`, `is_active?`, `expires_at?`, `project_id?` |
 | `lotslink_delete_link` | Permanently delete a link (own links; Owner/Admin for any) | `workspace_id`, `link_id` |
-| `lotslink_bulk_activate_links` | Activate multiple links at once (Owner/Admin only) | `workspace_id`, `link_ids` (array) |
-| `lotslink_bulk_deactivate_links` | Deactivate multiple links at once (Owner/Admin only) | `workspace_id`, `link_ids` (array) |
-| `lotslink_bulk_delete_links` | Permanently delete multiple links (Owner/Admin only) | `workspace_id`, `link_ids` (array) |
+| `lotslink_bulk_activate_links` | Activate up to 100 links at once (Owner/Admin any link, members their own; links you may not change come back in `failed`) | `workspace_id`, `link_ids` (array) |
+| `lotslink_bulk_deactivate_links` | Deactivate up to 100 links at once (Owner/Admin any link, members their own; links you may not change come back in `failed`) | `workspace_id`, `link_ids` (array) |
+| `lotslink_bulk_delete_links` | Permanently delete up to 100 links (Owner/Admin any link, members their own; links you may not delete come back in `failed`) | `workspace_id`, `link_ids` (array) |
 
 ### `lotslink_create_link` Parameters
 
@@ -55,10 +55,10 @@ Note: All lots.link tool slugs are prefixed with `lotslink_`.
 |-----------|-------------|----------------|
 | `lotslink_list_projects` | List all projects with link counts | `workspace_id`, `include_archived?` |
 | `lotslink_get_project` | Get project details and link count | `workspace_id`, `project_id` |
-| `lotslink_create_project` | Create a project for organizing links | `workspace_id`, `name`, `description?`, `color?`, `client_info?` |
-| `lotslink_update_project` | Update project details | `workspace_id`, `project_id`, `name?`, `description?`, `color?` |
-| `lotslink_archive_project` | Archive a project (soft delete; links remain accessible) | `workspace_id`, `project_id` |
-| `lotslink_delete_project` | Permanently delete a project (no active links allowed) | `workspace_id`, `project_id` |
+| `lotslink_create_project` | Create a project for organizing links (Owner/Admin) | `workspace_id`, `name`, `description?`, `color?`, `client_info?` |
+| `lotslink_update_project` | Update project details, or archive/restore with `is_archived` (Owner/Admin) | `workspace_id`, `project_id`, `name?`, `description?`, `color?` |
+| `lotslink_archive_project` | Archive a project (soft delete; links remain accessible; Owner/Admin) | `workspace_id`, `project_id` |
+| `lotslink_delete_project` | Permanently delete a project (no links allowed; Owner/Admin) | `workspace_id`, `project_id` |
 
 ---
 
