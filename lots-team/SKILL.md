@@ -23,7 +23,7 @@ Use `get_funding_status` for current subscription coverage, credit funding and r
 
 **MCP endpoint:** `https://api.lots.team/mcp`
 
-Add it as a custom connector. Claude: Customize → Connectors → + Add → Add custom connector. ChatGPT (web): go to Plugins, select +, then Add custom MCP server, name it LotsTeam, enter the URL under Connection, choose OAuth, tick I understand and want to continue, then select Create as a plugin; install it, and in a new chat type @ and select LotsTeam. Custom MCP servers with full MCP, read and write, are on ChatGPT Business, Enterprise and Edu, on the web only. On Business, only admins and owners can add them; on Enterprise and Edu, admins can also give other members permission. Pro can connect custom MCP servers with read and fetch permissions only. The person signs in with the email they use for LotsTeam. No key is pasted into the chat.
+Add it as a custom connector. Claude: Customize → Connectors → + Add → Add custom connector. ChatGPT (web): go to Plugins, select +, then Add custom MCP server, name it LotsTeam, enter the URL under Connection, choose OAuth, tick I understand and want to continue, then select Create as a plugin; install it, and in a new chat type @ and select LotsTeam. Which ChatGPT plans can add custom MCP servers, who can add them and with which permissions is OpenAI's decision and changes; check the current limits in your ChatGPT plan's connector settings or https://help.openai.com/en/articles/12584461-connecting-custom-mcp-servers-in-chatgpt. The person signs in with the email they use for LotsTeam. No key is pasted into the chat.
 
 Clients that take a config file can use the same URL:
 
