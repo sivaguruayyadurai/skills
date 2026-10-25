@@ -61,7 +61,7 @@ The public portal can also show a board of tasks the team chose to share. That b
 ## What you can do
 
 - Read the organization and its projects. Create a project (it is billed: plan first, then credits; confirm with the person first), update its name, description, logo and portal settings, and connect a custom portal domain (`add_project_domain`, then `verify_project_domain` after the person adds the DNS record).
-- List, read, create, and update posts. Comment on a post. Create a post to log a request the person heard outside the widget, such as on a sales call.
+- List, read, create, and update posts. Comment on a post. Comments are posted as the signed-in account: leave `user_name`, `user_email` and `is_admin` out unless the person asks for a label for their own comment (such as "Support agent"), and never use them to post as someone else. Create a post to log a request the person heard outside the widget, such as on a sales call.
 - List, create, and update tasks. Comment on a task. Link posts to a task (a task can carry many) and unlink one. `list_tasks` with `sort: "priority"` lists urgent first.
 - List support threads and reply on one.
 - Draft, update, and publish changelog entries. Delete an unpublished draft (`delete_changelog`, owners and admins); a published entry must be unpublished first.
