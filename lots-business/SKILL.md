@@ -34,7 +34,7 @@ For REST, read `https://api.lots.business/docs.md`. Use the connected server's t
 
 ## Free and paid
 
-A listing in the directory is free. Paying for a business (a plan covers 1, 5 or 25 businesses, or credits pay per business) unlocks its website, custom domain, Google Business Profile creation and posts, the directory list and listing pack, business email and website messages. `get_billing` shows the plan, the funding state and the exact prices; do not quote prices from memory. `activate_business` makes a business paid; ask first. `create_checkout` returns a link the owner opens to pay; never ask for card details in chat. A return from checkout does not prove payment: check `get_billing` again. A paid tool on an unpaid business answers with what to do next; pass that on rather than retrying.
+A listing in the directory is free. Paying for a business (a plan covers a number of businesses, or credits pay per business) unlocks its website, custom domain, Google Business Profile creation and posts, the directory list and listing pack, business email and website messages. `get_billing` shows the plan, the funding state and the exact prices; do not quote prices from memory. `activate_business` makes a business paid; ask first. `create_checkout` returns a link the owner opens to pay; never ask for card details in chat. A return from checkout does not prove payment: check `get_billing` again. A paid tool on an unpaid business answers with what to do next; pass that on rather than retrying.
 
 ## Websites
 
