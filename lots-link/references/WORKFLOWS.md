@@ -164,7 +164,7 @@ Always do this at the start of a session:
    → Confirm domain is verified and active
 
 6. [Now use domain when creating links:]
-   lotslink_create_link(workspace_id, original_url="...", domain_id="<custom_domain_id>")
+   lotslink_create_link(workspace_id, original_url="...", custom_domain_id="<custom_domain_id>")
 ```
 
 ---
