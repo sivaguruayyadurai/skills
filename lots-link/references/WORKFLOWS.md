@@ -127,7 +127,8 @@ Always do this at the start of a session:
 
 2. Extract link_ids from the response
 
-3. lotslink_bulk_deactivate_links(workspace_id, link_ids=["<id1>", "<id2>", ...])
+3. Show the user the links and confirm, then:
+   lotslink_bulk_deactivate_links(workspace_id, link_ids=["<id1>", "<id2>", ...])
    → Deactivate all at once (Owner/Admin any link; members only their own, the rest come back in `failed`)
 
 4. lotslink_list_links(workspace_id, project_id, status="inactive")
@@ -181,8 +182,12 @@ Always do this at the start of a session:
    → Check if it still gets traffic (someone may have bookmarked it)
 
 3a. If no recent traffic:
+    List these links for the user and ask what to do with each. Prefer deactivating:
+    lotslink_update_link(workspace_id, link_id, is_active=false)
+    → Stops the redirect and keeps the slug, QR code and history; it can be undone
+    Delete only the links the user names and confirms:
     lotslink_delete_link(workspace_id, link_id)
-    → Clean up
+    → Permanent: it cannot be undone, and printed QR codes may still be in use
 
 3b. If still getting traffic:
     lotslink_update_link(workspace_id, link_id, expires_at=null)
