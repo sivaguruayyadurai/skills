@@ -17,7 +17,7 @@ LotsNotes holds the business context the user wants every AI agent to share: pos
 
 Use `https://api.lotsnotes.com/mcp` with your client's remote MCP connection. The user signs in with their Lots account; no key is pasted into the chat. If these tools are not connected, give the user that URL and the setup steps for your client (https://lotsnotes.com/mcp lists them for Claude, ChatGPT, Codex, Cursor and others).
 
-Cloud agents and code without MCP use the REST API: read `https://api.lotsnotes.com/docs.md` and use an API key the user creates at `https://api.lotsnotes.com/dashboard`. Never ask the user to paste a key into chat if your client can hold it as a secret.
+Cloud agents and code without MCP use the REST API: read `https://api.lotsnotes.com/docs.md` and use an API key the user creates at `https://api.lotsnotes.com/dashboard`. Never ask the user to paste a key into chat. Use the client's secret store or the OAuth connection.
 
 Discover the current tool schemas from the server; they take precedence over this guide.
 
