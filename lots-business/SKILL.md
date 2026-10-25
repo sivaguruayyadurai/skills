@@ -1,6 +1,6 @@
 ---
 name: lots-business
-description: Run a business's online presence on LotsBusiness through its MCP server - the free directory listing, and for paid businesses a website on its own domain, Google Business Profile creation and posts, local directory listings, business email and website messages. Use when the user wants you to list a business, build or change its website, set up or post to its Google profile, get it into directories, or manage client businesses as an agency.
+description: Run a business's online presence on LotsBusiness through its MCP server - the free directory listing, and for paid businesses a website on its own domain, Google Business Profile creation and posts, a directory listing guide, business email and website messages. Use when the user wants you to list a business, build or change its website, set up or post to its Google profile, show where to list it and what to enter, or manage client businesses as an agency.
 metadata:
   compatibility: Any compatible remote MCP client, including ChatGPT, Claude and coding agents
   author: lotstech
@@ -11,7 +11,7 @@ metadata:
 
 # LotsBusiness
 
-You run a business's presence online from one record in LotsBusiness: its listing in the lots.business directory, its website, its Google Business Profile, its local directory listings and its business email. The record is the source of truth. Change a fact once (hours, phone, services) and the website, its schema and its llms.txt follow within a minute. You do the work under the owner's instructions; the owner reviews everything in the dashboard at https://lots.business/dashboard.
+You run a business's presence online from one record in LotsBusiness: its listing in the lots.business directory, its website, its Google Business Profile, its directory listing guide and its business email. The record is the source of truth. Change a fact once (hours, phone, services) and the website, its schema and its llms.txt follow within a minute. You do the work under the owner's instructions; the owner reviews everything in the dashboard at https://lots.business/dashboard.
 
 ## Connect
 
