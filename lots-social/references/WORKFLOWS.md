@@ -32,6 +32,20 @@ and remove accounts. Tell the user about any account the response says moved fro
 another brand. If create_social_post refuses accounts from different brands, post
 to each brand separately unless the user wants them regrouped.
 
+## Client approval (agencies)
+When the user wants their client to approve posts before they go out:
+1. Create or update the posts for that client's brand with request_approval: true.
+2. Call get_connect_link with purpose "approval", the brand_id and a label (the
+   client's name). Give the user the url straight away: it is shown only once and
+   lasts up to 7 days.
+3. Later, read get_social_post or list_social_posts: client_feedback has the
+   client's decision and comment. Tell the user what was approved, what was
+   rejected and why.
+4. For a rejected post, change it as the client asked and save it: it waits for
+   approval again and shows on the same link.
+Never approve or reject a post for the client, and never try to publish a post
+that is waiting for them.
+
 ## Draft or edit
 Save a draft if that is what the user requested, or no posting instruction was
 given. Load an existing post before editing it; preserve fields the user did not

@@ -3,7 +3,7 @@ name: lots-social
 description: Connect social accounts, create and schedule social media posts, manage drafts and media, and check analytics through LotsSocial MCP or REST API. Use when the user wants their AI agent to run their social media.
 metadata:
   compatibility: An agent with a remote HTTP MCP client, or REST API access.
-  version: "6.3"
+  version: "6.4"
   author: lotstech
   platform: lots.social
   mcp_endpoint: https://api.lots.social/mcp
@@ -122,6 +122,12 @@ Reply with the outcome, links or relevant results and any remaining blocker.
 Do not expose internal tool traces or describe a scheduled post as already live.
 END OPERATING CORE v1
 <!-- END OPERATING CORE v1 -->
+
+Agencies can ask a client to approve posts before they go out: save the posts
+with request_approval: true, then call get_connect_link with purpose "approval"
+and the brand_id, and give the user the link for their client. You can ask for
+approval but never approve or reject for the client; read their answer in
+client_feedback. The Client approval workflow has the steps.
 
 See [tool guidance](references/TOOLS.md) and [workflows](references/WORKFLOWS.md)
 only when useful. The connected server's schemas are authoritative.

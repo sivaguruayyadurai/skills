@@ -17,6 +17,24 @@ shows each link's status (active, expired or revoked) and accounts_connected;
 revoke_connect_link (REST DELETE /connect-links/{link_id}) stops a link, and the
 accounts already connected through it stay. Whoever opens a client link sees
 only the accounts connected through that link, never the rest of the brand.
+Client approval links: when an agency's client should approve posts before they
+go out, save the posts with request_approval: true (create_social_post or
+update_social_post; never together with publish_now), then call get_connect_link
+with purpose "approval", brand_id (required), a label (the client's name) and
+optionally post_ids (up to 100 posts of that brand, put in waiting for approval
+at the same time). Without post_ids the link shows every post of the brand that
+waits for approval. The client opens the link without a LotsSocial login and
+approves or rejects each post with an optional comment. A post waiting for
+approval, or rejected, never publishes; an approved post goes out on its
+schedule, at once if its time has already passed. Changing the caption, title,
+link, accounts or media of an approved or rejected post asks for approval again;
+moving only the schedule does not. get_social_post and list_social_posts show
+approval_status, client_feedback (decision, comment, reviewer_name) and
+awaiting_client (an active link waits on the post). list_connect_links with
+purpose approval shows each link's posts, views and decisions; revoke_connect_link
+cancels it. You can ask for approval, but you never approve or reject for the
+client: no tool does it, and publish_now on a post waiting for the client is
+refused.
 Brands: create_brand and update_brand group a workspace's accounts (one company
 or client each) and move accounts between brands; moves are reported. Pass
 brand_id when posting for a brand, or to get_connect_link to connect into it.
