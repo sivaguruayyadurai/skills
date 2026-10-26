@@ -28,8 +28,6 @@ npx skills add sivaguruayyadurai/skills --skill '*'
 
 Add `-a claude-code` (or another agent name) to target one agent, and `-g` to install for your user instead of the current project.
 
-The LotsStore skill was called `lots-commerce` before 26 October 2026. `--skill lots-commerce` still installs a short stub that points to `lots-store`; use `lots-store` for new installs.
-
 ## Available Skills
 
 | Skill | Product | MCP endpoint | What your agent can do |
