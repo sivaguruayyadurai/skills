@@ -20,13 +20,15 @@ npx skills add sivaguruayyadurai/skills --skill lots-link
 npx skills add sivaguruayyadurai/skills --skill lots-business
 npx skills add sivaguruayyadurai/skills --skill lots-mail
 npx skills add sivaguruayyadurai/skills --skill lots-invoice
-npx skills add sivaguruayyadurai/skills --skill lots-commerce
+npx skills add sivaguruayyadurai/skills --skill lots-store
 
 # Install all of them
 npx skills add sivaguruayyadurai/skills --skill '*'
 ```
 
 Add `-a claude-code` (or another agent name) to target one agent, and `-g` to install for your user instead of the current project.
+
+The LotsStore skill was called `lots-commerce` before 26 October 2026. `--skill lots-commerce` still installs a short stub that points to `lots-store`; use `lots-store` for new installs.
 
 ## Available Skills
 
@@ -41,7 +43,7 @@ Add `-a claude-code` (or another agent name) to target one agent, and `-g` to in
 | [lots-business](./lots-business/) | [LotsBusiness](https://lots.business) | `https://api.lots.business/mcp` | A business's website, Google Business Profile, local directory listings, business email and website messages, for owners and agencies |
 | [lots-mail](./lots-mail/) | [LotsMail](https://lotsmail.to) | `https://api.lotsmail.to/mcp` | Business email on your own domain: mailboxes, team access, search, drafts and sending with your approval |
 | [lots-invoice](./lots-invoice/) | [LotsInvoice](https://lotsinvoice.com) | `https://api.lotsinvoice.com/mcp` | Invoices, estimates, credit notes, customers, recorded payments and reminders |
-| [lots-commerce](./lots-commerce/) | [LotsStore](https://lotsstore.app) | `https://api.lotsstore.app/mcp` | Online stores: products, stock, orders, refunds, discounts and payment connections |
+| [lots-store](./lots-store/) | [LotsStore](https://lotsstore.app) | `https://api.lotsstore.app/mcp` | Online stores: products, stock, orders, refunds, discounts and payment connections |
 
 LotsDirectory publishes its skill on its own site: [lots.directory/skill.md](https://lots.directory/skill.md) (MCP endpoint `https://api.lots.directory/mcp`).
 
