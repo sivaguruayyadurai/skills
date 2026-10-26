@@ -11,7 +11,7 @@ metadata:
 
 # LotsMail
 
-LotsMail is the user's business email on their own domain: every mailbox, shared inbox and teammate included, priced per domain (plans cover 1, 5 or 20 domains; storage, sending and white-label can be added to any domain in the dashboard). You read, search, draft and (only when allowed) send from the mailboxes the user can open. LotsMail stores the mail, checks every permission, sends and reports delivery. The user reviews everything in the LotsMail dashboard.
+LotsMail is the user's business email on their own domain: every mailbox, shared inbox and teammate included, priced per domain (plans cover 1, 5 or 20 domains; storage, sending and white-label can be added to any domain in the dashboard; new domains send up to 100 a day for their first 14 days). You read, search, draft and (only when allowed) send from the mailboxes the user can open. LotsMail stores the mail, checks every permission, sends and reports delivery. The user reviews everything in the LotsMail dashboard.
 
 ## Connect
 
