@@ -19,9 +19,17 @@
 | `start_domain_setup` | Steps and link for the owner to connect a domain | read |
 | `get_billing` | How the user's domains are paid for: plan or credits, balance, plans to choose from | read |
 | `create_checkout` | A checkout link for a plan (`plan`, `cycle`) or credits (`amount_usd`) for the person to open | owner |
+| `list_groups` | Groups, their members and the domains for new groups (`workspace_id` optional) | owner or admin, read |
+| `create_group` | New group address with members (`address`, `name`, `accept_outside`, `members`) | owner or admin, write |
+| `update_group` | Change name, `local_part` or `accept_outside` | owner or admin, write |
+| `add_group_members` | Add mailboxes by id or address; ones already in are skipped | owner or admin, write |
+| `remove_group_members` | Remove mailboxes from a group (ask first) | owner or admin, delete |
+| `delete_group` | Delete a group; its address stops delivering (ask first) | owner or admin, delete |
 
 Bodies: `send_email`, `reply_to_thread`, `create_draft` and `update_draft` take `text`, `html` or both. HTML is cleaned before sending (no scripts, event handlers, frames, forms or unsafe links); when `text` is empty the plain-text part is written from the HTML. On `update_draft`, `html: ""` turns a draft back into plain text.
 
 Recipients are email addresses as strings (`"jane@example.com"` or `"Jane <jane@example.com>"`), up to 50 per message across To, Cc and Bcc.
 
 Billing: give the checkout link to the person to pay in their browser; never ask for card details. An unpaid domain cannot send (`domain_not_funded`); reading, search and drafts keep working, and stored mail is never deleted.
+
+Groups: outside senders are held in Unrouted unless `accept_outside` is true. Limits on groups per domain and members per group are the server's.

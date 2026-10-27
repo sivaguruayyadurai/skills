@@ -42,6 +42,15 @@ Use `https://api.lotsmail.to/mcp` as a remote MCP server and sign in with a Lots
 
 `update_messages` marks read or unread, stars, and moves to inbox, archive, trash or spam. Messages in Trash or Spam are kept for 30 days, then deleted.
 
+## Groups (owners and admins)
+
+A group is an address on a workspace domain (team@example.com) that delivers each incoming message to several mailboxes of the same workspace. Only a workspace owner or admin can manage groups, so their agent can too; anyone else is refused.
+
+- `list_groups` shows the groups, their members (mailbox id and address) and the domains where a group can be created.
+- `create_group`, `update_group` (name, the part of the address before @, `accept_outside`) and `add_group_members` change them. Members are mailbox ids or addresses of mailboxes in the workspace.
+- Mail from outside senders is held in Unrouted for the owner unless `accept_outside` is true; turn it on only when the user asks.
+- Ask the user before `remove_group_members` or `delete_group`; both need the Delete permission on the connection. Limits are the server's: report a refusal, do not work around it.
+
 ## What you cannot do
 
-Domains, DNS, mailboxes, team access, billing and agent permissions are the owner's, in the dashboard. `start_domain_setup` gives the owner the steps and link; `get_billing` and `create_checkout` show billing and hand the person a checkout link. Do not ask for DNS logins, card details or passwords.
+Domains, DNS, mailboxes, team access, billing and agent permissions are the owner's, in the dashboard (groups are the exception above). `start_domain_setup` gives the owner the steps and link; `get_billing` and `create_checkout` show billing and hand the person a checkout link. Do not ask for DNS logins, card details or passwords.
