@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 // Safety lint for the skills in this repository. No dependencies.
-//   node scripts/lint-skills.mjs        (tests: node --test scripts/)
+//   node scripts/lint-skills.mjs        (tests: node --test scripts/lint-skills.test.mjs)
 // SKILLS_ROOT=<dir> lints another folder (used by the tests).
 // Fails when a skill that reads text written by other people has no
 // "untrusted" rule under a "Read safely" heading, when SKILL.md, TOOLS.md or
