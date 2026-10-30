@@ -51,7 +51,7 @@ Older paths: `create_site_version` (plain files, not editable section by section
 }
 ```
 
-Save it with `update_site_content` (`content`, `source: "agent"`), then work in `changes` with the `base_revision` you last read. `get_site_content` returns the draft and its `outline` (pages, sections by name, and each custom section's editable fields).
+Save it with `update_site_content` (`content`, `source: "agent"`), then work in `changes` with the `base_revision` you last read. Each save answers with the whole draft, so group several changes in one call rather than saving after every small edit. `get_site_content` returns the draft and its `outline` (pages, sections by name, and each custom section's editable fields).
 
 ## Custom sections
 
@@ -59,7 +59,7 @@ Save it with `update_site_content` (`content`, `source: "agent"`), then work in 
 
 - `name` is required and unique in its page; tools find sections by id or name.
 - `html`: one or more top-level elements. No `<script>`, `<html>`, `<head>`, `<body>`, `<meta>`, `<link>`. LotsBusiness adds `data-lb-section` and `data-lb-section-type` to each top-level element; never write those yourself.
-- `css`: scoped to the section by default (`@scope`); `css_scope: "site"` makes it global. `@keyframes`, `@font-face` and `@property` are kept outside the scope. No `@import`.
+- `css`: scoped to the section by default: it is wrapped in `@scope ([data-lb-section="<id>"])`. **Style the section's own top-level element with `:scope`**, not with its class: inside `@scope` a selector like `.hero{...}` only matches elements below the root, so the rules for the root itself silently do nothing and the section keeps its browser defaults. Its insides take ordinary selectors. `css_scope: "site"` makes it global. `@keyframes`, `@font-face` and `@property` are kept outside the scope. No `@import`.
 - `js`: plain JavaScript run on pages that show the section, inside its own function with `section` (its first element) and `sections` (all of them). It goes into `/scripts.js`, loaded with `defer`. Never inline handlers (`onclick=`), never `javascript:` links: the site's Content Security Policy blocks them.
 
 ### Field marks: what the owner can edit
@@ -109,6 +109,8 @@ Style the live parts by their classes (`.lb-services`, `.lb-service`, `.lb-servi
 - Up to 20 pages and 40 sections a page. `requires: "services"` (photos, faq, description, hours, booking) hides a page until the record has that fact.
 - Menus in a custom header: mark links `data-lb-nav` and `data-lb-current-class="your-class"`; the current page's link gets the class and `aria-current="page"`.
 - **Second language:** a page with `language: "ta"` (any code) at its own slug (`ta`, `ta-about`). Pages of a language share a menu; write the copy for that audience rather than translating word for word, and pick a face that covers the script.
+- **Languages and the shared header:** a custom header and footer are the same on every page, in every language. Write their few words so they work for both audiences (the brand, a language switch, one action), or give each language its own header as the first section of its pages and set `hide_header` on them.
+- **Facts the engine writes are in English** for most languages today: the hours table and its day names, today's hours, the open badge and the services price format (`CLP 9,500`). Tamil is translated; other languages are not yet. On a page in another language, put your own heading above `<lb-hours>`, and do not lead the first screen with `hours-today` in English; never type the hours as text instead, because typed hours go stale.
 - `not_found`: your own 404 page, same fields as a page.
 - `settings.trailing_slash: true` serves pages at `/about/` (keep it when moving a site whose addresses end in a slash).
 - `json_ld`: up to 10 objects a page. The engine already adds the business's own structured data from the live record (name, address or areas, phone, hours, rating); add page-specific types (FAQPage from real questions, Service, Course, Menu, BreadcrumbList), and avoid typing facts into JSON-LD that would go stale.

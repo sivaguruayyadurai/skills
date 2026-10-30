@@ -30,6 +30,7 @@ Then pick the **two or three moments** that move (an entrance, a reveal of a lis
 - **Reduced motion:** visitors who set "reduce motion" see everything in its final state, with no movement. The engine's presets do this for you. Your own script must check `matchMedia('(prefers-reduced-motion: reduce)')` and your CSS must put movement inside `@media (prefers-reduced-motion: no-preference)`.
 - **No content hidden without script:** never write CSS that hides content (`opacity: 0`) unless it only applies when your script has run (a class your script adds to `<html>` or the section) and the motion is allowed. If the script fails, everything must be visible.
 - **Nothing flashes** more than three times a second. No motion that moves the page under a reading eye (no scroll-jacking, no auto-scrolling).
+- **Motion without script:** CSS scroll-driven animations (`animation-timeline: scroll()` or `view()`) inside `@supports (animation-timeline: scroll())` and `@media (prefers-reduced-motion: no-preference)` move things with the scroll and need no JavaScript; browsers without support simply show the still state.
 - **Performance:** one small script for all motion; prefer the presets (`data-lb-animate`, see [technical-contract.md](technical-contract.md)) which load only on pages that use them. Use `IntersectionObserver`, never scroll listeners that run on every frame.
 
 ## Your own motion, safely
