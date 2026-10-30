@@ -40,7 +40,11 @@ All tools are on `https://api.lots.business/mcp`. The live list, with current de
 
 | Tool | Notes |
 |------|-------|
-| `get_site_guide` | Read before writing a site |
+| `get_site_guide` | Read before writing a site; `topic` returns a part of the premium website skill |
+| `list_site_section_types`, `get_site_content`, `update_site_content`, `preview_site_content`, `publish_site_content` | The site as sections: fixed types and custom sections (own markup, CSS, script, marked fields); draft, private preview, publish |
+| `import_static_site` | Move an existing static site exactly into a section draft (files by content or `source_url`) |
+| `screenshot_site` | Pictures of the draft, a version or the live site at desktop, tablet and phone widths |
+| `create_site_upload`, `complete_site_upload` | Big files: by `source_url` (fetched for you), or a direct PUT |
 | `list_starter_kits`, `suggest_site_kit` | Industry kits that fill themselves from the record |
 | `create_site`, `get_site` | The site and its address `<name>.lotssite.com` |
 | `create_site_version`, `upload_site_image`, `get_site_files`, `get_site_file` | Draft versions and files |

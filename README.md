@@ -18,6 +18,7 @@ npx skills add sivaguruayyadurai/skills --skill lots-crm
 npx skills add sivaguruayyadurai/skills --skill lots-notes
 npx skills add sivaguruayyadurai/skills --skill lots-link
 npx skills add sivaguruayyadurai/skills --skill lots-business
+npx skills add sivaguruayyadurai/skills --skill lots-business-premium-website
 npx skills add sivaguruayyadurai/skills --skill lots-mail
 npx skills add sivaguruayyadurai/skills --skill lots-invoice
 npx skills add sivaguruayyadurai/skills --skill lots-store
@@ -39,6 +40,7 @@ Add `-a claude-code` (or another agent name) to target one agent, and `-g` to in
 | [lots-notes](./lots-notes/) | [LotsNotes](https://lotsnotes.com) | `https://api.lotsnotes.com/mcp` | Shared business context: workspaces, folders, AGENTS.md and notes every agent reads |
 | [lots-link](./lots-link/) | [LotsLink](https://lots.link) | `https://api.lots.link/mcp` | Free, unlimited short links, QR codes, campaign projects, your own domains and click analytics |
 | [lots-business](./lots-business/) | [LotsBusiness](https://lots.business) | `https://api.lots.business/mcp` | A business's website, Google Business Profile, local directory listings, business email and website messages, for owners and agencies |
+| [lots-business-premium-website](./lots-business-premium-website/) | [LotsBusiness](https://lots.business) | `https://api.lots.business/mcp` | A premium, unique website for one business: discovery, brief, art direction, motion, build in editable custom sections, screenshots and critique, quality gate; exact site moves |
 | [lots-mail](./lots-mail/) | [LotsMail](https://lotsmail.to) | `https://api.lotsmail.to/mcp` | Business email on your own domain: mailboxes, team access, search, drafts and sending with your approval |
 | [lots-invoice](./lots-invoice/) | [LotsInvoice](https://lotsinvoice.com) | `https://api.lotsinvoice.com/mcp` | Invoices, estimates, credit notes, customers, recorded payments and reminders |
 | [lots-store](./lots-store/) | [LotsStore](https://lotsstore.app) | `https://api.lotsstore.app/mcp` | Online stores: products, stock, orders, refunds, discounts and payment connections |

@@ -38,14 +38,17 @@ A listing in the directory is free. Paying for a business (a plan covers a numbe
 
 ## Websites
 
-- Read `get_site_guide` before writing a site. It holds the build loop, the live-fact markers (`data-lb`), editable regions, what blocks publishing and the quality bar.
-- Start from a kit (`suggest_site_kit`, `create_site` with `from_kit`) unless the owner wants something custom; kits fill themselves from the record. For custom work, write static files and save them with `create_site_version`.
-- Use `data-lb` markers for facts (name, phone, hours, address, services) instead of typing them into the HTML, so the page never goes stale.
-- Every version gets `check_site`. Errors block publishing; fix them. Share the `preview_url` with the owner and **publish only after the owner approves** (`publish_site`). `rollback_site` undoes a bad release.
-- Small text changes: `get_site_editables` then `edit_site_texts`. Colours, font and sections on kit sites: `update_site_theme`.
-- SEO and AI-search basics (schema, sitemap, robots, llms.txt, canonical, Open Graph) are added by LotsBusiness on every page; do not hand-write competing ones.
+- **Premium and custom sites follow the companion skill `lots-business-premium-website`** (https://lots.business/skills/premium-website/SKILL.md, or `get_site_guide` with `topic: "skill"`): a design process that gives every business its own site (discovery, brief, art direction, motion, build, screenshots and critique, quality gate), never a template.
+- Read `get_site_guide` before writing a site: the build loop, the live-fact markers (`data-lb`), what blocks publishing and the limits.
+- Sites are built from sections (`list_site_section_types`, `get_site_content`, `update_site_content`): fixed types for quick sites, **custom sections** (your own markup, CSS and script with marked fields the owner can edit) for anything designed. Kits (`suggest_site_kit`, `create_site` with `from_kit`) remain the quick start.
+- Use `data-lb` markers for facts (name, phone, hours, address, services) instead of typing them, so the page never goes stale.
+- Pictures: `upload_site_image` (by https `image_url`, or small `image_base64`). Big files, fonts, videos and PDFs: `create_site_upload` with `source_url` (LotsBusiness fetches it), or with size and SHA-256 and a PUT to `upload_url`, then `complete_site_upload`. Never paste big files as base64.
+- An existing site moves exactly with `import_static_site` (pages, CSS, files; by content or by `source_url`).
+- Look before you share: `screenshot_site` renders the draft or the live site at desktop, tablet and phone widths. `preview_site_content` gives the private link and the page check; errors block publishing.
+- **Publish only after the owner approves** (`publish_site_content`). `rollback_site` undoes a bad release.
+- SEO and AI-search basics (business schema from the record, sitemap, robots, llms.txt, canonical, Open Graph) are added by LotsBusiness on every page; do not hand-write competing ones.
 - A custom domain: `connect_site_domain` returns the one DNS record the owner adds at their registrar; then poll `get_site_domain_status`. Never claim the domain is live before it says `active`.
-- `update_site_settings` turns on the WhatsApp button, call bar, search-engine verification codes, analytics (after the visitor consents) and an announcement bar. Only the groups and fields you send change; `redirects` replaces the whole list.
+- `update_site_settings` turns on the WhatsApp button, call bar, search-engine verification codes, analytics (after the visitor consents), an announcement bar and the optional "Made with LotsBusiness" badge. Only the groups and fields you send change; `redirects` replaces the whole list.
 
 ## Google Business Profile
 
