@@ -108,6 +108,6 @@ These two tools are on every LotsTech MCP server. They send a request to the Lot
 
 ## AI agent members
 
-An owner or admin adds an AI agent to the team in the dashboard (Team settings, "Add an AI agent"). An agent member has its own name and key (`sk_agent_`, shown once), is a Member or a Viewer, reaches only its chosen projects, and shows an Agent badge on what it writes. It cannot sign in to any LotsTeam page. It can never add agents or keys, invite people, change roles, permissions or project access, remove members, leave, or change organization settings, domains, email settings, integrations or billing, and it cannot delete a project or the organization (`AGENT_NOT_ALLOWED`). A paused agent's calls return `AGENT_PAUSED`. There are no tools to add, pause or remove agents: that is dashboard-only.
+An owner or admin adds an AI agent to the team in the dashboard (the Team page, "Add an AI agent"). An agent member has its own name and key (`sk_agent_`, shown once), is a Member or a Viewer, reaches only its chosen projects, and shows an Agent badge on what it writes. It cannot sign in to any LotsTeam page. It can never add agents or keys, invite people, change roles, permissions or project access, remove members, leave, or change organization settings, domains, email settings, integrations or billing, and it cannot delete a project or the organization (`AGENT_NOT_ALLOWED`). A paused agent's calls return `AGENT_PAUSED`. There are no tools to add, pause or remove agents: that is dashboard-only.
 
 Deleting a project and billing stay in the dashboard.
