@@ -18,7 +18,9 @@ The person can also do everything in the LotsSocial dashboard (composer, calenda
 Before scheduling, you can dry-run a post with validate_social_post. It checks the
 post against every network rule (caption and title limits, required media, media
 size, format, video length and aspect ratio) without saving it; the dashboard
-composer runs the same checks. Follower counts (subscribers on YouTube) with their
+composer runs the same checks. A draft (no scheduled_time) is checked as warnings, so
+read ready_to_schedule, not only valid. For Reddit, list_subreddit_flairs lists a
+subreddit's post flairs to pass as flair_id. Follower counts (subscribers on YouTube) with their
 7-day and 30-day change come from get_account_details and get_aggregate_analytics
 where the network shares them; a network that shares no count returns a reason,
 never 0. Support and feature requests: https://support.lots.social

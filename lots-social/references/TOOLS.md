@@ -60,6 +60,21 @@ validate_social_post. Key by connected account ID instead of the network to give
 one account its own. get_account_details lists a Pinterest account's boards
 (posting_fields.boards); with none synced, the person creates a board on
 Pinterest and reconnects through get_connect_link with that account_id.
+Reddit flairs: many communities remove posts without a flair, so before you
+schedule a Reddit post call list_subreddit_flairs with a Reddit account_id (from
+list_connected_accounts) and the subreddit name without r/. It returns each flair's
+flair_id and flair_text; pass your choice as flair_id and flair_text in
+platform_fields.reddit (create_social_post, update_social_post,
+bulk_create_social_posts, validate_social_post). flair_required says whether the
+community requires one when that is known (null when it is not), and an empty list
+means the community has no flairs the account can use. The dashboard composer's
+flair picker reads the same list. When Reddit is temporarily unavailable the tool
+says so; try again later.
+validate_social_post flags a Reddit post that has no flair where the subreddit has
+flairs. With no scheduled_time and no type it checks a draft, where every rule is
+only a warning: valid is true, so read ready_to_schedule (false when scheduling the
+post as it stands would be refused) or pass scheduled_time to see errors. Reddit
+titles are limited to 300 characters: 300 passes, 301 fails.
 Media: list_media, get_media_details, upload_media, create_media_upload,
 complete_media_upload, update_media_metadata, delete_media. upload_media takes an
 image or video link (url), or an image as base64. Files on your computer:
