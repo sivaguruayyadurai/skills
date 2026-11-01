@@ -35,6 +35,18 @@ purpose approval shows each link's posts, views and decisions; revoke_connect_li
 cancels it. You can ask for approval, but you never approve or reject for the
 client: no tool does it, and publish_now on a post waiting for the client is
 refused.
+Client upload links: when an agency's client should send photos and videos for
+one brand, call get_connect_link with purpose "upload", brand_id (required), a
+label (the client's name), expiry_days (1 to 7, default 7) and optionally
+max_files (1 to 50, default 50). The client opens the link on their phone without
+a LotsSocial login and adds photos (JPEG, PNG, WebP, HEIC, up to 50 MB each) and
+videos (MP4, MOV, up to 1 GB each) in original quality. Each file lands in the
+workspace's media library marked as from the client: list_media with source
+client_upload lists them, each with uploaded_via_link (link_id, label, brand_id).
+The client sees only what they sent through the link, never the rest of the
+library. The URL is returned once (keep link_id); list_connect_links with purpose
+upload shows files_received; revoke_connect_link stops the link, and files already
+received stay. Files count toward the workspace's normal media storage.
 Brands: create_brand and update_brand group a workspace's accounts (one company
 or client each) and move accounts between brands; moves are reported. Pass
 brand_id when posting for a brand, or to get_connect_link to connect into it.
@@ -85,7 +97,7 @@ Media: list_media, get_media_details, upload_media, create_media_upload,
 complete_media_upload, update_media_metadata, delete_media. upload_media takes an
 image or video link (url), or an image as base64. Files on your computer:
 create_media_upload, PUT the bytes to upload_url with the returned headers, then
-complete_media_upload.
+complete_media_upload. Files from a client upload link have source client_upload.
 Results: get_post_analytics, get_aggregate_analytics and get_brand_winning_posts.
 The aggregate engagement rate counts only posts that reported impressions, views
 or reach (summary.engagement_rate_basis says which); quote it with that basis,

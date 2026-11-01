@@ -70,6 +70,10 @@ name) and usually brand_id: the client needs no LotsSocial login, the link lasts
 up to 7 days, and its URL is shown only once, so pass it on straight away.
 list_connect_links shows each link's status and accounts connected;
 revoke_connect_link stops a link (accounts already connected stay).
+When an agency's client should send photos and videos for one brand, call
+get_connect_link with purpose "upload", brand_id and a label: the client adds
+files from their phone in full quality with no login, and they land in the media
+library (list_media source client_upload).
 Use get_billing_status for live credit/capacity information and get_credits_link
 when the user needs to add credits. Credits pay for connected accounts
 automatically; media storage is free.
