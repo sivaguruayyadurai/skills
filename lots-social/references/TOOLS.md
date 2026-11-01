@@ -70,6 +70,12 @@ community requires one when that is known (null when it is not), and an empty li
 means the community has no flairs the account can use. The dashboard composer's
 flair picker reads the same list. When Reddit is temporarily unavailable the tool
 says so; try again later.
+Instagram trial reels: pass platform_fields {"instagram": {"trial_reel": "manual"}}
+(or "performance") on a post with one video. Instagram shows the Reel to people
+who don't follow the account first; with manual the person shares it with their
+followers in the Instagram app, with performance Instagram shares it if it
+performs well. "off" posts a normal Reel. LotsSocial cannot read when a trial
+reel reaches followers, so do not report that it has.
 validate_social_post flags a Reddit post that has no flair where the subreddit has
 flairs. With no scheduled_time and no type it checks a draft, where every rule is
 only a warning: valid is true, so read ready_to_schedule (false when scheduling the
