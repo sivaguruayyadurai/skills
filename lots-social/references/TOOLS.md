@@ -75,7 +75,7 @@ Instagram trial reels: pass platform_fields {"instagram": {"trial_reel": "manual
 who don't follow the account first; with manual the person shares it with their
 followers in the Instagram app, with performance Instagram shares it if it
 performs well. "off" posts a normal Reel. LotsSocial cannot read when a trial
-reel reaches followers, so do not report that it has.
+reel reaches followers, so do not report that it has. Instagram only allows trial reels on accounts that meet its follower requirement and refuses others (nothing is posted).
 validate_social_post flags a Reddit post that has no flair where the subreddit has
 flairs. With no scheduled_time and no type it checks a draft, where every rule is
 only a warning: valid is true, so read ready_to_schedule (false when scheduling the
