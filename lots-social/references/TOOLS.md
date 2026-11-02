@@ -98,6 +98,8 @@ complete_media_upload, update_media_metadata, delete_media. upload_media takes a
 image or video link (url), or an image as base64. Files on your computer:
 create_media_upload, PUT the bytes to upload_url with the returned headers, then
 complete_media_upload. Files from a client upload link have source client_upload.
+When the person wants a file itself, give them download_url from get_media_details:
+it saves the file with its original name and works for 15 minutes; ask again after that.
 Results: get_post_analytics, get_aggregate_analytics and get_brand_winning_posts.
 The aggregate engagement rate counts only posts that reported impressions, views
 or reach (summary.engagement_rate_basis says which); quote it with that basis,
