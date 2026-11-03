@@ -49,6 +49,7 @@
 ```
 1. start_google_business_oauth(business_id)          -> the owner connects Google in their browser
 2. get_google_business_connection_status             -> an existing profile? link_google_business_location instead
+   0 profiles found? Maybe the wrong Google account: disconnect_google_business(confirm: true, after the owner agrees), then step 1 again (Google's account chooser)
 3. search_google_business_categories(query)          -> the Google category name
 4. prepare_google_business_profile(business_id, google_account_name, google_category_name)   -> show the owner the exact payload
 5. create_google_business_profile(preview_id, confirmation_token)   -> only after the owner approves

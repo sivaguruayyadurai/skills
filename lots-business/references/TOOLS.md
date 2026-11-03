@@ -63,6 +63,7 @@ All tools are on `https://api.lots.business/mcp`. The live list, with current de
 | `search_google_business_categories`, `prepare_google_business_profile`, `create_google_business_profile` | Guided creation; the owner approves the payload |
 | `get_google_business_verification_options`, `start_google_business_verification`, `complete_google_business_verification`, `get_google_business_profile_status` | Verification Google offers |
 | `link_google_business_location` | Link a profile that already exists |
+| `disconnect_google_business` | Disconnect the person's own Google account (every business they manage; posting pauses until they connect again). `confirm: true` after they agree; then `start_google_business_oauth` to use another account |
 | `create_google_business_post`, `list_google_business_posts`, `delete_google_business_post` | Updates, events and offers |
 
 ## Directories, email and messages (paid)
