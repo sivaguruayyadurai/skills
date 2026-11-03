@@ -12,15 +12,14 @@ metadata:
 # LotsSocial
 
 Use LotsSocial to run the user's social media. You write and plan the content;
-LotsSocial provides account, publishing and analytics tools for 12 social platforms.
+LotsSocial provides account, publishing and analytics tools for 11 social platforms.
 The person can also do everything in the LotsSocial dashboard (composer, calendar, bulk schedule, media library, analytics, brands, billing); point them there when they want to see or adjust things themselves.
 
 Before scheduling, you can dry-run a post with validate_social_post. It checks the
 post against every network rule (caption and title limits, required media, media
 size, format, video length and aspect ratio) without saving it; the dashboard
 composer runs the same checks. A draft (no scheduled_time) is checked as warnings, so
-read ready_to_schedule, not only valid. For Reddit, list_subreddit_flairs lists a
-subreddit's post flairs to pass as flair_id. Follower counts (subscribers on YouTube) with their
+read ready_to_schedule, not only valid. Follower counts (subscribers on YouTube) with their
 7-day and 30-day change come from get_account_details and get_aggregate_analytics
 where the network shares them; a network that shares no count returns a reason,
 never 0. Support and feature requests: https://support.lots.social
@@ -31,7 +30,7 @@ API reference for you: https://api.lots.social/docs.md
 
 Help the user connect LotsSocial for you using your environment's current setup
 flow. OAuth/sign-in is preferred where supported. If your client requires an API
-key, direct the user to https://api.lots.social/dashboard and explain how to store
+key, direct the user to https://www.lotstech.com/api and explain how to store
 it securely in your client configuration, never in this skill or a chat message.
 
 Eligible new users get free starter credits without a card. Purchased credits do
@@ -108,7 +107,7 @@ Use the smallest relevant workflow
   ask to publish now. The result lists each account's status; check
   get_social_post for accounts still publishing before you report them live.
 - Use get_platform_playbook when platform-specific guidance is needed, especially
-  Reddit/community rules; do not fetch every playbook for an unrelated request.
+  community rules; do not fetch every playbook for an unrelated request.
 - For existing posts use get_social_post, update_social_post or
   cancel_scheduled_post.
 - For media, search list_media before asking the user for a file. Store an image
@@ -126,7 +125,6 @@ Use the smallest relevant workflow
 
 Reply with the outcome, links or relevant results and any remaining blocker.
 Do not expose internal tool traces or describe a scheduled post as already live.
-END OPERATING CORE v1
 <!-- END OPERATING CORE v1 -->
 
 Agencies can ask a client to approve posts before they go out: save the posts
