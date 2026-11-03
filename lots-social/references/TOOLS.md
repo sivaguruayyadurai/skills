@@ -100,7 +100,11 @@ create_media_upload, PUT the bytes to upload_url with the returned headers, then
 complete_media_upload. Files from a client upload link have source client_upload.
 When the person wants a file itself, give them download_url from get_media_details:
 it saves the file with its original name and works for 15 minutes; ask again after that.
+To rename a file, call update_media_metadata with filename; the stored file and posts
+using it do not change, and list_media search finds it by the new name.
 Results: get_post_analytics, get_aggregate_analytics and get_brand_winning_posts.
+get_post_analytics reads a post of the last 7 days from its networks first (at most
+once an hour), so it answers current numbers; last_updated says when they were read.
 The aggregate engagement rate counts only posts that reported impressions, views
 or reach (summary.engagement_rate_basis says which); quote it with that basis,
 and when it is null use total engagement instead.
