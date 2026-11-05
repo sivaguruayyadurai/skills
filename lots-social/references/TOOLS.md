@@ -77,6 +77,14 @@ who don't follow the account first; with manual the person shares it with their
 followers in the Instagram app, with performance Instagram shares it if it
 performs well. "off" posts a normal Reel. LotsSocial cannot read when a trial
 reel reaches followers, so do not report that it has. Instagram only allows trial reels on accounts that meet its follower requirement and refuses others (nothing is posted).
+Instagram options: on a post with one video (a Reel), "cover_media_id" (media_id of
+a JPEG in the media library, up to 8 MB) or "cover_frame_seconds" (that second of
+the video) sets the cover, and "share_to_feed": false asks for the Reels tab only.
+On any Instagram post, "location_id" tags a place: Instagram takes the ID of a
+Facebook Page that has an address (get_account_details posting_fields.location_pages
+lists the workspace's connected Facebook Pages; places cannot be searched by name),
+and "collaborators" invites up to 3 public Instagram usernames, who accept in
+Instagram.
 With no scheduled_time and no type it checks a draft, where every rule is
 only a warning: valid is true, so read ready_to_schedule (false when scheduling the
 post as it stands would be refused) or pass scheduled_time to see errors.
