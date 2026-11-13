@@ -19,6 +19,11 @@
 | `start_domain_setup` | Steps and link for the owner to connect a domain | read |
 | `get_billing` | How the user's domains are paid for: plan or credits, balance, plans to choose from | read |
 | `create_checkout` | A checkout link for a plan (`plan`, `cycle`) or credits (`amount_usd`) for the person to open | owner |
+| `list_contacts` | A mailbox's address book with `total` (`query`, `archived`, `limit`, `offset`); without `mailbox_id`, the count per mailbox | read |
+| `get_contact` | One contact: email, name, company, phone, notes, how it was added, times emailed | read |
+| `create_contact` | Add a person (`email` required); an archived one comes back | draft |
+| `update_contact` | Change the fields you pass; `archived: false` restores | draft |
+| `archive_contact` | Take a contact out of the address book and suggestions; kept, can be restored | draft |
 | `list_groups` | Groups, their members and the domains for new groups (`workspace_id` optional) | owner or admin, read |
 | `create_group` | New group address with members (`address`, `name`, `accept_outside`, `members`) | owner or admin, write |
 | `update_group` | Change name, `local_part` or `accept_outside` | owner or admin, write |
@@ -33,3 +38,5 @@ Recipients are email addresses as strings (`"jane@example.com"` or `"Jane <jane@
 Billing: give the checkout link to the person to pay in their browser; never ask for card details. An unpaid domain cannot send (`domain_not_funded`); reading, search and drafts keep working, and stored mail is never deleted.
 
 Groups: outside senders are held in Unrouted unless `accept_outside` is true. Limits on groups per domain and members per group are the server's.
+
+Contacts: one address book per mailbox, one contact per email address, up to 10,000 per mailbox. People the mailbox sends to are added automatically; archived addresses are not added back.

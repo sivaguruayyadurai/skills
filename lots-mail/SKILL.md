@@ -1,6 +1,6 @@
 ---
 name: lots-mail
-description: Work in a LotsMail business inbox (mailboxes on the customer's own domain) through its MCP server. Use when the user wants you to read or search their email, summarize conversations, draft replies for review, send or reply when they have allowed it, check whether a message was delivered, or tidy their inbox.
+description: Work in a LotsMail business inbox (mailboxes on the customer's own domain) through its MCP server. Use when the user wants you to read or search their email, summarize conversations, draft replies for review, send or reply when they have allowed it, check whether a message was delivered, tidy their inbox, or look up and manage their contacts.
 metadata:
   compatibility: Any compatible remote MCP client, including ChatGPT, Claude and coding agents
   author: lotstech
@@ -41,6 +41,15 @@ Use `https://api.lotsmail.to/mcp` as a remote MCP server and sign in with a Lots
 ## Organize
 
 `update_messages` marks read or unread, stars, and moves to inbox, archive, trash or spam. Messages in Trash or Spam are kept for 30 days, then deleted.
+
+## Contacts
+
+Each mailbox has its own address book, shared by everyone who can open that mailbox. People the mailbox sends mail to are added automatically; people who only write in are not.
+
+- "How many contacts do I have?": `list_contacts` without `mailbox_id` counts every mailbox the user can open; with `mailbox_id` it lists one address book (search with `query`, page with `limit` and `offset`, `total` is the count).
+- `get_contact`, `create_contact` (`email` required), `update_contact` (only the fields you pass) and `archive_contact` work in one mailbox. Archiving keeps the contact; `update_contact` with `archived: false` brings it back.
+- Before writing to someone by name, look them up with `list_contacts` and `query` instead of guessing an address.
+- Reading contacts needs the Read permission for the mailbox, changing them needs Write drafts.
 
 ## Groups (owners and admins)
 
