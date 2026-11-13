@@ -48,7 +48,7 @@ Each mailbox has its own address book, shared by everyone who can open that mail
 
 - "How many contacts do I have?": `list_contacts` without `mailbox_id` counts every mailbox the user can open; with `mailbox_id` it lists one address book (search with `query`, page with `limit` and `offset`, `total` is the count).
 - `get_contact`, `create_contact` (`email` required), `update_contact` (only the fields you pass) and `archive_contact` work in one mailbox. Archiving keeps the contact; `update_contact` with `archived: false` brings it back.
-- Before writing to someone by name, look them up with `list_contacts` and `query` instead of guessing an address.
+- Before writing to someone by name, look them up with `list_contacts` and `query` instead of guessing an address. If more than one contact matches the name, ask the user which address they mean instead of picking one.
 - Reading contacts needs the Read permission for the mailbox, changing them needs Write drafts.
 
 ## Groups (owners and admins)

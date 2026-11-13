@@ -39,4 +39,4 @@ Billing: give the checkout link to the person to pay in their browser; never ask
 
 Groups: outside senders are held in Unrouted unless `accept_outside` is true. Limits on groups per domain and members per group are the server's.
 
-Contacts: one address book per mailbox, one contact per email address, up to 10,000 per mailbox. People the mailbox sends to are added automatically; archived addresses are not added back.
+Contacts: one address book per mailbox, one contact per email address, up to 10,000 per mailbox. People the mailbox sends to are added automatically (address only, never a name from someone else's message); archived addresses are not added back. Picking a recipient by name: if `list_contacts` with that name's words matches more than one contact, ask the person which address they mean instead of guessing (e.g. two contacts both called "Priya").
