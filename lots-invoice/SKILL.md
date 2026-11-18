@@ -55,3 +55,5 @@ Invoices are fully configurable, so match what the user's clients or accountant 
 ## What you cannot do
 
 Billing for LotsInvoice itself is the owner's: `get_billing` explains it and `create_checkout` returns a link for them to pay in their browser. Do not ask for card details. Confirming the business email happens by a link in the owner's inbox.
+
+`get_billing` `plan` is the user's own plan of this app; a plan included in a LotsTech suite is in `suite_plans`, and `plan_label` is the added-up line. A suite plan is changed or cancelled only at https://www.lotstech.com/dashboard; `create_checkout` buys an own plan in addition.
