@@ -81,9 +81,16 @@ All tools are on `https://api.lots.business/mcp`. The live list, with current de
 
 | Tool | Notes |
 |------|-------|
-| `create_approval_link`, `list_approval_links`, `revoke_approval_link` | Client review without an account |
+| `create_approval_link`, `list_approval_links`, `revoke_approval_link` | Client review of the website draft (frozen when asked) and business details, without an account; `days` is how long the link works (1 to 30) |
+| `get_client_link`, `create_client_link`, `update_client_link`, `revoke_client_link` | The client page: one standing link per business (90 days, renewable; `rotate: true` replaces it) where the client approves or asks for changes on the linked LotsSocial brand's waiting posts and on open website checks, and can change an answer until you act. `client_email` gets a daily email when something new waits. Answers: `latest_answers` on `get_client_link` |
 | `start_business_handover`, `list_business_handovers`, `cancel_business_handover` | Give a business to the client |
 | `get_business_handover`, `accept_business_handover` | The client's side of a hand-over |
+| `get_agency_branding`, `set_agency_branding` | The agency's name, logo, colour, reply-to email and website on client pages (shown with LotsTech for Business or a LotsBusiness Pro or Business plan) |
+| `get_linked_apps` | Every app linked to a business: LotsCRM, LotsMail domain, LotsBlog, Google profile, LotsSocial brand, LotsInvoice business (`include_options: true` lists what you can link and suggests a brand) |
+| `link_social_brand`, `link_invoice_business` | Link the business's LotsSocial brand or LotsInvoice business (`unlink: true` removes); never link a suggested brand without the person's yes |
+| `get_client_reports`, `set_client_report_settings` | Client reports of a business in an agency workspace: the monthly report (on by default; counted on the 1st with a preview to the agency, sent to the client's `recipients` on the 3rd unless stopped) and `show_amounts` |
+| `create_client_report` | A report now: `period` today, yesterday, last_7_days, last_week, this_month, last_month or custom (`start_date`, `end_date`); its link lasts 90 days; `send_to_client: true` emails it at once, only after the person's yes |
+| `preview_client_report`, `update_client_report`, `send_client_report_now` | See a report as the client will (`report_id` or `upcoming`), add a note, stop a monthly report, renew a link (`extend_link`), or send it now (only after the person's yes) |
 
 ## Discovery (public)
 
