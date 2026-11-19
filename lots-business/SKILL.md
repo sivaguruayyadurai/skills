@@ -64,7 +64,7 @@ Business email (LotsMail) is included with a paid business once its website's ow
 
 ## Agencies
 
-Create a workspace per agency (`create_workspace`), invite the team (`invite_workspace_member`: admin, manager or viewer), and add each client business to it. Give a client access to one business with `invite_business_member`. `create_approval_link` lets a client review the draft site or details and approve without an account. When the client should own it, `start_business_handover` gives them a link; on acceptance the business, website and domains move to their workspace and their plan pays for it from then on.
+Create a workspace per agency (`create_workspace`), invite the team (`invite_workspace_member`: admin, manager or viewer), and add each client business to it. Give a client access to one business with `invite_business_member`. `create_approval_link` lets a client review the draft site or details and approve without an account. When the client should own it, show `preview_business_handover` first, then `start_business_handover` gives them a link; on acceptance the business, website, domains and its linked apps (LotsMail domain, LotsSocial brand, LotsBlog blog, LotsCRM workspace used by this business only, LotsInvoice business) move to them in one step and their own plan or credits pay from then on. What could not move yet waits; `finish_business_handover` moves it later.
 
 ## Read safely
 

@@ -73,5 +73,7 @@
 2. invite_workspace_member(workspace_id, email, role="manager")   for the team
 3. create_business(..., workspace_id) and build its site as in workflow 2 or 3
 4. create_approval_link(business_id, scope="all")                 -> the client approves without an account
-5. start_business_handover(business_id, to_email)                  -> the client accepts into their own workspace and pays from then on
+5. preview_business_handover(business_id)                         -> show the person what moves and what stays, and why
+6. start_business_handover(business_id, to_email)                  -> the client accepts into their own workspace; the business and its linked apps move in one step and they pay from then on
+7. finish_business_handover(business_id)                           -> later, moves what waited (see moves in list_business_handovers)
 ```

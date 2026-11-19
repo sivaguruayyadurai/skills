@@ -83,8 +83,10 @@ All tools are on `https://api.lots.business/mcp`. The live list, with current de
 |------|-------|
 | `create_approval_link`, `list_approval_links`, `revoke_approval_link` | Client review of the website draft (frozen when asked) and business details, without an account; `days` is how long the link works (1 to 30) |
 | `get_client_link`, `create_client_link`, `update_client_link`, `revoke_client_link` | The client page: one standing link per business (90 days, renewable; `rotate: true` replaces it) where the client approves or asks for changes on the linked LotsSocial brand's waiting posts and on open website checks, and can change an answer until you act. `client_email` gets a daily email when something new waits. Answers: `latest_answers` on `get_client_link` |
-| `start_business_handover`, `list_business_handovers`, `cancel_business_handover` | Give a business to the client |
-| `get_business_handover`, `accept_business_handover` | The client's side of a hand-over |
+| `preview_business_handover` | Before a hand-over: what moves with the business and what stays, app by app (LotsMail domain, LotsSocial brand with its accounts, posts and media, LotsBlog blog, LotsCRM workspace, LotsInvoice business), with the reason. Changes nothing |
+| `start_business_handover`, `list_business_handovers`, `cancel_business_handover` | Give a business to the client; its linked apps go with it on acceptance (`moves` on each completed hand-over) |
+| `finish_business_handover` | After a hand-over: move the linked apps that waited (the client's plan or credits, a social account they already had) |
+| `get_business_handover`, `accept_business_handover` | The client's side of a hand-over: what moves to them and what they pay for (`moves`, `billing`) |
 | `get_agency_branding`, `set_agency_branding` | The agency's name, logo, colour, reply-to email and website on client pages (shown with LotsTech for Business or a LotsBusiness Pro or Business plan) |
 | `get_linked_apps` | Every app linked to a business: LotsCRM, LotsMail domain, LotsBlog, Google profile, LotsSocial brand, LotsInvoice business (`include_options: true` lists what you can link and suggests a brand) |
 | `link_social_brand`, `link_invoice_business` | Link the business's LotsSocial brand or LotsInvoice business (`unlink: true` removes); never link a suggested brand without the person's yes |
