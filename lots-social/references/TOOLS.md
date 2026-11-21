@@ -85,6 +85,7 @@ Facebook Page that has an address (get_account_details posting_fields.location_p
 lists the workspace's connected Facebook Pages; places cannot be searched by name),
 and "collaborators" invites up to 3 public Instagram usernames, who accept in
 Instagram.
+AI disclosure: pass platform_fields {"youtube": {"contains_synthetic_media": true}} when a YouTube video contains realistic altered or synthetic content (for example made or changed with AI), and {"instagram": {"is_ai_generated": true}} to disclose AI use on any Instagram post; each network shows its own label. Facebook has no AI disclosure here.
 With no scheduled_time and no type it checks a draft, where every rule is
 only a warning: valid is true, so read ready_to_schedule (false when scheduling the
 post as it stands would be refused) or pass scheduled_time to see errors.
